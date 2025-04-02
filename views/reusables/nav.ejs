@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.open {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="bg-white border-b shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo y Nombre -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center gap-2">
+                        <img src="/assets/insignia.ico" class="h-8 w-8">
+                        <span class="font-bold text-xl hidden md:block">SP</span>
+                    </a>
+                </div>
+
+                <!-- Navegación Principal - Escritorio -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="/error_404" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-1.5">
+                        <i data-lucide="layout-dashboard" class="h-4 w-4"></i>
+                        Dashboard
+                    </a>
+                    <a href="/" class="nav-link active px-3 py-2 rounded-md text-sm font-medium text-blue-600 hover:bg-blue-50 flex items-center gap-1.5">
+                        <i data-lucide="users" class="h-4 w-4"></i>
+                        Estudiantes
+                    </a>
+                    <a href="/error_404" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-1.5">
+                        <i data-lucide="user" class="h-4 w-4"></i>
+                        Profesores
+                    </a>
+                    <a href="/assists" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-1.5">
+                        <i data-lucide="calendar-days" class="h-4 w-4"></i>
+                        Asistencias
+                    </a>
+                    <a href="/error_404" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-1.5">
+                        <i data-lucide="bar-chart-2" class="h-4 w-4"></i>
+                        Calificaciones
+                    </a>
+                    <a href="/error_404" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-1.5">
+                        <i data-lucide="file-text" class="h-4 w-4"></i>
+                        Reportes
+                    </a>
+                </div>
+
+                <!-- Menú de Usuario y Botón Móvil -->
+                <div class="flex items-center gap-2">
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center gap-2 text-sm focus:outline-none">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600">
+                                <i data-lucide="user" class="h-5 w-5"></i>
+                            </div>
+                            <span class="hidden md:block font-medium">Admin</span>
+                            <i data-lucide="chevron-down" class="h-4 w-4 hidden md:block"></i>
+                        </button>
+                        <!-- Menú desplegable de usuario (oculto por defecto) -->
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 border">
+                            <a href="/perfil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi Perfil</a>
+                            <a href="/configuracion" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configuración</a>
+                            <div class="border-t border-gray-100"></div>
+                            <a href="/logout" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón de menú móvil -->
+                    <button id="mobileMenuBtn" class="md:hidden rounded-md p-2 hover:bg-gray-100 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menú móvil (oculto por defecto) -->
+            <div id="mobileMenu" class="mobile-menu md:hidden pb-3 border-t mt-2">
+                <a href="/error_404" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-2">
+                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i>
+                    Dashboard
+                </a>
+                <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 bg-blue-50 flex items-center gap-2">
+                    <i data-lucide="users" class="h-5 w-5"></i>
+                    Estudiantes
+                </a>
+                <a href="/error_404" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-2">
+                    <i data-lucide="user" class="h-5 w-5"></i>
+                    Profesores
+                </a>
+                <a href="/assists" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-2">
+                    <i data-lucide="calendar-days" class="h-5 w-5"></i>
+                    Asistencias
+                </a>
+                <a href="/error_404" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-2">
+                    <i data-lucide="bar-chart-2" class="h-5 w-5"></i>
+                    Calificaciones
+                </a>
+                <a href="/error_404" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center gap-2">
+                    <i data-lucide="file-text" class="h-5 w-5"></i>
+                    Reportes
+                </a>
+            </div>
+        </div>
+    </nav>
+    <script>
+        // Inicializar iconos de Lucide
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            
+            // Configurar menú de usuario
+            const userMenuBtn = document.getElementById('userMenuBtn');
+            const userMenu = document.getElementById('userMenu');
+            
+            if (userMenuBtn && userMenu) {
+                userMenuBtn.addEventListener('click', function() {
+                    userMenu.classList.toggle('hidden');
+                });
+                
+                // Cerrar menú al hacer clic fuera
+                document.addEventListener('click', function(event) {
+                    if (!userMenuBtn.contains(event.target) && !userMenu.contains(event.target)) {
+                        userMenu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Configurar menú móvil
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

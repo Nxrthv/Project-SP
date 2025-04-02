@@ -3,79 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestión Académica</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-    </style>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        border: "hsl(var(--border))",
-                        input: "hsl(var(--input))",
-                        ring: "hsl(var(--ring))",
-                        background: "hsl(var(--background))",
-                        foreground: "hsl(var(--foreground))",
-                        primary: {
-                            DEFAULT: "hsl(var(--primary))",
-                            foreground: "hsl(var(--primary-foreground))",
-                        },
-                        secondary: {
-                            DEFAULT: "hsl(var(--secondary))",
-                            foreground: "hsl(var(--secondary-foreground))",
-                        },
-                        destructive: {
-                            DEFAULT: "hsl(var(--destructive))",
-                            foreground: "hsl(var(--destructive-foreground))",
-                        },
-                        muted: {
-                            DEFAULT: "hsl(var(--muted))",
-                            foreground: "hsl(var(--muted-foreground))",
-                        },
-                        accent: {
-                            DEFAULT: "hsl(var(--accent))",
-                            foreground: "hsl(var(--accent-foreground))",
-                        },
-                        popover: {
-                            DEFAULT: "hsl(var(--popover))",
-                            foreground: "hsl(var(--popover-foreground))",
-                        },
-                        card: {
-                            DEFAULT: "hsl(var(--card))",
-                            foreground: "hsl(var(--card-foreground))",
-                        },
-                    },
-                }
-            }
-        }
-    </script>
+    <title>Estado de Estudiantes - Sistema de Gestión Académica</title>
 </head>
 <body class="bg-gradient-to-b from-slate-50 to-slate-100">
+    <%- include('reusables/nav')%>
     <div class="container mx-auto px-4 py-8">
         <div class="mb-8 border-none rounded-lg shadow-lg bg-white">
             <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg p-6">
                 <div class="flex items-center justify-between">
                     <h2 class="text-2xl font-bold flex items-center gap-2">
                         <i data-lucide="graduation-cap" class="h-6 w-6"></i>
-                        Sistema de Gestión Académica
+                        SGA - Sistema de Gestión Académica
                     </h2>
                 </div>
             </div>
             <div class="p-6">
-                <h1 class="text-3xl font-bold text-center mb-6">Datos de Estudiantes</h1>
+                <h1 class="text-3xl font-bold text-center mb-6">Datos por Grados y Secciones</h1>
                 
                 <!-- Estadísticas -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -98,59 +41,81 @@
                     <div class="bg-green-50 border-green-200 rounded-lg p-4">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-green-600">Destacados</p>
+                                <p class="text-sm text-green-600">Matriculados</p>
                                 <p class="text-2xl font-bold">
                                     <% if (section && data) { %>
-                                        <%= data.filter(row => row[2] === "Excelente").length %>
+                                        <%= data.filter(row => row[3] === "Matriculado").length %>
                                     <% } else { %>
                                         0
                                     <% } %>
                                 </p>
                             </div>
-                            <i data-lucide="graduation-cap" class="h-8 w-8 text-green-500"></i>
+                            <i data-lucide="list-checks" class="h-8 w-8 text-green-500"></i>
                         </div>
                     </div>
                     
                     <div class="bg-amber-50 border-amber-200 rounded-lg p-4">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-amber-600">En Observaciòn</p>
+                                <p class="text-sm text-amber-600">Regularizar Documentos</p>
                                 <p class="text-2xl font-bold">
                                     <% if (section && data) { %>
-                                        <%= data.filter(row => row[2] === "Observaciòn").length %>
+                                        <%= data.filter(row => row[3] === "Regularizar").length %>
                                     <% } else { %>
                                         0
                                     <% } %>
                                 </p>
                             </div>
-                            <i data-lucide="eye" class="h-8 w-8 text-amber-500"></i>
+                            <i data-lucide="file-warning" class="h-8 w-8 text-amber-500"></i>
                         </div>
                     </div>
                     
                     <div class="bg-red-50 border-red-200 rounded-lg p-4">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-red-600">Suspendidos</p>
+                                <p class="text-sm text-red-600">Sin Documentos</p>
                                 <p class="text-2xl font-bold">
                                     <% if (section && data) { %>
-                                        <%= data.filter(row => row[2] === "Riesgo").length %>
+                                        <%= data.filter(row => row[3] === "Sin Documentos").length %>
                                     <% } else { %>
                                         0
                                     <% } %>
                                 </p>
                             </div>
-                            <i data-lucide="circle-alert" class="h-8 w-8 text-red-500"></i>
+                            <i data-lucide="file-warning" class="h-8 w-8 text-red-500"></i>
                         </div>
                     </div>
                 </div>
 
                 <!-- Selector y Búsqueda -->
                 <div class="flex flex-col md:flex-row gap-4 mb-6">
-                    <div class="w-full md:w-1/3">
+                    <!-- Selector de Grado -->
+                    <div class="w-full md:w-1/6">
+                        <div class="relative">
+                            <select id="grade" name="grade"
+                                class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10"
+                                onchange="handleGradeChange(this.value)">
+                                <option selected>-- Seleccionar Grado --</option>
+                                <%
+                                    const grados = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO', 'SEXTO'];
+                                %>
+                                <% grados.forEach((nombre, index) => { %>
+                                    <option value="<%= index + 1 %>" <%= grade == index + 1 ? 'selected' : '' %>>
+                                        <%= nombre %>
+                                    </option>
+                                <% }); %>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Selector de Seccion -->
+                    <div class="w-full md:w-1/6">
                         <div class="relative">
                             <select id="section" name="section" 
                                 class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10"
-                                onchange="window.location.href = '/seccion/' + this.value;">
+                                onchange="handleSectionChange(this.value)">
                                 <option selected>-- Seleccionar Sección --</option>
                                 <option value="A" <%= section === 'A' ? 'selected' : '' %>>Sección A</option>
                                 <option value="B" <%= section === 'B' ? 'selected' : '' %>>Sección B</option>
@@ -164,7 +129,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="w-full md:w-2/3 relative">
                         <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" style="width: 18px; height: 18px;"></i>
                         <input
@@ -176,6 +140,7 @@
                         />
                     </div>
                 </div>
+                
 
                 <% if (error) { %>
                     <p class="text-red-500 text-center font-semibold"><%= error %></p>
@@ -194,24 +159,25 @@
                     
                     <!-- Tab Content: Table View -->
                     <div id="tableTab" class="tab-content active space-y-4">
-                        <div class="rounded-lg border shadow-sm overflow-hidden">
+                        <!-- Contenedor con desplazamiento horizontal para móviles -->
+                        <div class="rounded-lg border shadow-sm overflow-x-auto">
                             <table class="min-w-full bg-white" id="studentsTable">
                                 <thead class="bg-gray-100">
                                     <tr>
-                                        <th class="py-3 px-4 text-left font-semibold">DNI</th>
-                                        <th class="py-3 px-4 text-left font-semibold">Estudiante</th>
-                                        <th class="py-3 px-4 text-center font-semibold">Estado Académico</th>
-                                        <th class="py-3 px-4 text-center font-semibold">Estado de Matrícula</th>
-                                        <th class="py-3 px-4 text-center font-semibold">Fecha</th>
+                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">DNI</th>
+                                        <th class="py-3 px-4 text-left font-light whitespace-nowrap">Estudiante</th>
+                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Estado Académico</th>
+                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Estado de Matrícula</th>
+                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Fecha</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% if (data && data.length > 0) { %>
                                         <% data.forEach(row => { %>
                                             <tr class="border-t hover:bg-gray-50 transition-colors">
-                                                <td class="py-3 px-4 font-medium"><%= row[0] %></td>
-                                                <td class="py-3 px-4"><%= row[1] %></td>
-                                                <td class="py-3 px-4 text-center">
+                                                <td class="py-3 px-4 text-center font-light text-sm whitespace-nowrap"><%= row[0] %></td>
+                                                <td class="py-3 px-4 font-light text-sm whitespace-nowrap"><%= row[1] %></td>
+                                                <td class="py-3 px-4 text-center whitespace-nowrap">
                                                     <% if (row[2] === "Excelente") { %>
                                                         <span class="px-2 py-1 rounded-full text-xs font-semibold bg-green-700 text-white">
                                                             <%= row[2] %>
@@ -225,21 +191,21 @@
                                                             <%= row[2] %>
                                                         </span>
                                                     <% } else { %>
-                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold bg-gray-500 text-white">
+                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold bg-blue-500 text-white">
                                                             <%= row[2] %>
                                                         </span>
                                                     <% } %>
                                                 </td>
-                                                <td class="py-3 px-4 text-center">
+                                                <td class="py-3 px-4 text-center whitespace-nowrap">
                                                     <% if (row[3] === "Matriculado") { %>
                                                         <span class="px-2 py-1 rounded-full text-xs font-semibold bg-green-500 text-white">
                                                             <%= row[3] %>
                                                         </span>
-                                                    <% } else if (row[3] === "Por regularizar") { %>
+                                                    <% } else if (row[3] === "Regularizar") { %>
                                                         <span class="px-2 py-1 rounded-full text-xs font-semibold border border-amber-500 text-amber-500">
                                                             <%= row[3] %>
                                                         </span>
-                                                    <% } else if (row[3] === "Pendiente") { %>
+                                                    <% } else if (row[3] === "Sin Documentos") { %>
                                                         <span class="px-2 py-1 rounded-full text-xs font-semibold border border-red-500 text-red-500">
                                                             <%= row[3] %>
                                                         </span>
@@ -249,7 +215,7 @@
                                                         </span>
                                                     <% } %>
                                                 </td>
-                                                <td class="py-3 px-4 text-center"><%= row[4] %></td>
+                                                <td class="py-3 px-4 text-center whitespace-nowrap"><%= row[4] %></td>
                                             </tr>
                                         <% }); %>
                                     <% } else { %>
@@ -290,7 +256,7 @@
                                                         <%= row[2] %>
                                                     </span>
                                                 <% } else { %>
-                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold bg-gray-500 text-white">
+                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold bg-blue-500 text-white">
                                                         <%= row[2] %>
                                                     </span>
                                                 <% } %>
@@ -301,11 +267,11 @@
                                                     <span class="px-2 py-1 rounded-full text-xs font-semibold bg-green-500 text-white">
                                                         <%= row[3] %>
                                                     </span>
-                                                <% } else if (row[3] === "Por regularizar") { %>
+                                                <% } else if (row[3] === "Regularizar") { %>
                                                     <span class="px-2 py-1 rounded-full text-xs font-semibold border border-amber-500 text-amber-500">
                                                         <%= row[3] %>
                                                     </span>
-                                                <% } else if (row[3] === "Pendiente") { %>
+                                                <% } else if (row[3] === "Sin Documentos") { %>
                                                     <span class="px-2 py-1 rounded-full text-xs font-semibold border border-red-500 text-red-500">
                                                         <%= row[3] %>
                                                     </span>
@@ -371,8 +337,6 @@
         // Inicializar iconos de Lucide
         document.addEventListener('DOMContentLoaded', function() {
             lucide.createIcons();
-            
-            // Inicializar paginación
             if (document.getElementById('studentsTable')) {
                 initPagination();
             }
@@ -536,6 +500,22 @@
         function exportData() {
             // Implementar la funcionalidad de exportación
             alert('Funcionalidad de exportación en desarrollo');
+        }
+
+        // Función para cambiar grado conservando sección
+        function handleGradeChange(grade) {
+            const section = document.getElementById('section').value;
+            if (section && section !== "-- Seleccionar Sección --") {
+                window.location.href = `/data/${grade}/${section}`;
+            }
+        }
+
+        // Función para cambiar sección conservando grado
+        function handleSectionChange(section) {
+            const grade = document.getElementById('grade').value;
+            if (grade && grade !== "-- Seleccionar Grado --") {
+                window.location.href = `/data/${grade}/${section}`;
+            }
         }
     </script>
 </body>

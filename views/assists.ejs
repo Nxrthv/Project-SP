@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Asistencias - Sistema de Gestión Académica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <style>
+        .attendance-status label {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .attendance-status input:checked + .Presente {
+            background-color: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+        .attendance-status input:checked + .Ausente {
+            background-color: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+        .attendance-status input:checked + .Justificado {
+            background-color: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-slate-50 to-slate-100">
+    <%- include('reusables/nav') %>
+
+    <!-- Contenido Principal -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="mb-8 border-none rounded-lg shadow-lg bg-white">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold flex items-center gap-2">
+                        <i data-lucide="check-square" class="h-6 w-6"></i>
+                        Control de Asistencias
+                    </h2>
+                </div>
+            </div>
+            <div class="p-6">
+                <!-- Selector de Tipo de Asistencia -->
+                <div class="flex flex-col md:flex-row gap-4 mb-6">
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-700">Tipo de Asistencia</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button id="studentAttendanceBtn" class="py-3 px-4 rounded-lg bg-blue-600 text-white font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors">
+                                <i data-lucide="users" class="h-5 w-5"></i>
+                                Estudiantes
+                            </button>
+                            <button id="teacherAttendanceBtn" class="py-3 px-4 rounded-lg bg-gray-200 text-gray-700 font-medium flex items-center justify-center gap-2 hover:bg-gray-300 transition-colors">
+                                <i data-lucide="user" class="h-5 w-5"></i>
+                                Maestros
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-700">Fecha</h3>
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="datePicker" 
+                                class="w-full px-4 py-3 border rounded-lg shadow bg-white pr-10"
+                                placeholder="Seleccionar fecha"
+                                autocomplete="off"
+                            >
+                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                                <i data-lucide="calendar" class="h-5 w-5 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-green-50 border-green-200 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-green-600">Presentees</p>
+                                <p class="text-2xl font-bold" id="PresenteCount">0</p>
+                            </div>
+                            <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                                <i data-lucide="check" class="h-6 w-6 text-green-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 border-red-200 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-red-600">Ausentes</p>
+                                <p class="text-2xl font-bold" id="AusenteCount">0</p>
+                            </div>
+                            <div class="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                                <i data-lucide="x" class="h-6 w-6 text-red-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 border-blue-200 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-blue-600">Justificadas</p>
+                                <p class="text-2xl font-bold" id="JustificadoCount">0</p>
+                            </div>
+                            <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i data-lucide="file-text" class="h-6 w-6 text-blue-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido de Asistencia de Estudiantes -->
+                <div id="studentAttendanceContent" class="tab-content active">
+                    <!-- Selector de Curso y Sección -->
+                    <div class="flex flex-col md:flex-row gap-4 mb-6">
+                        <div class="w-full md:w-2/5">
+                            <div class="relative">
+                                <label for="gradeSelect" class="block text-sm font-medium text-gray-700 mb-1">Grado</label>
+                                    <select id="gradeSelect" class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10">
+                                    <option value="">-- Seleccionar Grado --</option>
+                                    <% const grados = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO', 'SEXTO']; %>
+                                    <% grados.forEach((nombre, index) => { %>
+                                        <option value="<%= index + 1 %>"><%= nombre %></option>
+                                    <% }); %>
+                                    </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none" style="top: 12px;">
+                                    <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-2/5">
+                            <div class="relative">
+                                <label for="sectionSelect" class="block text-sm font-medium text-gray-700 mb-1">Sección</label>
+                                <select id="sectionSelect" class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10">
+                                    <option value="">-- Seleccionar Sección --</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="E">F</option>
+                                    <option value="E">G</option>
+                                    <option value="E">H</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none" style="top: 12px;">
+                                    <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="loadStudents()" class="bg-blue-600 h-10 md:mt-6 text-white py-1 px-2 rounded-lg hover:bg-blue-700 md:w-1/5">
+                            Cargar Lista
+                        </button>                          
+                    </div>
+
+                    <!-- Tabla de Asistencia de Estudiantes -->
+                    <div class="overflow-x-auto rounded-lg border shadow-sm mb-6">
+                        <table class="min-w-full bg-white" id="studentAttendanceTable">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-3 px-4 text-left font-light">Nº</th>
+                                    <th class="py-3 px-4 text-left font-light">Estudiante</th>
+                                    <th class="py-3 px-4 text-center font-light">Asistencia</th>
+                                    <th class="py-3 px-4 text-left font-light">Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Acciones y Paginación -->
+                    <div class="flex flex-col md:flex-row gap-4 justify-between items-center mt-6">
+                        <div class="w-full md:w-auto">
+                            <button onclick="guardarAsistencia()" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="save" class="h-5 w-5"></i>
+                                Guardar Asistencia
+                            </button>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <button class="w-full md:w-auto border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="h-5 w-5"></i>
+                                Exportar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido de Asistencia de Maestros -->
+                <div id="teacherAttendanceContent" class="tab-content">
+                    <!-- Selector de Departamento -->
+                    <div class="mb-6">
+                        <div class="relative">
+                            <label for="departmentSelect" class="block text-sm font-medium text-gray-700 mb-1">Departamento</label>
+                            <select id="departmentSelect" class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10">
+                                <option value="">-- Seleccionar Departamento --</option>
+                                <option value="MAT">Matemáticas</option>
+                                <option value="FIS">Física</option>
+                                <option value="QUI">Química</option>
+                                <option value="BIO">Biología</option>
+                                <option value="HIS">Historia</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none" style="top: 12px;">
+                                <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buscador -->
+                    <div class="mb-6">
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="teacherSearch" 
+                                class="w-full px-4 py-2 pl-10 border rounded-lg shadow bg-white"
+                                placeholder="Buscar maestro..."
+                            >
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <i data-lucide="search" class="h-5 w-5 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de Asistencia de Maestros -->
+                    <div class="overflow-x-auto rounded-lg border shadow-sm mb-6">
+                        <table class="min-w-full bg-white" id="teacherAttendanceTable">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="py-3 px-4 text-left font-semibold">Nº</th>
+                                    <th class="py-3 px-4 text-left font-semibold">DNI</th>
+                                    <th class="py-3 px-4 text-left font-semibold">Maestro</th>
+                                    <th class="py-3 px-4 text-left font-semibold">Departamento</th>
+                                    <th class="py-3 px-4 text-center font-semibold">Estado</th>
+                                    <th class="py-3 px-4 text-left font-semibold">Hora Entrada</th>
+                                    <th class="py-3 px-4 text-left font-semibold">Hora Salida</th>
+                                    <th class="py-3 px-4 text-left font-semibold">Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Acciones y Paginación para Maestros -->
+                    <div class="flex flex-col md:flex-row gap-4 justify-between items-center mt-6">
+                        <div class="w-full md:w-auto">
+                            <button class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="save" class="h-5 w-5"></i>
+                                Guardar Asistencia
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1 border rounded-md flex items-center">
+                                <i data-lucide="chevron-left" class="h-4 w-4"></i>
+                            </button>
+                            <span class="text-sm">
+                                Página 1 de 1
+                            </span>
+                            <button class="px-3 py-1 border rounded-md flex items-center">
+                                <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <button class="w-full md:w-auto border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="download" class="h-5 w-5"></i>
+                                Exportar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar iconos de Lucide
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            
+            // Inicializar selector de fecha
+            flatpickr("#datePicker", {
+                dateFormat: "d/m/Y",
+                locale: "es",
+                defaultDate: new Date()
+            });
+             
+            // Configurar pestañas de asistencia
+            const studentAttendanceBtn = document.getElementById('studentAttendanceBtn');
+            const teacherAttendanceBtn = document.getElementById('teacherAttendanceBtn');
+            const studentAttendanceContent = document.getElementById('studentAttendanceContent');
+            const teacherAttendanceContent = document.getElementById('teacherAttendanceContent');
+            
+            if (studentAttendanceBtn && teacherAttendanceBtn && studentAttendanceContent && teacherAttendanceContent) {
+                studentAttendanceBtn.addEventListener('click', function() {
+                    studentAttendanceBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                    studentAttendanceBtn.classList.add('bg-blue-600', 'text-white');
+                    teacherAttendanceBtn.classList.remove('bg-blue-600', 'text-white');
+                    teacherAttendanceBtn.classList.add('bg-gray-200', 'text-gray-700');
+                    
+                    studentAttendanceContent.classList.add('active');
+                    teacherAttendanceContent.classList.remove('active');
+                    
+                    updateAttendanceCounts();
+                });
+                
+                teacherAttendanceBtn.addEventListener('click', function() {
+                    teacherAttendanceBtn.classList.remove('bg-gray-200', 'text-gray-700');
+                    teacherAttendanceBtn.classList.add('bg-blue-600', 'text-white');
+                    studentAttendanceBtn.classList.remove('bg-blue-600', 'text-white');
+                    studentAttendanceBtn.classList.add('bg-gray-200', 'text-gray-700');
+                    
+                    teacherAttendanceContent.classList.add('active');
+                    studentAttendanceContent.classList.remove('active');
+                    
+                    updateAttendanceCounts();
+                });
+            }
+            
+            // Inicializar contadores de asistencia
+            updateAttendanceCounts();
+        });
+        
+        // Actualizar contadores de asistencia
+        function updateAttendanceCounts() {
+            // Determinar qué tabla está activa
+            const isStudentActive = document.getElementById('studentAttendanceContent').classList.contains('active');
+            const tableId = isStudentActive ? 'studentAttendanceTable' : 'teacherAttendanceTable';
+            const namePrefix = isStudentActive ? 'status_' : 'teacher_status_';
+            
+            // Contar los diferentes estados
+            let PresenteCount = 0;
+            let AusenteCount = 0;
+            let JustificadoCount = 0;
+            
+            // Obtener todos los inputs de radio seleccionados
+            document.querySelectorAll(`#${tableId} input[type="radio"]:checked`).forEach(input => {
+                const value = input.value;
+                if (value === 'Presente') PresenteCount++;
+                else if (value === 'Ausente') AusenteCount++;
+                else if (value === 'Justificado') JustificadoCount++;
+            });
+            
+            // Actualizar los contadores en la interfaz
+            document.getElementById('PresenteCount').textContent = PresenteCount;
+            document.getElementById('AusenteCount').textContent = AusenteCount;
+            document.getElementById('JustificadoCount').textContent = JustificadoCount;
+        }
+    </script>
+    <script>
+        async function loadStudents() {
+          const grade = document.getElementById('gradeSelect').value;
+          const section = document.getElementById('sectionSelect').value;
+      
+          if (!grade || !section) {
+            alert("Por favor selecciona grado y sección");
+            return;
+          }
+      
+          try {
+            const res = await fetch(`/api/data/${grade}/${section}`);
+            const result = await res.json();
+      
+            if (!result.success || !result.data) {
+              alert(result.error || "Error al obtener los estudiantes.");
+              return;
+            }
+      
+            populateStudentTable(result.data);
+          } catch (err) {
+            console.error("Error cargando estudiantes:", err);
+            alert("No se pudo cargar la lista de estudiantes");
+          }
+        }
+      
+        function populateStudentTable(data) {
+          const tbody = document.querySelector("#studentAttendanceTable tbody");
+          tbody.innerHTML = "";
+      
+          data.forEach((row, index) => {
+            const numero = row.numero || index + 1;
+            const nombre = row.estudiante || "Desconocido";
+      
+            tbody.innerHTML += `
+              <tr class="border-t hover:bg-gray-50 transition-colors">
+                <td class="py-1 pl-4">${numero}</td>
+                <td class="py-1 px-2 text-sm">${nombre}</td>
+                <td class="py-1 px-2">
+                  <div class="flex justify-center space-x-2 attendance-status">
+                    ${["Presente", "Ausente", "Justificado"].map(status => `
+                      <label class="relative">
+                        <input type="radio" name="status_${index}" value="${status}" class="sr-only" onchange="updateAttendanceCounts()">
+                        <span class="${status} inline-flex items-center justify-center w-12 h-12 border text-${status}-500 hover:bg-${status}-100">
+                          <i data-lucide="${status === 'Presente' ? 'check' : status === 'Ausente' ? 'x' : 'file-text'}" class="h-5 w-5"></i>
+                        </span>
+                      </label>
+                    `).join("")}
+                  </div>
+                </td>
+                <td class="py-1 px-4">
+                  <input type="text" class="w-full px-3 py-1 border rounded-md text-sm" placeholder="Agregar observación...">
+                </td>
+              </tr>`;
+          });
+      
+          lucide.createIcons();
+          updateAttendanceCounts();
+        }
+
+        async function guardarAsistencia() {
+            const fecha = document.getElementById('datePicker').value;
+            const grado = document.getElementById('gradeSelect').value;
+            const seccion = document.getElementById('sectionSelect').value;
+
+            const rows = document.querySelectorAll('#studentAttendanceTable tbody tr');
+            const asistencia = [];
+
+            rows.forEach((row, index) => {
+            const numero = row.children[0].textContent.trim();
+            const estudiante = row.children[1].textContent.trim();
+            const observacion = row.querySelector('input[type="text"]').value;
+            const estadoInput = row.querySelector('input[type="radio"]:checked');
+            const estado = estadoInput ? estadoInput.value : "";
+
+            asistencia.push({ numero, estudiante, estado, fecha, observacion });
+            });
+
+            try {
+                const res = await fetch('http://localhost:3001/api/asistencia', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ grado, seccion, fecha, asistencia })
+                });
+
+                const faltanEstados = asistencia.filter(a => !["Presente", "Ausente", "Justificado"].includes(a.estado));
+
+                    if (faltanEstados.length > 0) {
+                    alert("Todos los alumnos deben tener su asistencia marcada.");
+                    return;
+                }
+
+                if (!res.ok) {
+                    const text = await res.text(); // leer como texto
+                    console.error("❌ Respuesta del servidor:", text);
+                    alert("Error al guardar la asistencia");
+                    return;
+                }
+
+                const data = await res.json();
+                alert(data.message || "Asistencia registrada correctamente.");
+            } catch (err) {
+                console.error("❌ Error al guardar asistencia:", err);
+                alert("Error al guardar la asistencia.");
+            }
+        }
+      </script>              
+</body>
+</html>

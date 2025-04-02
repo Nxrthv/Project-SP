@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página en Desarrollo - Sistema de Gestión Académica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-slate-50 to-slate-100 min-h-screen">
+
+    <%- include('nav')%>
+
+    <!-- Contenido Principal -->
+    <div class="container mx-auto px-4 py-8 flex flex-col items-center justify-center min-h-[calc(100vh-64px)]">
+        <div class="w-full max-w-3xl text-center">
+            <!-- Ilustración de Error -->
+            <div class="mb-8 flex justify-center">
+                <div class="relative">
+                    <div class="animate-float">
+                        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 rounded-full">
+                            <i data-lucide="construction" class="h-24 w-24 md:h-32 md:w-32"></i>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white text-blue-600 font-bold text-xl md:text-3xl py-2 px-6 rounded-full border-4 border-blue-600 shadow-lg">
+                        404
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mensaje de Error -->
+            <div class="bg-white rounded-xl shadow-xl p-8 md:p-12 border border-gray-100">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Página en Desarrollo</h1>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6 rounded-full"></div>
+                <p class="text-lg text-gray-600 mb-8">
+                    Esta sección del Sistema de Gestión Académica está actualmente en construcción. 
+                    Estamos trabajando para ofrecerte una experiencia completa y de calidad.
+                </p>
+                
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="/" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                        <i data-lucide="home" class="h-5 w-5"></i>
+                        Volver al Inicio
+                    </a>
+                    <a href="/estudiantes" class="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 px-6 rounded-lg transition-colors">
+                        <i data-lucide="users" class="h-5 w-5"></i>
+                        Ir a Estudiantes
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Información Adicional -->
+            <div class="mt-8 text-gray-500 flex items-center justify-center gap-2">
+                <i data-lucide="info" class="h-5 w-5"></i>
+                <span>Si necesitas acceder a esta funcionalidad, contacta al administrador del sistema.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar iconos de Lucide
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            
+            // Configurar menú de usuario
+            const userMenuBtn = document.getElementById('userMenuBtn');
+            const userMenu = document.getElementById('userMenu');
+            
+            if (userMenuBtn && userMenu) {
+                userMenuBtn.addEventListener('click', function() {
+                    userMenu.classList.toggle('hidden');
+                });
+                
+                // Cerrar menú al hacer clic fuera
+                document.addEventListener('click', function(event) {
+                    if (!userMenuBtn.contains(event.target) && !userMenu.contains(event.target)) {
+                        userMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
