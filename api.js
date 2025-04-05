@@ -77,7 +77,7 @@ app.get("/data/:grade/:section", async (req, res) => {
   }
 });
 
-// Ruta API para obtener datos desde JavaScript (index.ejs)
+// Ruta API para obtener datos desde JavaScript (students.ejs)
 app.get("/api/data/:grade/:section", async (req, res) => {
   try {
     const grade = req.params.grade;

@@ -7,14 +7,26 @@ const PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+//La API se ejecuta el paralelo con el server (Temporal por depuracion)
 const API_URL = "http://localhost:3001/data";
 
-// Estudiantes
-app.get("/", (req, res) => {
-  res.render("index", { data: null, grade: null, section: null, error: null });
+
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
 });
 
-// Asistencias
+// Ruta Estudiantes
+app.get("/students", (req, res) => {
+  res.render("students", { data: null, grade: null, section: null, error: null });
+});
+
+// Ruta Dashboard
+app.get("/", (req, res) => {
+  res.render("dashboard", { data: null, grade: null, section: null, error: null });
+});
+
+// Ruta Asistencias
 app.get("/assists", (req, res) => {
   res.render("assists");
 });
@@ -27,9 +39,11 @@ app.get("/error_404", (req, res) => {
 // Obtener datos por grado y sección
 app.get("/data/:grade/:section", async (req, res) => {
   try {
+    //Datos de grado y seccion requeridos para la funcion, los cuales son obtenidos desde el frontend
     const grade = req.params.grade;
     const section = req.params.section.toUpperCase();
-
+    
+    //Al seleccionar ambos valores se realiza la ejecucion de la peticion a la API
     const response = await axios.get(`${API_URL}/${grade}/${section}`);
 
     res.render("index", {
