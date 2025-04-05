@@ -60,7 +60,7 @@
                                 <p class="text-sm text-amber-600">Regularizar Documentos</p>
                                 <p class="text-2xl font-bold">
                                     <% if (section && data) { %>
-                                        <%= data.filter(row => row[3] === "Regularizar").length %>
+                                        <%= data.filter(row => row[2] === "Regularizar Documentos").length %>
                                     <% } else { %>
                                         0
                                     <% } %>
@@ -73,16 +73,16 @@
                     <div class="bg-red-50 border-red-200 rounded-lg p-4">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm text-red-600">Sin Documentos</p>
+                                <p class="text-sm text-red-600">Matricula Pendiente</p>
                                 <p class="text-2xl font-bold">
                                     <% if (section && data) { %>
-                                        <%= data.filter(row => row[3] === "Sin Documentos").length %>
+                                        <%= data.filter(row => row[3] === "Regularizar").length %>
                                     <% } else { %>
                                         0
                                     <% } %>
                                 </p>
                             </div>
-                            <i data-lucide="file-warning" class="h-8 w-8 text-red-500"></i>
+                            <i data-lucide="school" class="h-8 w-8 text-red-500"></i>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 <!-- Selector y Búsqueda -->
                 <div class="flex flex-col md:flex-row gap-4 mb-6">
                     <!-- Selector de Grado -->
-                    <div class="w-full md:w-1/6">
+                    <div class="w-full md:w-1/4">
                         <div class="relative">
                             <select id="grade" name="grade"
                                 class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10"
@@ -111,34 +111,40 @@
                         </div>
                     </div>
                     <!-- Selector de Seccion -->
-                    <div class="w-full md:w-1/6">
+                    <div class="w-full md:w-1/4">
                         <div class="relative">
                             <select id="section" name="section" 
                                 class="w-full px-4 py-2 border rounded-lg shadow bg-white appearance-none pr-10"
                                 onchange="handleSectionChange(this.value)">
                                 <option selected>-- Seleccionar Sección --</option>
-                                <option value="A" <%= section === 'A' ? 'selected' : '' %>>Sección A</option>
-                                <option value="B" <%= section === 'B' ? 'selected' : '' %>>Sección B</option>
-                                <option value="C" <%= section === 'C' ? 'selected' : '' %>>Sección C</option>
-                                <option value="D" <%= section === 'D' ? 'selected' : '' %>>Sección D</option>
-                                <option value="E" <%= section === 'E' ? 'selected' : '' %>>Sección E</option>
-                                <option value="F" <%= section === 'F' ? 'selected' : '' %>>Sección F</option>
+                                <option value="A" <%= section === 'A' ? 'selected' : '' %>>A</option>
+                                <option value="B" <%= section === 'B' ? 'selected' : '' %>>B</option>
+                                <option value="C" <%= section === 'C' ? 'selected' : '' %>>C</option>
+                                <option value="D" <%= section === 'D' ? 'selected' : '' %>>D</option>
+                                <option value="E" <%= section === 'E' ? 'selected' : '' %>>E</option>
+                                <option value="F" <%= section === 'F' ? 'selected' : '' %>>F</option>
+                                <option value="G" <%= section === 'G' ? 'selected' : '' %>>G</option>
+                                <option value="H" <%= section === 'H' ? 'selected' : '' %>>H</option>
                             </select>
                             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                 <i data-lucide="chevron-down" class="h-4 w-4 text-gray-400"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="w-full md:w-2/3 relative">
-                        <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" style="width: 18px; height: 18px;"></i>
-                        <input
-                            id="searchInput"
+                    <div class="w-full md:w-2/3 mx-auto relative">
+                        <div class="relative">
+                          <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" style="width: 18px; height: 18px;"></i>
+                          <input
                             type="text"
-                            placeholder="Buscar estudiante, DNI, estado..."
+                            id="globalSearch"
+                            placeholder="Nombre, apellido o DNI..."
                             class="w-full px-4 py-2 pl-10 border rounded-lg shadow bg-white"
-                            oninput="filterTable()"
-                        />
-                    </div>
+                            oninput="buscarAlumnoGlobal()"
+                          />
+                        </div>
+                      
+                        <ul id="resultadosBusqueda" class="mt-4 space-y-2"></ul>
+                      </div>                      
                 </div>
                 
 
@@ -166,8 +172,8 @@
                                     <tr>
                                         <th class="py-3 px-4 text-center font-light whitespace-nowrap">DNI</th>
                                         <th class="py-3 px-4 text-left font-light whitespace-nowrap">Estudiante</th>
-                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Estado Académico</th>
-                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Estado de Matrícula</th>
+                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Estatus Académico</th>
+                                        <th class="py-3 px-4 text-center font-light whitespace-nowrap">Estado SIAGIE</th>
                                         <th class="py-3 px-4 text-center font-light whitespace-nowrap">Fecha</th>
                                     </tr>
                                 </thead>
@@ -190,8 +196,12 @@
                                                         <span class="px-2 py-1 rounded-full text-xs font-semibold bg-red-500 text-white">
                                                             <%= row[2] %>
                                                         </span>
+                                                    <% } else if (row[2] === "Regularizar Documentos") { %>
+                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold border border-yellow-500 text-yellow-500">
+                                                            <%= row[2] %>
+                                                        </span>
                                                     <% } else { %>
-                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold bg-blue-500 text-white">
+                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold bg-gray-500 text-white">
                                                             <%= row[2] %>
                                                         </span>
                                                     <% } %>
@@ -202,7 +212,7 @@
                                                             <%= row[3] %>
                                                         </span>
                                                     <% } else if (row[3] === "Regularizar") { %>
-                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold border border-amber-500 text-amber-500">
+                                                        <span class="px-2 py-1 rounded-full text-xs font-semibold border border-red-500 text-red-500">
                                                             <%= row[3] %>
                                                         </span>
                                                     <% } else if (row[3] === "Sin Documentos") { %>
@@ -255,8 +265,12 @@
                                                     <span class="px-2 py-1 rounded-full text-xs font-semibold bg-red-500 text-white">
                                                         <%= row[2] %>
                                                     </span>
+                                                <% } else if (row[2] === "Regularizar Documentos") { %>
+                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold border border-yellow-500 text-yellow-500">
+                                                        <%= row[2] %>
+                                                    </span>
                                                 <% } else { %>
-                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold bg-blue-500 text-white">
+                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold bg-gray-500 text-white">
                                                         <%= row[2] %>
                                                     </span>
                                                 <% } %>
@@ -268,7 +282,7 @@
                                                         <%= row[3] %>
                                                     </span>
                                                 <% } else if (row[3] === "Regularizar") { %>
-                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold border border-amber-500 text-amber-500">
+                                                    <span class="px-2 py-1 rounded-full text-xs font-semibold border border-red-500 text-red-500">
                                                         <%= row[3] %>
                                                     </span>
                                                 <% } else if (row[3] === "Sin Documentos") { %>
@@ -334,6 +348,7 @@
     </div>
 
     <script>
+        
         // Inicializar iconos de Lucide
         document.addEventListener('DOMContentLoaded', function() {
             lucide.createIcons();
@@ -456,9 +471,10 @@
         function filterTable() {
             const searchInput = document.getElementById('searchInput');
             const filter = searchInput.value.toLowerCase();
+
             const table = document.getElementById('studentsTable');
             const cards = document.getElementById('studentsCards');
-            
+
             if (table) {
                 const rows = Array.from(table.querySelectorAll('tbody tr'));
                 
@@ -466,31 +482,23 @@
                     const text = row.textContent.toLowerCase();
                     return text.includes(filter);
                 });
-                
-                // Mostrar/ocultar filas según el filtro
+
+                // Mostrar u ocultar las filas según el filtro
                 rows.forEach(row => {
                     const text = row.textContent.toLowerCase();
-                    if (text.includes(filter)) {
-                        row.dataset.filtered = 'true';
-                    } else {
-                        row.dataset.filtered = 'false';
-                    }
+                    row.style.display = text.includes(filter) ? "" : "none";
                 });
-                
-                // Actualizar vista de tarjetas si existe
+
+                // También filtrar tarjetas si están visibles
                 if (cards) {
                     const cardElements = Array.from(cards.children);
                     cardElements.forEach(card => {
                         const text = card.textContent.toLowerCase();
-                        if (text.includes(filter)) {
-                            card.style.display = '';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                        card.style.display = text.includes(filter) ? "" : "none";
                     });
                 }
-                
-                // Reiniciar paginación
+
+                // Reiniciar la paginación
                 currentPage = 1;
                 updatePagination();
             }
@@ -515,6 +523,50 @@
             const grade = document.getElementById('grade').value;
             if (grade && grade !== "-- Seleccionar Grado --") {
                 window.location.href = `/data/${grade}/${section}`;
+            }
+        }
+
+        // Funcion para buscar un alumno entre todos los grados y secciones desde api.js
+        async function buscarAlumnoGlobal() {
+            const q = document.getElementById("globalSearch").value.trim();
+
+            const lista = document.getElementById("resultadosBusqueda");
+            lista.innerHTML = "";
+
+            if (q.length < 3) {
+                lista.innerHTML = "<li class='py-3 px-4 text-gray-500 text-sm flex items-center gap-2'><i data-lucide='search' class='h-4 w-4'></i>Escribe al menos 3 caracteres...</li>";
+                lucide.createIcons();
+                return;
+            }
+
+            try {
+                const res = await fetch(`http://localhost:3001/api/buscar-alumno?q=${encodeURIComponent(q)}`);
+                const result = await res.json();
+
+                if (!result.success || result.resultados.length === 0) {
+                    lista.innerHTML = "<li class='py-3 px-4 text-amber-600 text-sm flex items-center gap-2'><i data-lucide='alert-circle' class='h-4 w-4'></i>No se encontraron coincidencias</li>";
+                    lucide.createIcons();
+                    return;
+                }
+
+                result.resultados.forEach(item => {
+                    const li = document.createElement("li");
+                    li.className = "border-b last:border-b-0 hover:bg-blue-50 transition-colors";
+                    li.innerHTML = `
+                        <div class="py-3 px-4">
+                            <div class="font-medium text-gray-900">${item.nombre}</div>
+                            <div class="flex flex-wrap gap-x-4 mt-1 text-xs text-gray-500">
+                                <span>DNI: ${item.dni}</span>
+                                <span>Grado ${item.grado} "${item.seccion}"</span>
+                            </div>
+                        </div>
+                    `;
+                    lista.appendChild(li);
+                });
+            } catch (error) {
+                console.error("❌ Error en búsqueda global:", error);
+                lista.innerHTML = "<li class='py-3 px-4 text-red-600 text-sm flex items-center gap-2'><i data-lucide='alert-triangle' class='h-4 w-4'></i>Error al buscar</li>";
+                lucide.createIcons();
             }
         }
     </script>

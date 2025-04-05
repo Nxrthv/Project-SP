@@ -22,6 +22,8 @@ const auth = new google.auth.GoogleAuth({
 
 const sheets = google.sheets({ version: "v4", auth });
 const drive = google.drive({ version: "v3", auth });
+const cron = require("node-cron");
+const axios = require("axios");
 
 const gradeFolders = {
   "1": process.env.GRADE_1,
@@ -234,6 +236,68 @@ app.post("/api/asistencia", async (req, res) => {
     console.error("❌ Error al guardar asistencia:", error.response?.data || error.message, error);
     res.status(500).json({ success: false, message: "Error al guardar la asistencia" });
   }  
+});
+
+app.get("/api/buscar-alumno", (req, res) => {
+  const q = (req.query.q || "").toUpperCase().trim();
+  if (!q) return res.status(400).json({ success: false, message: "Búsqueda vacía" });
+
+  const cache = leerCache();
+
+  const resultados = cache.filter(a =>
+    a.nombre.toUpperCase().includes(q) || a.dni.toLowerCase().includes(q)
+  );
+
+  res.json({ success: true, resultados });
+});
+
+const { guardarCache, leerCache } = require("./cacheService");
+
+app.get("/api/actualizar-cache", async (req, res) => {
+  const alumnos = [];
+
+  for (const [grado, folderId] of Object.entries(gradeFolders)) {
+    const driveResponse = await drive.files.list({
+      q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.spreadsheet'`,
+      fields: "files(id, name)",
+    });
+
+    for (const archivo of driveResponse.data.files) {
+      const sheetId = archivo.id;
+      const seccion = archivo.name;
+
+      try {
+        const sheetResponse = await sheets.spreadsheets.values.get({
+          spreadsheetId: sheetId,
+          range: "Matriculas!A2:C", // A: Nº, B: Nombre, C: DNI
+        });
+
+        const rows = sheetResponse.data.values || [];
+
+        rows.forEach(row => {
+          const nombre = row[1] || "";
+          const dni = row[0] || "";
+          alumnos.push({ nombre, dni, grado, seccion });
+        });
+      } catch (err) {
+        console.warn(`⚠️ Error en ${grado} "${seccion}":`, err.message);
+      }
+    }
+  }
+
+  guardarCache(alumnos);
+  res.json({ success: true, message: `Se guardaron ${alumnos.length} registros en caché.` });
+});
+
+// Tarea para actualizar el cache cada 12 horas (a las 6am y 6pm)
+cron.schedule("0 6,18 * * *", async () => {
+  try {
+    console.log("🕒 Ejecutando actualización automática del caché...");
+    const res = await axios.get("http://localhost:3001/api/actualizar-cache");
+    console.log("✅", res.data.message);
+  } catch (err) {
+    console.error("❌ Error al actualizar caché automáticamente:", err.message);
+  }
 });
 
 app.listen(PORT, () => {
