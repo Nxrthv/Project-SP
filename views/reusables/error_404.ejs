@@ -72,29 +72,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Inicializar iconos de Lucide
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-            
-            // Configurar menú de usuario
-            const userMenuBtn = document.getElementById('userMenuBtn');
-            const userMenu = document.getElementById('userMenu');
-            
-            if (userMenuBtn && userMenu) {
-                userMenuBtn.addEventListener('click', function() {
-                    userMenu.classList.toggle('hidden');
-                });
-                
-                // Cerrar menú al hacer clic fuera
-                document.addEventListener('click', function(event) {
-                    if (!userMenuBtn.contains(event.target) && !userMenu.contains(event.target)) {
-                        userMenu.classList.add('hidden');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>

@@ -10,20 +10,24 @@ app.use(express.static("public"));
 //La API se ejecuta el paralelo con el server (Temporal por depuracion)
 const API_URL = "http://localhost:3001/data";
 
-
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
 });
 
+// Ruta Dashboard
+app.get("/", async (req, res) => {
+  const response = await axios.get("http://localhost:3001/api/total-estudiantes");
+  const total = response.data.total;
+
+  res.render("dashboard", {
+    totalEstudiantes: total,
+  });
+});
+
 // Ruta Estudiantes
 app.get("/students", (req, res) => {
   res.render("students", { data: null, grade: null, section: null, error: null });
-});
-
-// Ruta Dashboard
-app.get("/", (req, res) => {
-  res.render("dashboard", { data: null, grade: null, section: null, error: null });
 });
 
 // Ruta Asistencias
@@ -46,7 +50,7 @@ app.get("/data/:grade/:section", async (req, res) => {
     //Al seleccionar ambos valores se realiza la ejecucion de la peticion a la API
     const response = await axios.get(`${API_URL}/${grade}/${section}`);
 
-    res.render("index", {
+    res.render("students", {
       grade,
       section,
       data: response.data.data,

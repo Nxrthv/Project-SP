@@ -1,5 +1,335 @@
 [
   {
+    "nombre": "ALVAREZ LUSTRE ANDRIK LOGAN",
+    "dni": "91209273",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "BAÑOS DURAN ARIANA ALESSANDRA",
+    "dni": "90949083",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "CARDENAS VERASTEGUI MEI AKIRA",
+    "dni": "91011316",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "CORNELIO ALCEDO LEIN DOMINIK",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "CRUZ ROBLES CAMILA ALLISON",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "DORIA VARA MARIA FERNANDA",
+    "dni": "91098204",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "FLORES BAYLON DIMAS LUIS FELIPE",
+    "dni": "90773940",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "GAVIDIA BERNARDO NIA GEILY",
+    "dni": "90922453",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "GOMEZ DELGADO KAROL CATALEYA KIMBERLY",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "ISIDRO COZ YIMIM BLIAM",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "LLANTOY PRIMO YERICK SEBASTIAN",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "LOREÑA ZEVALLOS CHRISTOPHER ESTEFANO",
+    "dni": "91213197",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "LOREÑA ZEVALLOS IAN ANTHONY",
+    "dni": "91213208",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "MALLAUPOMA ESPINOZA ERICK ANTHONY",
+    "dni": "91136557",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "MAYLLE DIEGO ALEXIA BRENDA",
+    "dni": "90888318",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "MELGAREJO SIXTO ALEXANDRO SEMAL",
+    "dni": "90849863",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "PALOMINO PRADO MIGUEL ANGEL SEAN",
+    "dni": "90880424",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "RAMON AVILA MARTIN ALONSO",
+    "dni": "91011294",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "SANTIAGO CABRERA MATTHEW LIAM",
+    "dni": "91204263",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "SOLORZANO GOMEZ JAIRO AKENY ARTURO",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "SOTO PALACIOS YUMI IYARI",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "SOTO URETA SAMMIR ORLANDO",
+    "dni": "90827245",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "TAPULLIMA SANTIAGO KATALEYA AINES",
+    "dni": "91162755",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "TELLO DAVILA SULEYDI CIELO",
+    "dni": "91209369",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "TORRES ROBLES JHOJAN ALEXIS",
+    "dni": "90854182",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "TUCUNAN MALPARTIDA CARLOS DONATO",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "VILLANUEVA CISNEROS VALERIA ABRIL",
+    "dni": "90995127",
+    "grado": "1",
+    "seccion": "D"
+  },
+  {
+    "nombre": "AYALA DOMINGUEZ ANGELIMAR JESEELITA",
+    "dni": "91151046",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "BONILLA RAMIREZ ALEXIS OMAR",
+    "dni": "91178731",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CALDAS ARANDA MAYCOL JHORDAN",
+    "dni": "90969831",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CAMPOS SANTA CRUZ VALENTINA KAELY GLADYS",
+    "dni": "91079740",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CENTENO MAYLLE ANDREA JOHANA",
+    "dni": "91009265",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CHAVEZ VASQUEZ DEMIAN LEYTO",
+    "dni": "90793303",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "DIAZ CRUZ ALEXIA DAYANA",
+    "dni": "90973557",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "DIAZ CRUZ ALLISON DAHANA",
+    "dni": "90973548",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ESPINOZA ISIDRO ZULY ARLETH",
+    "dni": "90765131",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ESTACIO TARAZONA IDHARA ALEXIA",
+    "dni": "91232748",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "FIGUEREDO VILLARAN MARCO ANTONIO",
+    "dni": "91147241",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "GAVINO SAYES YARETZI",
+    "dni": "90915544",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "GONZALES YARANGA SAOMY CRISLY ESTRELLA",
+    "dni": "90736601",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HERRERA BARZOLA PEDRO JARED",
+    "dni": "91137458",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "JAIMES TALENAS ABIGAIL SHANTAL",
+    "dni": "91177975",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "MALLQUI CHAVEZ THIAGO ALEJANDRO",
+    "dni": "91114112",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "MEZA LUCAS JESUS VALENTINO",
+    "dni": "91190983",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "NAUPAY CHUQUIYAURI ANDRE ERICKSEN",
+    "dni": "91038523",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "PRINCIPE SALGADO MERIA ANGELES KAELY",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ROBLES SOLORZANO LUCIA VICTORIA",
+    "dni": "91202684",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ROJAS BERAUN ALISSON GERALDINE",
+    "dni": "91138104",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SANTAMARIA SOLORZANO KARLA",
+    "dni": "90952229",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SANTOS SOLIZOR SAMUEL JOSIAS",
+    "dni": "91094229",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SERRANO GONZALES LUIS PIERO",
+    "dni": "91229739",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SOLIS JUSTO MARCELO SEBASTIAN",
+    "dni": "91079186",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "TUCTO  NOREÑA MILAN GABRIEL",
+    "dni": "90739861",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "TUCTO YARANGA NELLY VALENTINA",
+    "dni": "90852741",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
+    "nombre": "VENTURO TOLEDO ALESSIA YARELY",
+    "dni": "90814688",
+    "grado": "1",
+    "seccion": "C"
+  },
+  {
     "nombre": "ALARCON BLAS LIAN ESTRIBEN",
     "dni": "-",
     "grado": "1",
@@ -7,12 +337,6 @@
   },
   {
     "nombre": "BALLARTE ESPINOZA LIAM",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "F"
-  },
-  {
-    "nombre": "BARRASA GONZALES ALEJANDRA",
     "dni": "-",
     "grado": "1",
     "seccion": "F"
@@ -60,7 +384,7 @@
     "seccion": "F"
   },
   {
-    "nombre": "GOMEZ GARCIA BRITNEY",
+    "nombre": "GAMEZ GARCIA BRITNEY",
     "dni": "-",
     "grado": "1",
     "seccion": "F"
@@ -132,7 +456,7 @@
     "seccion": "F"
   },
   {
-    "nombre": "MONTALVO LOARTE VALENTINE VALERY",
+    "nombre": "MONTALGO LOARTE VALENTINE VALERY",
     "dni": "-",
     "grado": "1",
     "seccion": "F"
@@ -192,7 +516,7 @@
     "seccion": "F"
   },
   {
-    "nombre": "VALENTIN ROSADO LIAM DILVER",
+    "nombre": "VALENTIN ROSARIO LIAM DILVER",
     "dni": "-",
     "grado": "1",
     "seccion": "F"
@@ -204,364 +528,196 @@
     "seccion": "F"
   },
   {
-    "nombre": "ALVAREZ LUSTRE ANDRIK LOGAN",
-    "dni": "91209273",
+    "nombre": "ACOSTA PAZ VALENTINO",
+    "dni": "91147811",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "BAÑOS DURAN ARIANA ALESSANDRA",
-    "dni": "90949083",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "CARDENAS VERASTEGUI MEI AKIRA",
-    "dni": "91011316",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "CORNELIO ALCEDO LEIN DOMINIK",
+    "nombre": "AVILA ROMAN MARTIN ALONSO",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "CRUZ ROBLES CAMILA ALLISON",
+    "nombre": "BENANCIO BERRISPO GAHEL FRANCISCO",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "DORIA VARA MARIA FERNANDA",
-    "dni": "91098204",
+    "nombre": "CASAS MORA TAHISA AHITHAMA",
+    "dni": "91136077",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "FLORES BAYLON DIMAS LUIS FELIPE",
+    "nombre": "CELIS ROJAS GAEL",
+    "dni": "91245900",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "COZ GONZALES ESTELA SOFIA",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "GAVIDIA BERNARDO NIA GEILY",
+    "nombre": "CRUZ ROBLES CAMILA",
+    "dni": "90861964",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ELGUERA SABINO ALISSON ANTONELLA",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "GOMEZ DELGADO KAROL CATALEYA KIMBERLY",
+    "nombre": "ESPINOZA SOTO GABY MARUXI",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "ISIDRO COZ YIMIM BLIAM",
+    "nombre": "ESTEBAN LEON AMMER RODRIGO",
+    "dni": "91201036",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "FABIAN CARDENAS DAFNE YASHIRA",
+    "dni": "91029480",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "FELIX CLAUDIO VLADIMIR FABIO",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "LLANTOY PRIMO YERICK SEBASTIAN",
+    "nombre": "GONZALES LUCAS YENIA",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "LOREÑA ZEVALLOS CHRISTOPHER ESTEFANO",
-    "dni": "91213197",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "LOREÑA ZEVALLOS IAN ANTHONY",
-    "dni": "91213208",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "MALLAUPOMA ESPINOZA ERICK ANTHONY",
+    "nombre": "HERRERA DAMACENO DARIO SMITH",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "MAYLLE DIEGO ALEXIA BRENDA",
-    "dni": "90888318",
+    "nombre": "HURTADO TUCTO YARELY FATIMA",
+    "dni": "90919429",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "MELGAREJO SIXTO ALEXANDRO SEMAL",
+    "nombre": "IGLESIAS PINO MAYA VALERIA",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "PALOMINO PRADO MIGUEL ANGEL SEAN",
-    "dni": "90880424",
+    "nombre": "JARA ENCALADA NAJHELY KATALEYA",
+    "dni": "90752385",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "RAMON AVILA MARTIN ALONSO",
-    "dni": "91011294",
+    "nombre": "MARTEL HUAYLAS MIA VALENTINA",
+    "dni": "90738717",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
+  },
+  {
+    "nombre": "MEZA MEZA GHIA CALIE POCHITA",
+    "dni": "90857599",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "NAVARRO GONZALES THIAGO JHOMAR",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "PLACIDO GABINO KIMBERLY",
+    "dni": "91006888",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "POMA ROJAS THAISA ALEXIA",
+    "dni": "90952794",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "PULIDO SALVADOR LUZ BETZABE",
+    "dni": "90911234",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "RAMIREZ TRUJILLO EMELY",
+    "dni": "-",
+    "grado": "1",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ROBLES LAMA BLANCA JULIA",
+    "dni": "91202235",
+    "grado": "1",
+    "seccion": "B"
   },
   {
     "nombre": "SANCHEZ AIRA JESUS BENJAMIN",
     "dni": "-",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "SANTIAGO CABRERA MATTHEW LIAM",
-    "dni": "91204263",
+    "nombre": "SANTA CRUZ SIMON MIA THAISA",
+    "dni": "90820879",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "SOLORZANO GOMEZ JAIRO AKENY ARTURO",
-    "dni": "-",
+    "nombre": "SUAREZ CARRILLO KENDRA JIMENA ",
+    "dni": "91209804",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "SOTO PALACIOS YUMI IYARI",
-    "dni": "-",
+    "nombre": "TORRES TIMOTEO JULIAN CELESTINO",
+    "dni": "91051556",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "SOTO URETA SAMMIR ORLANDO",
-    "dni": "90827245",
+    "nombre": "VALDIVIA CHUQUIYAURI LUCIANA",
+    "dni": "91200219",
     "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "TAPULLIMA SANTIAGO KATALEYA AINES",
-    "dni": "91162755",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "TELLO DAVILA SULEYDI CIELO",
-    "dni": "91209369",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "TORRES ROBLES JHOJAN ALEXIS",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "D"
-  },
-  {
-    "nombre": "TUCUNAN MALPARTIDA CARLOS DONATO",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
     "nombre": "VILLANUEVA CISNEROS VALERIA ABRIL",
-    "dni": "-",
+    "dni": "91249759",
     "grado": "1",
-    "seccion": "D"
+    "seccion": "B"
   },
   {
-    "nombre": "AQUINO SERAFIN ARATZA SAMARA",
-    "dni": "90744149 ",
+    "nombre": "ZAMBRANO PALACIN TAMIA ALANIA",
+    "dni": "91252151",
     "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "ARECHE MURAYARI GENESIS SOFIA",
-    "dni": "90913196 ",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "ARMILLON VARGAS ALEXA PAOLA",
-    "dni": "90834859",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "AYRA CHAVEZ KENDRICK AZAEL",
-    "dni": "90834342 ",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "AYRA CHAVEZ YESLYN ARIANA",
-    "dni": "90834336",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "BERRIOS AGUIRRE SAHORI KRISTEL",
-    "dni": "90834681",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "BLAS TUCTO MATTHIAS AXEL",
-    "dni": "90975584",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "COZ SOTO BARELY  YISU",
-    "dni": "90786209",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "DOMINGUEZ DOMINGUEZ JAMAL JOEL",
-    "dni": "91006524",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "ESPINOZA BARRERA ARIANA MARGHOT",
-    "dni": "91062641",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "EVANGELISTA BENANCIO YOSELIN CRISTINA",
-    "dni": "91334108",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "GOMEZ LOPEZ HASAN",
-    "dni": "90844940",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "HERRERA BARZOLA PEDRO JARED",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "JUSTINIANO MARIANO ADRIANA SOFIA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "LAURENCIO ISIDRO YASIM ESTHER",
-    "dni": "90909930",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "LIBERATO SALAZAR JOAN ALEJANDRO",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "MORA ALEJO EMILY DRIANA",
-    "dni": "91224914",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "MORENO GARAY RAMSEY SHAKIRI JHERIK",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "ORTEGA ROSALES ABDIEL",
-    "dni": "91214353",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "ORTEGA SEGUNDO LYAM THIAGO",
-    "dni": "91224089",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "PIMENTEL HERRERA ANDRE STIVEN",
-    "dni": "90871861",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "RAMIREZ REYES BELEN ALEJANDRA",
-    "dni": "91213697",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "RIVERA ESPINOZA DANYU JATZUMI",
-    "dni": "91117612",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "ROSARIO GOMEZ SAMIR ALEXIS",
-    "dni": "91063558",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "SALVADOR POMA KALEP ANDREU",
-    "dni": "90944970",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "SILVA GAONA ASTRID MEILYN",
-    "dni": "91165486",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "SILVA VARGAS GRIEZMAN ANDRE",
-    "dni": "90990277",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "SOTO PINO THIAGO TONI",
-    "dni": "90950320",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "TORRES ISIDRO JOSEP SAMIR",
-    "dni": "91061151",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "URETA SANTIAGO BRAYAN JAVIER",
-    "dni": "91118105",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "VILCA MIRANDA IVANA VALENTINA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "A"
-  },
-  {
-    "nombre": "YUPARI LINO HENRY ESTIBEN",
-    "dni": "91219456",
-    "grado": "1",
-    "seccion": "A"
+    "seccion": "B"
   },
   {
     "nombre": "ALEJO BRICEÑO KYLIAN JELANI",
@@ -631,12 +787,6 @@
   },
   {
     "nombre": "HUERTA LORENZO ERICA VALENTINA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "E"
-  },
-  {
-    "nombre": "JARA PERES MEDERIC",
     "dni": "-",
     "grado": "1",
     "seccion": "E"
@@ -750,382 +900,196 @@
     "seccion": "E"
   },
   {
-    "nombre": "ACOSTA PAZ VALENTINO",
-    "dni": "91147811",
+    "nombre": "AQUINO SERAFIN ARATZA SAMARA",
+    "dni": "90744149 ",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "AVILA ROMAN MARTIN ALONSO",
-    "dni": "-",
+    "nombre": "ARECHE MURAYARI GENESIS SOFIA",
+    "dni": "90913196 ",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "BENANCIO BERRISPO GAHEL FRANCISCO",
-    "dni": "-",
+    "nombre": "ARMILLON VARGAS ALEXA PAOLA",
+    "dni": "90834859",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "CASAS MORA TAHISA AHITHAMA",
-    "dni": "91136077",
+    "nombre": "AYRA CHAVEZ KENDRICK AZAEL",
+    "dni": "90834342 ",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "CELIS ROJAS GAEL",
-    "dni": "91245900",
+    "nombre": "AYRA CHAVEZ YESLYN ARIANA",
+    "dni": "90834336",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "COZ GONZALES ESTELA SOFIA",
-    "dni": "-",
+    "nombre": "BERRIOS AGUIRRE SAHORI KRISTEL",
+    "dni": "90834681",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "CRUZ ROBLES CAMILA",
-    "dni": "90861964",
+    "nombre": "BLAS TUCTO MATTHIAS AXEL",
+    "dni": "90975584",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "ELGUERA SABINO ALISSON ANTONELLA",
-    "dni": "-",
+    "nombre": "COZ SOTO BARELY  YISU",
+    "dni": "90786209",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "ESPINOZA SOTO GABY MARUXI",
-    "dni": "-",
+    "nombre": "DOMINGUEZ DOMINGUEZ JAMAL JOEL",
+    "dni": "91006524",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "ESTEBAN LEON AMMER RODRIGO",
-    "dni": "91201036",
+    "nombre": "ESPINOZA BARRERA ARIANA MARGHOT",
+    "dni": "91062641",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "FABIAN CARDENAS DAFNE YASHIRA",
-    "dni": "91029480",
+    "nombre": "EVANGELISTA BENANCIO YOSELIN CRISTINA",
+    "dni": "91334108",
     "grado": "1",
-    "seccion": "B"
+    "seccion": "A"
   },
   {
-    "nombre": "FELIX CLAUDIO VLADIMIR FABIO",
-    "dni": "-",
+    "nombre": "GOMEZ LOPEZ HASAN",
+    "dni": "90844940",
     "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "GONZALES LUCAS YENIA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "GUILLERMO MALLQUI JHACOB JHOSEP",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "HERRERA DAMACENO DARIO SMITH",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "HURTADO TUCTO YARELY FATIMA",
-    "dni": "90919429",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "IGLESIAS PINO MAYA VALERIA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "JARA ENCALADA NAJHELY KATALEYA",
-    "dni": "90752385",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "MARTEL HUAYLAS MIA VALENTINA",
-    "dni": "90738717",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "MEZA MEZA GHIA CALIE POCHITA",
-    "dni": "90857599",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "NAVARRO GONZALES THIAGO JHOMAR",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "PLACIDO GABINO KIMBERLY",
-    "dni": "91006888",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "POMA ROJAS THAISA ALEXIA",
-    "dni": "90952794",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "PULIDO SALVADOR LUZ BETZABE",
-    "dni": "90911234",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "RAMIREZ TRUJILLO EMELY",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ROBLES LAMA BLANCA JULIA",
-    "dni": "91202235",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "SANCHEZ AIRA JESUS BENJAMIN",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "SANTA CRUZ SIMON MIA THAISA",
-    "dni": "90820879",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "SUAREZ CARRILLO KENDRA JIMENA ",
-    "dni": "91209804",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "TORRES TIMOTEO JULIAN CELESTINO",
-    "dni": "91051556",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "VALDIVIA CHUQUIYAURI LUCIANA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "VILLANUEVA CISNEROS VALERIA ABRIL",
-    "dni": "91249759",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ZAMBRANO PALACIN TAMIA ALANIA",
-    "dni": "-",
-    "grado": "1",
-    "seccion": "B"
-  },
-  {
-    "nombre": "AYALA DOMINGUEZ ANGELIMAR JESEELITA",
-    "dni": "91151046",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "BONILLA RAMIREZ ALEXIS OMAR",
-    "dni": "91178731",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CALDAS ARANDA MAYCOL JHORDAN",
-    "dni": "90969831",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CAMPOS SANTA CRUZ VALENTINA KAELY GLADYS",
-    "dni": "91079740",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CENTENO MAYLLE ANDREA JOHANA",
-    "dni": "91009265",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CHAVEZ VASQUEZ DEMIAN LEYTO",
-    "dni": "90793303",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "DIAZ CRUZ ALEXIA DAYANA",
-    "dni": "90973557",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "DIAZ CRUZ ALLISON DAHANA",
-    "dni": "90973548",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "ESPINOZA ISIDRO ZULY ARLETH",
-    "dni": "90765131",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "ESTACIO TARAZONA IDHARA ALEXIA",
-    "dni": "91232748",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "FIGUEREDO VILLARAN MARCO ANTONIO",
-    "dni": "91147241",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "GAVINO SAYES YARETZI",
-    "dni": "90915544",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "GONZALES YARANGA SAOMY CRISLY ESTRELLA",
-    "dni": "90736601",
-    "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
     "nombre": "HERRERA BARZOLA PEDRO JARED",
-    "dni": "91137458",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "JAIMES TALENAS ABIGAIL SHANTAL",
-    "dni": "91177975",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "MALLQUI CHAVEZ ALESSIA KHALESSI",
-    "dni": "91010797",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "MALLQUI CHAVEZ THIAGO ALEJANDRO",
-    "dni": "91114112",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "MEZA LUCAS JESUS VALENTINO",
-    "dni": "91190983",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "NAUPAY CHUQUIYAURI ANDRE ERICKSEN",
-    "dni": "91038523",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "PRINCIPE SALGADO MERIA ANGELES KAELY",
     "dni": "-",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "ROBLES SOLORZANO LUCIA VICTORIA",
-    "dni": "91202684",
+    "nombre": "JUSTINIANO MARIANO ADRIANA SOFIA",
+    "dni": "91195457",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "ROJAS BERAUN ALISSON GERALDINE",
-    "dni": "91138104",
+    "nombre": "LAURENCIO ISIDRO YASIM ESTHER",
+    "dni": "90909930",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "SANTAMARIA SOLORZANO KARLA",
-    "dni": "90952229",
-    "grado": "1",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SANTOS SOLIZOR SAMUEL JOSIAS",
+    "nombre": "LIBERATO SALAZAR JOAN ALEJANDRO",
     "dni": "-",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "SERRANO GONZALES LUIS PIERO",
-    "dni": "91229739",
+    "nombre": "MORA ALEJO EMILY DRIANA",
+    "dni": "91224914",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "SOLIS JUSTO MARCELO SEBASTIAN",
-    "dni": "91079186",
+    "nombre": "MORENO GARAY RAMSEY SHAKIRI JHERIK",
+    "dni": "90992415",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "TUCTO  NOREÑA MILAN GABRIEL",
-    "dni": "90739861",
+    "nombre": "ORTEGA ROSALES ABDIEL",
+    "dni": "91214353",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "TUCTO YARANGA NELLY VALENTINA",
-    "dni": "90852741",
+    "nombre": "ORTEGA SEGUNDO LYAM THIAGO",
+    "dni": "91224089",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "VENTURO TOLEDO ALESSIA YARELY",
-    "dni": "90814688",
+    "nombre": "PIMENTEL HERRERA ANDRE STIVEN",
+    "dni": "90871861",
     "grado": "1",
-    "seccion": "C"
+    "seccion": "A"
   },
   {
-    "nombre": "ACUÑA JARAMILLO MAIA TAIANA",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "F"
+    "nombre": "RAMIREZ REYES BELEN ALEJANDRA",
+    "dni": "91213697",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "RIVERA ESPINOZA DANYU JATZUMI",
+    "dni": "91117612",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "ROSARIO GOMEZ SAMIR ALEXIS",
+    "dni": "91063558",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "SALVADOR POMA KALEP ANDREU",
+    "dni": "90944970",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "SILVA GAONA ASTRID MEILYN",
+    "dni": "91165486",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "SILVA VARGAS GRIEZMAN ANDRE",
+    "dni": "90990277",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "SOTO PINO THIAGO TONI",
+    "dni": "90950320",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "TORRES ISIDRO JOSEP SAMIR",
+    "dni": "91061151",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "URETA SANTIAGO BRAYAN JAVIER",
+    "dni": "91118105",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "VILCA MIRANDA IVANA VALENTINA",
+    "dni": "90781826",
+    "grado": "1",
+    "seccion": "A"
+  },
+  {
+    "nombre": "YUPARI LINO HENRY ESTIBEN",
+    "dni": "91219456",
+    "grado": "1",
+    "seccion": "A"
   },
   {
     "nombre": "ALEJANDRO SALIS KENY",
@@ -1136,6 +1100,12 @@
   {
     "nombre": "ANCHIRAICO NUÑEZ LEONELA ALEXANDRA",
     "dni": "90317180",
+    "grado": "2",
+    "seccion": "F"
+  },
+  {
+    "nombre": "ARRATEA HUARANGA DILAN",
+    "dni": "-",
     "grado": "2",
     "seccion": "F"
   },
@@ -1236,32 +1206,8 @@
     "seccion": "F"
   },
   {
-    "nombre": "PALOMINO BRAVO NICOLE GUADALUPE",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "F"
-  },
-  {
     "nombre": "RAMOS ESPINOZA MAYA YOSHARE",
     "dni": "90347959",
-    "grado": "2",
-    "seccion": "F"
-  },
-  {
-    "nombre": "SABINO SEBASTIAN NELSON FABRICIO",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "F"
-  },
-  {
-    "nombre": "SANTOS AHUANARI FABIANA ALANA",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "F"
-  },
-  {
-    "nombre": "SIMON VEGA EDEN FELIPE",
-    "dni": "-",
     "grado": "2",
     "seccion": "F"
   },
@@ -1279,12 +1225,6 @@
   },
   {
     "nombre": "TAPULLIMA SANTIAGO ZABDI ZOE ALISHEBA",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "F"
-  },
-  {
-    "nombre": "URETA MERGILDO IVANA SAYURI",
     "dni": "-",
     "grado": "2",
     "seccion": "F"
@@ -1327,7 +1267,7 @@
   },
   {
     "nombre": "ATANACIO LASTRA DIEGO STIP MARCELO",
-    "dni": "-",
+    "dni": "90293456",
     "grado": "2",
     "seccion": "B"
   },
@@ -1375,13 +1315,13 @@
   },
   {
     "nombre": "GODOY TUCTO MATEO ADRIANO",
-    "dni": "-",
+    "dni": "90683032",
     "grado": "2",
     "seccion": "B"
   },
   {
-    "nombre": "GULLERMO MALLQUI JACOB JHOSEP",
-    "dni": "-",
+    "nombre": "GUILLERMO MALLQUI JHACOB JHOSEP",
+    "dni": "90663206",
     "grado": "2",
     "seccion": "B"
   },
@@ -1393,7 +1333,7 @@
   },
   {
     "nombre": "LAZARO VILLANUEVA CARLOS GAEL",
-    "dni": "-",
+    "dni": "90184135",
     "grado": "2",
     "seccion": "B"
   },
@@ -1441,7 +1381,7 @@
   },
   {
     "nombre": "TRUJILLO CASTRO ITZEL MARIA",
-    "dni": "-",
+    "dni": "90488671",
     "grado": "2",
     "seccion": "B"
   },
@@ -1462,168 +1402,6 @@
     "dni": "90208484",
     "grado": "2",
     "seccion": "B"
-  },
-  {
-    "nombre": "ACOSTA PAZ VALENTINA KALHEYSS",
-    "dni": "90272418",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ALBINO ALVITES GREYLY BRITANY",
-    "dni": "90661873",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ALVAREZ ALVA AMIRA",
-    "dni": "90500800",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "BARRETO ESPINOZA DIANA CAROLINA",
-    "dni": "90615066",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "BARTOLO ALVINO VALENTINA ABIGAIL",
-    "dni": "90653938",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "BASILIO TORIBIO FLOYD MAYWEATHER",
-    "dni": "90590400",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "BERNAL FIGUEROA BRIGUITH BRIANA",
-    "dni": "90583290",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "CASIMIRO HUAMAN JHOSIRTH JHOSHUA",
-    "dni": "90469174",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "CLAUDIO LOPEZ SEBASTIAN MATEO",
-    "dni": "90301019",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ESQUIVEL TUMBAY JOSE ADRIAM",
-    "dni": "90547092",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "GOMEZ ESPINOZA AYSEL NAHIARA",
-    "dni": "90387702",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "HUAMAN ROSALES ADNER ADBET",
-    "dni": "90387702",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ISLA PARDAVE YERALD CRISTOFER",
-    "dni": "90387702",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "MARIÑO BARTOLO JHAMIR AUSTIN SAUL",
-    "dni": "90510981",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "MATOS QUIROZ YEFFRY ASIS",
-    "dni": "90534348",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "PASTOR SANTOS ARIANA MILAGROS",
-    "dni": "90452342",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "PATALEON PIÑAN YASUMI LIZETH",
-    "dni": "90377899",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "REYES ATANACIO LIA ZAHELY",
-    "dni": "90629633",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "RIVERA PONCE JAMES RODRIGO",
-    "dni": "90621544",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ROJAS PENADILLO ANDREE ALEN",
-    "dni": "90558008",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ROMERO SIXTO DASHIEL SNAYDER MAJIEL",
-    "dni": "90572216",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ROSADO CAJAS PIERO ALEXANDER",
-    "dni": "90648024",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "RUIZ URBANO BRITANI TATIANA",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "SANTA CRUZ DUEÑAS JHALY HADYURI",
-    "dni": "90596435",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "SANTIAGO PONCIANO KEYTI NIKOL",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "TRUJILLO FABIAN JOSE AARON",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "E"
-  },
-  {
-    "nombre": "VALENCIA ALVAREZ TAYLA ALLISON",
-    "dni": "-",
-    "grado": "2",
-    "seccion": "E"
   },
   {
     "nombre": "ALVA CRUZ NAHUM ABRAHAM",
@@ -1658,12 +1436,6 @@
   {
     "nombre": "CALERO ALANIA GEICEL CEINEP",
     "dni": "90269026",
-    "grado": "2",
-    "seccion": "D"
-  },
-  {
-    "nombre": "CARLOS ROJAS KHALESSI SCARLET",
-    "dni": "90660657",
     "grado": "2",
     "seccion": "D"
   },
@@ -1794,160 +1566,172 @@
     "seccion": "D"
   },
   {
-    "nombre": "AIRA LUNA LIA CIZEL",
-    "dni": "90230143",
+    "nombre": "ACOSTA PAZ VALENTINA KALHEYSS",
+    "dni": "90272418",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "ANICETO AGUIRRE KASSUMY LUANA",
-    "dni": "90268471",
+    "nombre": "ALBINO ALVITES GREYLY BRITANY",
+    "dni": "90661873",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "BRAVO GARCIA ROUS GUADALUPE",
-    "dni": "90414848",
+    "nombre": "ALVAREZ ALVA AMIRA",
+    "dni": "90500800",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "CANDELARIO RIVADENEYRA RAFAEL LEONARDO",
+    "nombre": "BARRETO ESPINOZA DIANA CAROLINA",
+    "dni": "90615066",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "BARTOLO ALVINO VALENTINA ABIGAIL",
+    "dni": "90653938",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "BASILIO TORIBIO FLOYD MAYWEATHER",
+    "dni": "90590400",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "BERNAL FIGUEROA BRIGUITH BRIANA",
+    "dni": "90583290",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "CARLOS ROJAS KHALESSI SCARLET",
+    "dni": "90660657",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "CASIMIRO HUAMAN JHOSIRTH JHOSHUA",
+    "dni": "90469174",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "CLAUDIO LOPEZ SEBASTIAN MATEO",
+    "dni": "90301019",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ESQUIVEL TUMBAY JOSE ADRIAM",
+    "dni": "90547092",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "GOMEZ ESPINOZA AYSEL NAHIARA",
+    "dni": "90387702",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "HUAMAN ROSALES ADNER ADBET",
+    "dni": "90387702",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ISLA PARDAVE YERALD CRISTOFER",
+    "dni": "90387702",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "MARIÑO BARTOLO JHAMIR AUSTIN SAUL",
+    "dni": "90510981",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "MATOS QUIROZ YEFFRY ASIS",
+    "dni": "90534348",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "PASTOR SANTOS ARIANA MILAGROS",
+    "dni": "90452342",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "PATALEON PIÑAN YASUMI LIZETH",
+    "dni": "90377899",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "REYES ATANACIO LIA ZAHELY",
+    "dni": "90629633",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "RIVERA PONCE JAMES RODRIGO",
+    "dni": "90621544",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ROJAS PENADILLO ANDREE ALEN",
+    "dni": "90558008",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ROMERO SIXTO DASHIEL SNAYDER MAJIEL",
+    "dni": "90572216",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ROSADO CAJAS PIERO ALEXANDER",
+    "dni": "90648024",
+    "grado": "2",
+    "seccion": "E"
+  },
+  {
+    "nombre": "RUIZ URBANO BRITANI TATIANA",
     "dni": "-",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "CERVANTES ANTEZANA JHONATAN DAVID",
-    "dni": "90465151",
+    "nombre": "SANTA CRUZ DUEÑAS JHALY HADYURI",
+    "dni": "90596435",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "FERNANDEZ CRUZ YOMAR GAEL",
-    "dni": "90502781",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "GARCIA ROJAS GAEL ELIM",
-    "dni": "90324857",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "HUAMAN SERAFIN ARELY TAHITZA",
-    "dni": "90361604",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "HUARANGA GOMEZ ROSANYELA MELIS",
-    "dni": "90274239",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "HUARANGA VENTURA YONEL DAYIRO",
-    "dni": "90329211",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "HUERTA URSULA GUADALUPE KHALEESI",
-    "dni": "90403682",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "LINO ACOSTA LIAM ADRIANO",
-    "dni": "81789265",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "LUNA ALCANTARA JHON ALEX",
-    "dni": "90379645",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "MARTINEZ TARAZONA YUN MEI",
-    "dni": "90556646",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "MIÑANO PIO GERSON ALEXANDER",
-    "dni": "90521242",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "ORTEGA VALENZUELA BRITHANY MAYLIN",
-    "dni": "90442198",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "PIMENTEL GARCIA MELANY SAYUMI",
-    "dni": "90515705",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "RAMOS HOYOS MARCOS AXEL",
-    "dni": "90685646",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "RIOS GUTIERREZ LUCIANA YESI",
+    "nombre": "SANTIAGO PONCIANO KEYTI NIKOL",
     "dni": "-",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "ROJAS SANTOS ANGELA XIOMARA",
-    "dni": "90553499",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SEGURA BONILLA BRYAM MINJO",
-    "dni": "90618505",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SIHUI OCALIO BRIANA YARETZY",
-    "dni": "90511053",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SOTO DAVILA JHENS FRANK",
+    "nombre": "TRUJILLO FABIAN JOSE AARON",
     "dni": "-",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
-    "nombre": "SOTO HERRADA HEYDRIAN GABRIEL",
-    "dni": "90262996",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "URTADO MALLQUI JAFET BENJAMIN",
-    "dni": "90595021",
-    "grado": "2",
-    "seccion": "C"
-  },
-  {
-    "nombre": "VASQUEZ RIVERA GISELL SHARLIN",
+    "nombre": "VALENCIA ALVAREZ TAYLA ALLISON",
     "dni": "-",
     "grado": "2",
-    "seccion": "C"
+    "seccion": "E"
   },
   {
     "nombre": "ALCEDO ROJAS ELIF TANIT",
@@ -1964,12 +1748,6 @@
   {
     "nombre": "BLAS ESTEBAN LUZ ESMERALDA",
     "dni": "90480625",
-    "grado": "2",
-    "seccion": "A"
-  },
-  {
-    "nombre": "CARLOS ROJAS KHALEESI SCARLET",
-    "dni": "-",
     "grado": "2",
     "seccion": "A"
   },
@@ -2128,6 +1906,366 @@
     "dni": "90519304",
     "grado": "2",
     "seccion": "A"
+  },
+  {
+    "nombre": "AIRA LUNA LIA CIZEL",
+    "dni": "90230143",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ANICETO AGUIRRE KASSUMY LUANA",
+    "dni": "90268471",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "BRAVO GARCIA ROUS GUADALUPE",
+    "dni": "90414848",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CANDELARIO RIVADENEYRA RAFAEL LEONARDO",
+    "dni": "-",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CERVANTES ANTEZANA JHONATAN DAVID",
+    "dni": "90465151",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "FERNANDEZ CRUZ YOMAR GAEL",
+    "dni": "90502781",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "GARCIA ROJAS GAEL ELIM",
+    "dni": "90324857",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HUAMAN SERAFIN ARELY TAHITZA",
+    "dni": "90361604",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HUARANGA GOMEZ ROSANYELA MELIS",
+    "dni": "90274239",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HUARANGA VENTURA YONEL DAYIRO",
+    "dni": "90329211",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HUERTA URSULA GUADALUPE KHALEESI",
+    "dni": "90403682",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "LINO ACOSTA LIAM ADRIANO",
+    "dni": "81789265",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "LUNA ALCANTARA JHON ALEX",
+    "dni": "90379645",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "MARTINEZ TARAZONA YUN MEI",
+    "dni": "90556646",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "MIÑANO PIO GERSON ALEXANDER",
+    "dni": "90521242",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ORTEGA VALENZUELA BRITHANY MAYLIN",
+    "dni": "90442198",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "PIMENTEL GARCIA MELANY SAYUMI",
+    "dni": "90515705",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "RAMOS HOYOS MARCOS AXEL",
+    "dni": "90685646",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "RIOS GUTIERREZ LUCIANA YESI",
+    "dni": "-",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ROJAS SANTOS ANGELA XIOMARA",
+    "dni": "90553499",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SEGURA BONILLA BRYAM MINJO",
+    "dni": "90618505",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SIHUI OCALIO BRIANA YARETZY",
+    "dni": "90511053",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SOTO DAVILA JHENS FRANK",
+    "dni": "-",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SOTO HERRADA HEYDRIAN GABRIEL",
+    "dni": "90262996",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "URTADO MALLQUI JAFET BENJAMIN",
+    "dni": "90595021",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "VASQUEZ RIVERA GISELL SHARLIN",
+    "dni": "-",
+    "grado": "2",
+    "seccion": "C"
+  },
+  {
+    "nombre": "AGUILAR LUNA MERLIA MITZIE",
+    "dni": "79721188",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ALCEDO OLIVAS NAOMI LUANA",
+    "dni": "79986373",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CAMPOS SANTA CRUZ ABIHAIL CELESTE",
+    "dni": "90029891",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CARDENAS JAIMES JHAN PATRICIO",
+    "dni": "79996657",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CARLOS ESTRADA BRINANA XIMENA ",
+    "dni": "79777613",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CAYCO MORALES GABRIELA COTRINA",
+    "dni": "90040184",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CRUZ TOMAS WILSON NAYMER",
+    "dni": "79944582",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "CULQUI JUIPA BRYZZ ITALO",
+    "dni": "90051032",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "DOMINGUEZ CARBAJAL CINTHIA GABRIELA",
+    "dni": "90070752",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "DOROTEO VALENTIN NILTON GRIEZMANN",
+    "dni": "79839754",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ESTEBAN LEON VALESCA BETSABE",
+    "dni": "79976268",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "FERMIN HUAMAN GRIEZMANN JHERICO",
+    "dni": "79740776",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "GABINO LEANDRO ANAHI DAYANA",
+    "dni": "79655488",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "GARCIA CANTEÑO THIAGO EFRAIN",
+    "dni": "79881964",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "GAVINO RAMIREZ BRITHANY XIOMARA",
+    "dni": "79754492",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HERRADA BUENO SANTIAGO FABRICIO ",
+    "dni": "90102065",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "HUERTA LORENZO ITALO ADRIAN ERICK",
+    "dni": "79371068",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "JARA PALACIOS KEISY RASHELL",
+    "dni": "79781637",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "JUIPA SALAZAR JHAIR ETHEL",
+    "dni": "79599160",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "JUSTO TRUJILLO ITALO YAN",
+    "dni": "90121730",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "LEON GRADOS MARCELITA DEL CIELO",
+    "dni": "79861971",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "LEON MARTEL THIAGO MATHIAS",
+    "dni": "90093793",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "LUPUCHE CUZQUE ALANA NAYSHA",
+    "dni": "79999798",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "ORTEGA RIOS STEFANY NICOLL",
+    "dni": "79742055",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "PRESENTACION DOMINGUEZ IBRAHIMOVIC GUSTAVO",
+    "dni": "79772695",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "RAMIREZ ALCEDO KIMBERLY MIA",
+    "dni": "79749450",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "RAMOS PEREZ SAMARA ITZAYANA",
+    "dni": "90149168",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "RIVERA ROJAS PIERO EDUARDO",
+    "dni": "79749628",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SALVADOR POMA REHEM ERNEST",
+    "dni": "79749062",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SILVA INOCENTE JHANFRANCO MILOVAN",
+    "dni": "79688521",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "SUAREZ GONZALES STEFFANO ESTEBAN",
+    "dni": "90067944",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "TIMOTEO IBARRA MILAGROS KAELA",
+    "dni": "90067944",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "TORIBIO VILLEGAS NEYMAR DAVID",
+    "dni": "79721301",
+    "grado": "3",
+    "seccion": "C"
+  },
+  {
+    "nombre": "VILCA ASCA DANILO JHOSUE",
+    "dni": "90139608",
+    "grado": "3",
+    "seccion": "C"
   },
   {
     "nombre": "ALVAREZ ORTIZ JHAN MATHIAS",
@@ -2688,210 +2826,6 @@
     "seccion": "E"
   },
   {
-    "nombre": "AGUILAR LUNA MERLIA MITZIE",
-    "dni": "79721188",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "ALCEDO OLIVAS NAOMI LUANA",
-    "dni": "79986373",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CAMPOS SANTA CRUZ ABIHAIL CELESTE",
-    "dni": "90029891",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CARDENAS JAIMES JHAN PATRICIO",
-    "dni": "79996657",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CARLOS ESTRADA BRINANA XIMENA ",
-    "dni": "79777613",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CAYCO MORALES GABRIELA COTRINA",
-    "dni": "90040184",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CRUZ TOMAS WILSON NAYMER",
-    "dni": "-",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "CULQUI JUIPA BRYZZ ITALO",
-    "dni": "90051032",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "DOMINGUEZ CARBAJAL CINTHIA GABRIELA",
-    "dni": "90070752",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "DOROTEO VALENTIN NILTON GRIEZMANN",
-    "dni": "79839754",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "ESTEBAN LEON VALESCA BETSABE",
-    "dni": "79976268",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "FERMIN HUAMAN GRIEZMANN JHERICO",
-    "dni": "79740776",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "GABINO LEANDRO ANAHI DAYANA",
-    "dni": "79655488",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "GARCIA CANTEÑO THIAGO EFRAIN",
-    "dni": "79881964",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "GAVINO RAMIREZ BRITHANY XIOMARA",
-    "dni": "79754492",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "HERRADA BUENO SANTIAGO FABRICIO ",
-    "dni": "90102065",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "HUERTA LORENZO ITALO ADRIAN ERICK",
-    "dni": "79371068",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "JARA PALACIOS KEISY RASHELL",
-    "dni": "79781637",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "JUIPA SALAZAR JHAIR ETHEL",
-    "dni": "79599160",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "JUSTO TRUJILLO ITALO YAN",
-    "dni": "90121730",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "LEON GRADOS MARCELITA DEL CIELO",
-    "dni": "79861971",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "LEON MARTEL THIAGO MATHIAS",
-    "dni": "90093793",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "LUPUCHE CUZQUE ALANA NAYSHA",
-    "dni": "79999798",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "ORTEGA RIOS STEFANY NICOLL",
-    "dni": "79742055",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "PRESENTACION DOMINGUEZ IBRAHIMOVIC GUSTAVO",
-    "dni": "79772695",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "RAMIREZ ALCEDO KIMBERLY MIA",
-    "dni": "79749450",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "RAMOS PEREZ SAMARA ITZAYANA",
-    "dni": "90149168",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "RIVERA ROJAS PIERO EDUARDO",
-    "dni": "79749628",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SALVADOR POMA REHEM ERNEST",
-    "dni": "79749062",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SILVA INOCENTE JHANFRANCO MILOVAN",
-    "dni": "79688521",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "SUAREZ GONZALES STEFFANO ESTEBAN",
-    "dni": "90067944",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "TIMOTEO IBARRA MILAGROS KAELA",
-    "dni": "90067944",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "TORIBIO VILLEGAS NEYMAR DAVID",
-    "dni": "79721301",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
-    "nombre": "VILCA ASCA DANILO JHOSUE",
-    "dni": "90139608",
-    "grado": "3",
-    "seccion": "C"
-  },
-  {
     "nombre": "AMBICHO COTRINA ABIGAYHT VALENTINA",
     "dni": "79610993",
     "grado": "3",
@@ -3258,6 +3192,174 @@
     "seccion": "A"
   },
   {
+    "nombre": "ACUÑA JARAMILLO TIFFANY KIRA",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "BRAVO MARTINEX YAISA",
+    "dni": "79232645",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "BUSTILLOS SOTO YAIR FELIPE",
+    "dni": "80697160",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "CAQUI CALIXTO MERIBETH YOMARA",
+    "dni": "78626583",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "CARRANZA AGUIRRE THIAGO BENJAMIN",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "CUEVA ROJAS INGRID ARACELY",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "DIEGO MORALES ALEXANDER",
+    "dni": "79327475",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "DIONICIO RIVADENEYRA YAN",
+    "dni": "63405824",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "GOMES SILVA JESÚS",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "HUANCOILLO PUMA EVANS ADRIEL",
+    "dni": "79584414",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ISIDRO PUENTE YERALDIN MARYORITH",
+    "dni": "79226445",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "JAVIER GAVINO SANDRA",
+    "dni": "79428743",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "LIBERATO SHICA ANYI YAZUMI",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "MEZA PAPA KENYI",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "MIRANDA ALVA NATHALY NOEMI",
+    "dni": "79156332",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "NAVARRO VERGARA MELINA YESSICA",
+    "dni": "79252747",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "ORTIZ ASCA ALE MARIA LUZ",
+    "dni": "78480292",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "PAUCAR CABRERA NATZUMI ZARAI",
+    "dni": "79063986",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "PEREZ AMBROSIO DYLAND RILHEY",
+    "dni": "79386812",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "PIMENTEL QUINTANA CATALEYA",
+    "dni": "79301133",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "SANCHEZ FIGUEREDO NICOLA HANYOLS",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "SUAREZ ISIDRO EYAL LUIS MATHIAS",
+    "dni": "79530326",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "UNTEVERO ANDRES ÁNGEL",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "URBANO RAMIREZ ANDERSON YADIEL",
+    "dni": "80698031",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "URETA MERGILDO JHON RAFAEL",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "VARA BERNALDO XINA CLARITA",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "VEGA VARGAS VICTOR DANIEL",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
+    "nombre": "YURIVILCA VARA ALEXIA MASIEL",
+    "dni": "-",
+    "grado": "4",
+    "seccion": "E"
+  },
+  {
     "nombre": "AMBROSIO PAUCAR NATALY CAMILA",
     "dni": "79373456",
     "grado": "4",
@@ -3598,174 +3700,6 @@
     "dni": "-",
     "grado": "4",
     "seccion": "F"
-  },
-  {
-    "nombre": "ACUÑA JARAMILLO TIFFANY KIRA",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "BRAVO MARTINEX YAISA",
-    "dni": "79232645",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "BUSTILLOS SOTO YAIR FELIPE",
-    "dni": "80697160",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "CAQUI CALIXTO MERIBETH YOMARA",
-    "dni": "78626583",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "CARRANZA AGUIRRE THIAGO BENJAMIN",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "CUEVA ROJAS INGRID ARACELY",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "DIEGO MORALES ALEXANDER",
-    "dni": "79327475",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "DIONICIO RIVADENEYRA YAN",
-    "dni": "63405824",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "GOMES SILVA JESÚS",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "HUANCOILLO PUMA EVANS ADRIEL",
-    "dni": "79584414",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ISIDRO PUENTE YERALDIN MARYORITH",
-    "dni": "79226445",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "JAVIER GAVINO SANDRA",
-    "dni": "79428743",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "LIBERATO SHICA ANYI YAZUMI",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "MEZA PAPA KENYI",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "MIRANDA ALVA NATHALY NOEMI",
-    "dni": "79156332",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "NAVARRO VERGARA MELINA YESSICA",
-    "dni": "79252747",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "ORTIZ ASCA ALE MARIA LUZ",
-    "dni": "78480292",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "PAUCAR CABRERA NATZUMI ZARAI",
-    "dni": "79063986",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "PEREZ AMBROSIO DYLAND RILHEY",
-    "dni": "79386812",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "PIMENTEL QUINTANA CATALEYA",
-    "dni": "79301133",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "SANCHEZ FIGUEREDO NICOLA HANYOLS",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "SUAREZ ISIDRO EYAL LUIS MATHIAS",
-    "dni": "79530326",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "UNTEVERO ANDRES ÁNGEL",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "URBANO RAMIREZ ANDERSON YADIEL",
-    "dni": "80698031",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "URETA MERGILDO JHON RAFAEL",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "VARA BERNALDO XINA CLARITA",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "VEGA VARGAS VICTOR DANIEL",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
-  },
-  {
-    "nombre": "YURIVILCA VARA ALEXIA MASIEL",
-    "dni": "-",
-    "grado": "4",
-    "seccion": "E"
   },
   {
     "nombre": "ALVA PIO FRANZ BECKER",
@@ -4486,6 +4420,198 @@
     "dni": "79433888",
     "grado": "4",
     "seccion": "A"
+  },
+  {
+    "nombre": "AGUIRRE TADEO FILOVER ARNALDO",
+    "dni": "80708538",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ALCEDO CRISTOBAL EIVRI ANGHELY",
+    "dni": "78731684",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ALCEDO TRUJILLO GHRISS LUZCLAVELINA",
+    "dni": "81268062",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ALVAREZ COTRINA YASUMI PAOLA",
+    "dni": "78964243",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CAMPOS LORENZO ALDAIR GILMER",
+    "dni": "78595405",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CARRILLO GARCIA JAREDH FRANCO",
+    "dni": "78752462",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CASIMIRO HUAMAN JHUSERTH JHUSTHIN",
+    "dni": "78626301",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CERVANTES ANTEZANA BETHSABE SARAÍ",
+    "dni": "78776615",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CHAVEZ ROJAS YISSEL MAYERLY",
+    "dni": "78570901",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CIENFUEGOS MALLQUI KLINSMAN ANDRE",
+    "dni": "78692537",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "CORREA ESTELA KENJI YUAN",
+    "dni": "81266426",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "DEL AGUILA SANTIAGO MHYA FRANCESCA",
+    "dni": "90169545",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ESPINOZA HIDALGO ASHLEY ANDREA",
+    "dni": "78798370",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ESPINOZA ISIDRO MARIA FERNANDA",
+    "dni": "81569994",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ESTEBAN SUDARIO BRITZY BRITANY",
+    "dni": "78827447",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "HIDALGO SARAVIA LINA FRANCHESCA",
+    "dni": "78624637",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "HUARACA NAUPAY JHAIR SNEIJDER",
+    "dni": "78694102",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "HUARACA NAUPAY YAMIR NEYMAR",
+    "dni": "78694047",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ISLA PARDAVE NEY ABELARDO",
+    "dni": "78836211",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "JUSTO TRUJILLO JEEYSON BRUS",
+    "dni": "81274184",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "MANDUJANO TIZA LIZANDRA JIMENA",
+    "dni": "78607358",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ORBEZO MINAYA JOSIAS EDU",
+    "dni": "78853812",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "OROZCO BRUNO FABRIZIO ADERLI",
+    "dni": "78658814",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "ROJAS DOMINGUEZ GEORGIA KATLHEENN",
+    "dni": "78710601",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "SATO ALBORNOZ KYOSUKE VALENTINO",
+    "dni": "79042465",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "SIMON URETA LIAM GABRIEL",
+    "dni": "81455411",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "SUAREZ SANTIAGO SUYELI ELVIRA",
+    "dni": "78443262",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "TORRES ISIDRO BRAYAN DIK",
+    "dni": "78914417",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "TORRES PEREZ SHEYLA NICOL",
+    "dni": "78594623",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "TUCTO ORTEGA NAHOMY YAMILE",
+    "dni": "78960920",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "VARGAS GODOY MILAN SERGIO",
+    "dni": "78833522",
+    "grado": "5",
+    "seccion": "B"
+  },
+  {
+    "nombre": "VEGA TORRES NAYELY MINERVA",
+    "dni": "78908896",
+    "grado": "5",
+    "seccion": "B"
   },
   {
     "nombre": "CANTARO CASTILLO YAZMINA SARELY",
@@ -5274,198 +5400,6 @@
     "seccion": "C"
   },
   {
-    "nombre": "AGUIRRE TADEO FILOVER ARNALDO",
-    "dni": "80708538",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ALCEDO CRISTOBAL EIVRI ANGHELY",
-    "dni": "78731684",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ALCEDO TRUJILLO GHRISS LUZCLAVELINA",
-    "dni": "81268062",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ALVAREZ COTRINA YASUMI PAOLA",
-    "dni": "78964243",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CAMPOS LORENZO ALDAIR GILMER",
-    "dni": "78595405",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CARRILLO GARCIA JAREDH FRANCO",
-    "dni": "78752462",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CASIMIRO HUAMAN JHUSERTH JHUSTHIN",
-    "dni": "78626301",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CERVANTES ANTEZANA BETHSABE SARAÍ",
-    "dni": "78776615",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CHAVEZ ROJAS YISSEL MAYERLY",
-    "dni": "78570901",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CIENFUEGOS MALLQUI KLINSMAN ANDRE",
-    "dni": "78692537",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "CORREA ESTELA KENJI YUAN",
-    "dni": "81266426",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "DEL AGUILA SANTIAGO MHYA FRANCESCA",
-    "dni": "90169545",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ESPINOZA HIDALGO ASHLEY ANDREA",
-    "dni": "78798370",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ESPINOZA ISIDRO MARIA FERNANDA",
-    "dni": "81569994",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ESTEBAN SUDARIO BRITZY BRITANY",
-    "dni": "78827447",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "HIDALGO SARAVIA LINA FRANCHESCA",
-    "dni": "78624637",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "HUARACA NAUPAY JHAIR SNEIJDER",
-    "dni": "78694102",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "HUARACA NAUPAY YAMIR NEYMAR",
-    "dni": "78694047",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ISLA PARDAVE NEY ABELARDO",
-    "dni": "78836211",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "JUSTO TRUJILLO JEEYSON BRUS",
-    "dni": "81274184",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "MANDUJANO TIZA LIZANDRA JIMENA",
-    "dni": "78607358",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ORBEZO MINAYA JOSIAS EDU",
-    "dni": "78853812",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "OROZCO BRUNO FABRIZIO ADERLI",
-    "dni": "78658814",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "ROJAS DOMINGUEZ GEORGIA KATLHEENN",
-    "dni": "78710601",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "SATO ALBORNOZ KYOSUKE VALENTINO",
-    "dni": "79042465",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "SIMON URETA LIAM GABRIEL",
-    "dni": "81455411",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "SUAREZ SANTIAGO SUYELI ELVIRA",
-    "dni": "78443262",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "TORRES ISIDRO BRAYAN DIK",
-    "dni": "78914417",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "TORRES PEREZ SHEYLA NICOL",
-    "dni": "78594623",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "TUCTO ORTEGA NAHOMY YAMILE",
-    "dni": "78960920",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "VARGAS GODOY MILAN SERGIO",
-    "dni": "78833522",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
-    "nombre": "VEGA TORRES NAYELY MINERVA",
-    "dni": "78908896",
-    "grado": "5",
-    "seccion": "B"
-  },
-  {
     "nombre": "ASTUHUAMAN LEANDRO BERLIZ OMAIRA",
     "dni": "78575330",
     "grado": "5",
@@ -5767,12 +5701,6 @@
   },
   {
     "nombre": "LUCERO TADEO MELISSA YARITA",
-    "dni": "-",
-    "grado": "6",
-    "seccion": "H"
-  },
-  {
-    "nombre": "MARTIN SALGADO JHOSSLYN XIOMARA",
     "dni": "-",
     "grado": "6",
     "seccion": "H"

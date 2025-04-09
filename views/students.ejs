@@ -348,48 +348,7 @@
     </div>
 
     <script>
-        
-        // Inicializar iconos de Lucide
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-            if (document.getElementById('studentsTable')) {
-                initPagination();
-            }
-        });
 
-        // Variables de paginación
-        let currentPage = 1;
-        const itemsPerPage = 20;
-        let filteredRows = [];
-        
-        // Cambiar entre pestañas
-        function showTab(tabId) {
-            // Ocultar todas las pestañas
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Mostrar la pestaña seleccionada
-            document.getElementById(tabId).classList.add('active');
-            
-            // Actualizar estilos de los botones
-            if (tabId === 'tableTab') {
-                document.getElementById('tableTabBtn').classList.remove('bg-gray-200', 'text-gray-700');
-                document.getElementById('tableTabBtn').classList.add('bg-blue-600', 'text-white');
-                document.getElementById('cardsTabBtn').classList.remove('bg-blue-600', 'text-white');
-                document.getElementById('cardsTabBtn').classList.add('bg-gray-200', 'text-gray-700');
-            } else {
-                document.getElementById('cardsTabBtn').classList.remove('bg-gray-200', 'text-gray-700');
-                document.getElementById('cardsTabBtn').classList.add('bg-blue-600', 'text-white');
-                document.getElementById('tableTabBtn').classList.remove('bg-blue-600', 'text-white');
-                document.getElementById('tableTabBtn').classList.add('bg-gray-200', 'text-gray-700');
-            }
-            
-            // Reiniciar paginación
-            currentPage = 1;
-            updatePagination();
-        }
-        
         // Inicializar paginación
         function initPagination() {
             const table = document.getElementById('studentsTable');
@@ -511,12 +470,12 @@
         }
 
         // Función para cambiar grado conservando sección
-        function handleGradeChange(grade) {
-            const section = document.getElementById('section').value;
-            if (section && section !== "-- Seleccionar Sección --") {
-                window.location.href = `/data/${grade}/${section}`;
-            }
-        }
+        // function handleGradeChange(grade) {
+        //     const section = document.getElementById('section').value;
+        //     if (section && section !== "-- Seleccionar Sección --") {
+        //         window.location.href = `/data/${grade}/${section}`;
+        //     }
+        // }
 
         // Función para cambiar sección conservando grado
         function handleSectionChange(section) {
@@ -526,7 +485,7 @@
             }
         }
 
-        // Funcion para buscar un alumno entre todos los grados y secciones desde api.js
+        // Funcion para buscar un alumno entre todos los grados y secciones desde api.js usando el cache
         async function buscarAlumnoGlobal() {
             const q = document.getElementById("globalSearch").value.trim();
 
@@ -569,6 +528,7 @@
                 lucide.createIcons();
             }
         }
+    
     </script>
 </body>
 </html>

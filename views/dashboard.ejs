@@ -1,380 +1,433 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Sistema de Gestión Académica</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estadisticas - Sistema de Gestión Académica</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .card-hover {
             transition: all 0.3s ease;
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-b from-slate-50 to-slate-100 min-h-screen">
     <!-- Barra de Navegación -->
     <%- include('reusables/nav') %>
 
-    <!-- Contenido Principal -->
-    <div class="container mx-auto px-4 py-8">
-        <!-- Encabezado del Dashboard -->
-        <div class="mb-8">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Dashboard</h1>
-            <p class="text-gray-600 mt-1">Bienvenido al panel de control del Sistema de Gestión Académica</p>
-        </div>
-
-        <!-- Tarjetas de Estadísticas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 mb-1">Total Estudiantes</p>
-                        <h3 class="text-2xl font-bold text-gray-800">1,248</h3>
-                        <p class="text-xs text-green-600 mt-1 flex items-center">
-                            <i data-lucide="trending-up" class="h-3 w-3 mr-1"></i>
-                            <span>+5.2% desde el mes pasado</span>
-                        </p>
-                    </div>
-                    <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
-                        <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
-                    </div>
-                </div>
+        <!-- Contenido Principal -->
+        <div class="container mx-auto px-4 py-8">
+            <!-- Encabezado del Dashboard -->
+            <div class="mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Dashboard</h1>
+                <p class="text-gray-600 mt-1">
+                    Bienvenido al panel de control del Sistema de Gestión Académica
+                </p>
             </div>
 
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 mb-1">Total Profesores</p>
-                        <h3 class="text-2xl font-bold text-gray-800">87</h3>
-                        <p class="text-xs text-green-600 mt-1 flex items-center">
-                            <i data-lucide="trending-up" class="h-3 w-3 mr-1"></i>
-                            <span>+2.1% desde el mes pasado</span>
-                        </p>
-                    </div>
-                    <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
-                        <i data-lucide="user" class="h-6 w-6 text-purple-600"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 mb-1">Asistencia Promedio</p>
-                        <h3 class="text-2xl font-bold text-gray-800">92.7%</h3>
-                        <p class="text-xs text-amber-600 mt-1 flex items-center">
-                            <i data-lucide="trending-down" class="h-3 w-3 mr-1"></i>
-                            <span>-1.3% desde el mes pasado</span>
-                        </p>
-                    </div>
-                    <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
-                        <i data-lucide="check-square" class="h-6 w-6 text-green-600"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-500 mb-1">Promedio Académico</p>
-                        <h3 class="text-2xl font-bold text-gray-800">15.8</h3>
-                        <p class="text-xs text-green-600 mt-1 flex items-center">
-                            <i data-lucide="trending-up" class="h-3 w-3 mr-1"></i>
-                            <span>+0.5 desde el mes pasado</span>
-                        </p>
-                    </div>
-                    <div class="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center">
-                        <i data-lucide="bar-chart-2" class="h-6 w-6 text-amber-600"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gráficos y Tablas -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <!-- Gráfico de Rendimiento Académico -->
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 lg:col-span-2">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Rendimiento Académico por Grado</h3>
-                    <div class="flex items-center gap-2">
-                        <select class="text-sm border rounded-md px-2 py-1">
-                            <option>Último Trimestre</option>
-                            <option>Último Semestre</option>
-                            <option>Último Año</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="h-64">
-                    <canvas id="rendimientoChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Distribución de Estudiantes -->
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Distribución por Grado</h3>
-                </div>
-                <div class="h-64">
-                    <canvas id="distribucionChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Actividad Reciente y Calendario -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Próximos Eventos -->
-            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Próximos Eventos</h3>
-                    <a href="#" class="text-sm text-blue-600 hover:underline">Ver calendario</a>
-                </div>
-                <div class="space-y-4">
-                    <div class="border-l-4 border-blue-500 pl-3 py-1">
-                        <p class="text-sm font-medium text-gray-800">Entrega de Libretas</p>
-                        <p class="text-xs text-gray-500">15 de Mayo, 2023</p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-3 py-1">
-                        <p class="text-sm font-medium text-gray-800">Reunión de Profesores</p>
-                        <p class="text-xs text-gray-500">18 de Mayo, 2023</p>
-                    </div>
-                    <div class="border-l-4 border-amber-500 pl-3 py-1">
-                        <p class="text-sm font-medium text-gray-800">Feria de Ciencias</p>
-                        <p class="text-xs text-gray-500">22-23 de Mayo, 2023</p>
-                    </div>
-                    <div class="border-l-4 border-purple-500 pl-3 py-1">
-                        <p class="text-sm font-medium text-gray-800">Capacitación Docente</p>
-                        <p class="text-xs text-gray-500">25 de Mayo, 2023</p>
-                    </div>
-                </div>
-                
-                <!-- Accesos Rápidos -->
-                <div class="mt-6 pt-6 border-t border-gray-100">
-                    <h4 class="text-sm font-medium text-gray-700 mb-3">Accesos Rápidos</h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        <a href="/estudiantes" class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <i data-lucide="users" class="h-6 w-6 text-blue-600 mb-1"></i>
-                            <span class="text-xs text-gray-700">Estudiantes</span>
-                        </a>
-                        <a href="/asistencias" class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <i data-lucide="check-square" class="h-6 w-6 text-green-600 mb-1"></i>
-                            <span class="text-xs text-gray-700">Asistencias</span>
-                        </a>
-                        <a href="/calificaciones" class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <i data-lucide="bar-chart-2" class="h-6 w-6 text-amber-600 mb-1"></i>
-                            <span class="text-xs text-gray-700">Calificaciones</span>
-                        </a>
-                        <a href="/reportes" class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                            <i data-lucide="file-text" class="h-6 w-6 text-purple-600 mb-1"></i>
-                            <span class="text-xs text-gray-700">Reportes</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-lg font-semibold text-gray-800">Recursos Educativos</h2>
-                    <button class="text-sm text-blue-600 hover:underline flex items-center gap-1">
-                        <i data-lucide="plus" class="h-4 w-4"></i>
-                        Añadir
-                    </button>
-                </div>
-                
-                <div class="space-y-3">
-                    <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-3">
-                            <div class="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
-                                <i data-lucide="file-text" class="h-5 w-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="font-medium text-gray-900 text-sm">Guía de Matemáticas 3° Grado</h3>
-                                <p class="text-xs text-gray-500">PDF • 2.4 MB • Actualizado hace 2 días</p>
-                            </div>
-                            <button class="text-gray-600 hover:text-blue-600">
-                                <i data-lucide="download" class="h-4 w-4"></i>
-                            </button>
+            <!-- Tarjetas de Estadísticas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Total Estudiantes</p>
+                            <h3 class="text-2xl font-bold text-gray-800" id="totalEstudiantes">
+                                <%= totalEstudiantes %>
+                            </h3>
+                            <p class="text-xs text-green-600 mt-1 flex items-center">
+                                <i data-lucide="trending-up" class="h-3 w-3 mr-1"></i>
+                                <span>Vacantes disponibles</span>
+                            </p>
                         </div>
-                    </div>
-                    
-                    <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-3">
-                            <div class="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
-                                <i data-lucide="file-spreadsheet" class="h-5 w-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="font-medium text-gray-900 text-sm">Planificación Trimestral</h3>
-                                <p class="text-xs text-gray-500">Excel • 1.8 MB • Actualizado hace 1 semana</p>
-                            </div>
-                            <button class="text-gray-600 hover:text-blue-600">
-                                <i data-lucide="download" class="h-4 w-4"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-3">
-                            <div class="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
-                                <i data-lucide="presentation" class="h-5 w-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="font-medium text-gray-900 text-sm">Presentación Ciencias Naturales</h3>
-                                <p class="text-xs text-gray-500">PowerPoint • 5.2 MB • Actualizado hace 2 semanas</p>
-                            </div>
-                            <button class="text-gray-600 hover:text-blue-600">
-                                <i data-lucide="download" class="h-4 w-4"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-3">
-                            <div class="h-10 w-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
-                                <i data-lucide="video" class="h-5 w-5"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="font-medium text-gray-900 text-sm">Video Tutorial - Historia</h3>
-                                <p class="text-xs text-gray-500">MP4 • 85 MB • Actualizado hace 1 mes</p>
-                            </div>
-                            <button class="text-gray-600 hover:text-blue-600">
-                                <i data-lucide="download" class="h-4 w-4"></i>
-                            </button>
+                        <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
                         </div>
                     </div>
                 </div>
-                
-                <div class="mt-4 pt-4 border-t border-gray-100">
-                    <h3 class="text-sm font-medium text-gray-700 mb-3">Recursos Populares</h3>
-                    <div class="space-y-2">
-                        <a href="#" class="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600">
-                            <i data-lucide="book-open" class="h-4 w-4"></i>
-                            <span>Biblioteca Digital</span>
-                        </a>
-                        <a href="#" class="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600">
-                            <i data-lucide="film" class="h-4 w-4"></i>
-                            <span>Videoteca Educativa</span>
-                        </a>
-                        <a href="#" class="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600">
-                            <i data-lucide="puzzle" class="h-4 w-4"></i>
-                            <span>Juegos Didácticos</span>
-                        </a>
+
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Total Profesores</p>
+                            <h3 class="text-2xl font-bold text-gray-800">87</h3>
+                            <p class="text-xs text-green-600 mt-1 flex items-center">
+                                <i data-lucide="trending-up" class="h-3 w-3 mr-1"></i>
+                                <span>+2.1% desde el mes pasado</span>
+                            </p>
+                        </div>
+                        <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                            <i data-lucide="user" class="h-6 w-6 text-purple-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Asistencia Promedio</p>
+                            <h3 class="text-2xl font-bold text-gray-800">92.7%</h3>
+                            <p class="text-xs text-amber-600 mt-1 flex items-center">
+                                <i data-lucide="trending-down" class="h-3 w-3 mr-1"></i>
+                                <span>-1.3% desde el mes pasado</span>
+                            </p>
+                        </div>
+                        <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
+                            <i data-lucide="check-square" class="h-6 w-6 text-green-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Promedio Académico</p>
+                            <h3 class="text-2xl font-bold text-gray-800">15.8</h3>
+                            <p class="text-xs text-green-600 mt-1 flex items-center">
+                                <i data-lucide="trending-up" class="h-3 w-3 mr-1"></i>
+                                <span>+0.5 desde el mes pasado</span>
+                            </p>
+                        </div>
+                        <div class="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center">
+                            <i data-lucide="bar-chart-2" class="h-6 w-6 text-amber-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráficos y Tablas -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Gráfico de Rendimiento Académico -->
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 lg:col-span-2">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            Rendimiento Académico por Grado
+                        </h3>
+                        <div class="flex items-center gap-2">
+                            <select class="text-sm border rounded-md px-2 py-1">
+                                <option>Último Trimestre</option>
+                                <option>Último Semestre</option>
+                                <option>Último Año</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="rendimientoChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Distribución de Estudiantes -->
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            Distribución por Grado
+                        </h3>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="distribucionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actividad Reciente y Calendario -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Próximos Eventos -->
+                <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">
+                            Próximos Eventos
+                        </h3>
+                        <a href="#" class="text-sm text-blue-600 hover:underline">Ver calendario</a>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-3 py-1">
+                            <p class="text-sm font-medium text-gray-800">
+                                Entrega de Libretas
+                            </p>
+                            <p class="text-xs text-gray-500">15 de Mayo, 2023</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-3 py-1">
+                            <p class="text-sm font-medium text-gray-800">
+                                Reunión de Profesores
+                            </p>
+                            <p class="text-xs text-gray-500">18 de Mayo, 2023</p>
+                        </div>
+                        <div class="border-l-4 border-amber-500 pl-3 py-1">
+                            <p class="text-sm font-medium text-gray-800">Feria de Ciencias</p>
+                            <p class="text-xs text-gray-500">22-23 de Mayo, 2023</p>
+                        </div>
+                        <div class="border-l-4 border-purple-500 pl-3 py-1">
+                            <p class="text-sm font-medium text-gray-800">
+                                Capacitación Docente
+                            </p>
+                            <p class="text-xs text-gray-500">25 de Mayo, 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- Accesos Rápidos -->
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <h4 class="text-sm font-medium text-gray-700 mb-3">
+                            Accesos Rápidos
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="/estudiantes"
+                                class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i data-lucide="users" class="h-6 w-6 text-blue-600 mb-1"></i>
+                                <span class="text-xs text-gray-700">Estudiantes</span>
+                            </a>
+                            <a href="/asistencias"
+                                class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i data-lucide="check-square" class="h-6 w-6 text-green-600 mb-1"></i>
+                                <span class="text-xs text-gray-700">Asistencias</span>
+                            </a>
+                            <a href="/calificaciones"
+                                class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i data-lucide="bar-chart-2" class="h-6 w-6 text-amber-600 mb-1"></i>
+                                <span class="text-xs text-gray-700">Calificaciones</span>
+                            </a>
+                            <a href="/reportes"
+                                class="flex flex-col items-center justify-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i data-lucide="file-text" class="h-6 w-6 text-purple-600 mb-1"></i>
+                                <span class="text-xs text-gray-700">Reportes</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold text-gray-800">
+                            Recursos Educativos
+                        </h2>
+                        <button class="text-sm text-blue-600 hover:underline flex items-center gap-1">
+                            <i data-lucide="plus" class="h-4 w-4"></i>
+                            Añadir
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <i data-lucide="file-text" class="h-5 w-5"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900 text-sm">
+                                        Guía de Matemáticas 3° Grado
+                                    </h3>
+                                    <p class="text-xs text-gray-500">
+                                        PDF • 2.4 MB • Actualizado hace 2 días
+                                    </p>
+                                </div>
+                                <button class="text-gray-600 hover:text-blue-600">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+                                    <i data-lucide="file-spreadsheet" class="h-5 w-5"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900 text-sm">
+                                        Planificación Trimestral
+                                    </h3>
+                                    <p class="text-xs text-gray-500">
+                                        Excel • 1.8 MB • Actualizado hace 1 semana
+                                    </p>
+                                </div>
+                                <button class="text-gray-600 hover:text-blue-600">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                    <i data-lucide="presentation" class="h-5 w-5"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900 text-sm">
+                                        Presentación Ciencias Naturales
+                                    </h3>
+                                    <p class="text-xs text-gray-500">
+                                        PowerPoint • 5.2 MB • Actualizado hace 2 semanas
+                                    </p>
+                                </div>
+                                <button class="text-gray-600 hover:text-blue-600">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-100 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
+                                    <i data-lucide="video" class="h-5 w-5"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-medium text-gray-900 text-sm">
+                                        Video Tutorial - Historia
+                                    </h3>
+                                    <p class="text-xs text-gray-500">
+                                        MP4 • 85 MB • Actualizado hace 1 mes
+                                    </p>
+                                </div>
+                                <button class="text-gray-600 hover:text-blue-600">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">
+                            Recursos Populares
+                        </h3>
+                        <div class="space-y-2">
+                            <a href="#" class="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600">
+                                <i data-lucide="book-open" class="h-4 w-4"></i>
+                                <span>Biblioteca Digital</span>
+                            </a>
+                            <a href="#" class="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600">
+                                <i data-lucide="film" class="h-4 w-4"></i>
+                                <span>Videoteca Educativa</span>
+                            </a>
+                            <a href="#" class="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600">
+                                <i data-lucide="puzzle" class="h-4 w-4"></i>
+                                <span>Juegos Didácticos</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Inicializar iconos de Lucide
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-            
-            // Configurar menú de usuario
-            const userMenuBtn = document.getElementById('userMenuBtn');
-            const userMenu = document.getElementById('userMenu');
-            
-            if (userMenuBtn && userMenu) {
-                userMenuBtn.addEventListener('click', function() {
-                    userMenu.classList.toggle('hidden');
-                });
-                
-                // Cerrar menú al hacer clic fuera
-                document.addEventListener('click', function(event) {
-                    if (!userMenuBtn.contains(event.target) && !userMenu.contains(event.target)) {
-                        userMenu.classList.add('hidden');
-                    }
-                });
-            }
-
-            // Inicializar gráficos
-            initCharts();
-        });
-        
-        // Inicializar gráficos con Chart.js
-        function initCharts() {
-            // Gráfico de Rendimiento Académico
-            const rendimientoCtx = document.getElementById('rendimientoChart').getContext('2d');
-            const rendimientoChart = new Chart(rendimientoCtx, {
-                type: 'line',
-                data: {
-                    labels: ['1° Grado', '2° Grado', '3° Grado', '4° Grado', '5° Grado', '6° Grado'],
-                    datasets: [
-                        {
-                            label: 'Promedio General',
-                            data: [14.2, 15.1, 16.3, 15.8, 14.9, 16.5],
-                            borderColor: '#3b82f6',
-                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                            tension: 0.3,
-                            fill: true
-                        },
-                        {
-                            label: 'Matemáticas',
-                            data: [13.5, 14.8, 15.7, 15.2, 14.3, 16.1],
-                            borderColor: '#10b981',
-                            backgroundColor: 'transparent',
-                            tension: 0.3,
-                            borderDash: [5, 5]
-                        },
-                        {
-                            label: 'Lenguaje',
-                            data: [14.8, 15.5, 16.9, 16.2, 15.4, 17.0],
-                            borderColor: '#f59e0b',
-                            backgroundColor: 'transparent',
-                            tension: 0.3,
-                            borderDash: [5, 5]
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        }
-                    },
-                    scales: {
-                        y: {
-                            min: 10,
-                            max: 20
-                        }
-                    }
-                }
+        <script>
+            // Inicializar iconos de Lucide
+            document.addEventListener("DOMContentLoaded", function () {
+                // Inicializar gráficos
+                initCharts();
+                //Total de alumnos
             });
-            
-            // Gráfico de Distribución de Estudiantes
-            const distribucionCtx = document.getElementById('distribucionChart').getContext('2d');
-            const distribucionChart = new Chart(distribucionCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['1° Grado', '2° Grado', '3° Grado', '4° Grado', '5° Grado', '6° Grado'],
-                    datasets: [{
-                        data: [210, 195, 225, 198, 220, 200],
-                        backgroundColor: [
-                            '#3b82f6',
-                            '#10b981',
-                            '#f59e0b',
-                            '#8b5cf6',
-                            '#ec4899',
-                            '#6366f1'
+
+            // Inicializar gráficos con Chart.js
+            function initCharts() {
+                // Gráfico de Rendimiento Académico
+                const rendimientoCtx = document
+                    .getElementById("rendimientoChart")
+                    .getContext("2d");
+                const rendimientoChart = new Chart(rendimientoCtx, {
+                    type: "line",
+                    data: {
+                        labels: [
+                            "1° Grado",
+                            "2° Grado",
+                            "3° Grado",
+                            "4° Grado",
+                            "5° Grado",
+                            "6° Grado",
                         ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                        }
-                    }
-                }
-            });
-        }
-    </script>
+                        datasets: [
+                            {
+                                label: "Promedio General",
+                                data: [14.2, 15.1, 16.3, 15.8, 14.9, 16.5],
+                                borderColor: "#3b82f6",
+                                backgroundColor: "rgba(59, 130, 246, 0.1)",
+                                tension: 0.3,
+                                fill: true,
+                            },
+                            {
+                                label: "Matemáticas",
+                                data: [13.5, 14.8, 15.7, 15.2, 14.3, 16.1],
+                                borderColor: "#10b981",
+                                backgroundColor: "transparent",
+                                tension: 0.3,
+                                borderDash: [5, 5],
+                            },
+                            {
+                                label: "Lenguaje",
+                                data: [14.8, 15.5, 16.9, 16.2, 15.4, 17.0],
+                                borderColor: "#f59e0b",
+                                backgroundColor: "transparent",
+                                tension: 0.3,
+                                borderDash: [5, 5],
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: "top",
+                            },
+                        },
+                        scales: {
+                            y: {
+                                min: 10,
+                                max: 20,
+                            },
+                        },
+                    },
+                });
+
+                // Gráfico de Distribución de Estudiantes (dinámico)
+                fetch("http://localhost:3001/api/estadisticas/grados")
+                    .then(res => res.json())
+                    .then(result => {
+                        const distribucionCtx = document
+                            .getElementById("distribucionChart")
+                            .getContext("2d");
+
+                        new Chart(distribucionCtx, {
+                            type: "doughnut",
+                            data: {
+                                labels: result.labels,
+                                datasets: [
+                                    {
+                                        data: result.data,
+                                        backgroundColor: [
+                                            "#3b82f6",
+                                            "#10b981",
+                                            "#f59e0b",
+                                            "#8b5cf6",
+                                            "#ec4899",
+                                            "#6366f1",
+                                        ],
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: "bottom",
+                                    },
+                                },
+                            },
+                        });
+                    })
+                    .catch(err => {
+                        console.error("❌ Error cargando datos del gráfico de distribución:", err);
+                    });
+            }
+        </script>
 </body>
+
 </html>

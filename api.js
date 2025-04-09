@@ -34,6 +34,58 @@ const gradeFolders = {
   "6": process.env.GRADE_6,
 };
 
+const { guardarCache, leerCache } = require("./cacheService");
+
+//Conteo total de datos del cache
+app.get("/api/total-estudiantes", (req, res) => {
+  const cache = leerCache();
+  res.json({ total: cache.length });
+});
+
+//Conteo por grados para la grafica circular
+app.get("/api/estadisticas/grados", (req, res) => {
+  const { leerCache } = require("./cacheService");
+  const cache = leerCache();
+
+  const conteo = {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+  };
+
+  cache.forEach(est => {
+    const gradoOriginal = String(est.grado || "").trim();
+    const gradoNormalizado = gradoOriginal.replace(/[^1-6]/g, ""); // solo grados 1 a 6
+
+    if (conteo[gradoNormalizado] !== undefined) {
+      conteo[gradoNormalizado]++;
+    } else {
+      console.warn("⚠️ Grado inválido encontrado:", gradoOriginal);
+    }
+  });
+
+  console.log("✅ Conteo por grado:", conteo);
+
+  res.json({
+    success: true,
+    labels: [
+      "1° Grado", "2° Grado", "3° Grado",
+      "4° Grado", "5° Grado", "6° Grado",
+    ],
+    data: [
+      conteo["1"],
+      conteo["2"],
+      conteo["3"],
+      conteo["4"],
+      conteo["5"],
+      conteo["6"],
+    ],
+  });
+});
+
 // Middleware para manejar errores de CORS y obtener datos de Google Sheets
 app.get("/data/:grade/:section", async (req, res) => {
   try {
@@ -251,8 +303,6 @@ app.get("/api/buscar-alumno", (req, res) => {
   res.json({ success: true, resultados });
 });
 
-const { guardarCache, leerCache } = require("./cacheService");
-
 app.get("/api/actualizar-cache", async (req, res) => {
   const alumnos = [];
 
@@ -290,15 +340,15 @@ app.get("/api/actualizar-cache", async (req, res) => {
 });
 
 // Tarea para actualizar el cache cada 12 horas (a las 6am y 6pm)
-cron.schedule("0 6,18 * * *", async () => {
-  try {
-    console.log("🕒 Ejecutando actualización automática del caché...");
-    const res = await axios.get("http://localhost:3001/api/actualizar-cache");
-    console.log("✅", res.data.message);
-  } catch (err) {
-    console.error("❌ Error al actualizar caché automáticamente:", err.message);
-  }
-});
+// cron.schedule("0 6,18 * * *", async () => {
+//   try {
+//     console.log("🕒 Ejecutando actualización automática del caché...");
+//     const res = await axios.get("http://localhost:3001/api/actualizar-cache");
+//     console.log("✅", res.data.message);
+//   } catch (err) {
+//     console.error("❌ Error al actualizar caché automáticamente:", err.message);
+//   }
+// });
 
 app.listen(PORT, () => {
   console.log(`✅ API corriendo en http://localhost:${PORT}`);
