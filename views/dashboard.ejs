@@ -321,7 +321,6 @@
             document.addEventListener("DOMContentLoaded", function () {
                 // Inicializar gráficos
                 initCharts();
-                //Total de alumnos
             });
 
             // Inicializar gráficos con Chart.js
@@ -429,6 +428,18 @@
                     });
             }
         </script>
+        <script>
+            // Actualizar el cache automáticamente al cargar la página
+            document.addEventListener("DOMContentLoaded", async () => {
+                try {
+                    const res = await fetch("/api/actualizar-cache?key=32004SP");
+                    const data = await res.json();
+                    console.log("✅ Cache actualizado:", data.message);
+                } catch (err) {
+                    console.error("❌ No se pudo actualizar el cache automáticamente:", err);
+                }
+            });
+        </script>        
 </body>
 
 </html>
