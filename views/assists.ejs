@@ -433,7 +433,7 @@
             });
 
             try {
-                const res = await fetch('http://localhost:3001/api/asistencia', {
+                const res = await fetch('http://localhost:32004/api/asistencia', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ grado, seccion, fecha, asistencia })
