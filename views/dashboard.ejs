@@ -386,7 +386,8 @@
                 });
 
                 // Gráfico de Distribución de Estudiantes (dinámico)
-                fetch("http://localhost:32004/api/estadisticas/grados")
+                // fetch("http://localhost:8080/api/estadisticas/grados")
+                fetch("/api/estadisticas/grados")
                     .then(res => res.json())
                     .then(result => {
                         const distribucionCtx = document

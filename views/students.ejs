@@ -493,7 +493,8 @@
             }
 
             try {
-                const res = await fetch(`http://localhost:32004/api/buscar-alumno?q=${encodeURIComponent(q)}`);
+                // const res = await fetch(`http://localhost:8080/api/buscar-alumno?q=${encodeURIComponent(q)}`);
+                const res = await fetch(`/api/buscar-alumno?q=${encodeURIComponent(q)}`);
                 const result = await res.json();
 
                 if (!result.success || result.resultados.length === 0) {

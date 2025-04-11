@@ -433,11 +433,16 @@
             });
 
             try {
-                const res = await fetch('http://localhost:32004/api/asistencia', {
+                const res = await fetch('/api/assists', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ grado, seccion, fecha, asistencia })
                 });
+                // const res = await fetch('http://localhost:8080/api/assists', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ grado, seccion, fecha, asistencia })
+                // });
 
                 const faltanEstados = asistencia.filter(a => !["Presente", "Ausente", "Justificado"].includes(a.estado));
 

@@ -1,0 +1,17 @@
+runtime: nodejs20
+
+env_variables:
+  PORT: 8080
+  GRADE_1: "1tXJ_ro0Cbn_HWioRYqAEypnID57OemTq"
+  GRADE_2: "1cJIMCEu8igF01mNk64sBdbwiPqAv4P1B"
+  GRADE_3: "1--pBh9WbrWZUPzGSoHpeQ1bzMi1RRRpw"
+  GRADE_4: "1XwXV3HO0onXZ6ZgHpgrMrnZyh-fH6zlC"
+  GRADE_5: "1HXGS6EbKrS5318WriibTG7n62laaoGam"
+  GRADE_6: "1gxM2lz7T2TovXEMaLtPqT4sHumorGCgV"
+
+handlers:
+  - url: /public
+    static_dir: public
+
+  - url: /.*
+    script: auto
