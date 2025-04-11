@@ -314,16 +314,16 @@
                     <% if (data && data.length > 0) { %>
                         <div class="flex items-center justify-between mt-6">
                             <div class="text-sm text-gray-500">
-                                Mostrando <span id="startRecord">1</span> a <span id="endRecord"><%= Math.min(10, data.length) %></span> de <span id="totalRecords"><%= data.length %></span> registros
+                                Mostrando <span id="startRecord">1</span> a <span id="endRecord"><%= Math.min(20, data.length) %></span> de <span id="totalRecords"><%= data.length %></span> registros
                             </div>
                             <div class="flex items-center space-x-2">
                                 <button id="prevPageBtn" class="px-3 py-1 border rounded-md flex items-center disabled:opacity-50" onclick="prevPage()" disabled>
                                     <i data-lucide="chevron-left" class="h-4 w-4"></i>
                                 </button>
                                 <span class="text-sm">
-                                    Página <span id="currentPage">1</span> de <span id="totalPages"><%= Math.ceil(data.length / 10) %></span>
+                                    Página <span id="currentPage">1</span> de <span id="totalPages"><%= Math.ceil(data.length / 20) %></span>
                                 </span>
-                                <button id="nextPageBtn" class="px-3 py-1 border rounded-md flex items-center <%= data.length <= 10 ? 'disabled:opacity-50' : '' %>" onclick="nextPage()" <%= data.length <= 10 ? 'disabled' : '' %>>
+                                <button id="nextPageBtn" class="px-3 py-1 border rounded-md flex items-center <%= data.length <= 20 ? 'disabled:opacity-50' : '' %>" onclick="nextPage()" <%= data.length <= 20 ? 'disabled' : '' %>>
                                     <i data-lucide="chevron-right" class="h-4 w-4"></i>
                                 </button>
                             </div>
@@ -348,6 +348,9 @@
     </div>
 
     <script>
+        let currentPage = 1;
+        const itemsPerPage = 20; // o el número que desees
+        let filteredRows = [];   // se inicializa en initPagination
 
         // Inicializar paginación
         function initPagination() {
@@ -408,7 +411,7 @@
                 }
             }
         }
-        
+         
         // Página anterior
         function prevPage() {
             if (currentPage > 1) {
@@ -425,44 +428,7 @@
                 updatePagination();
             }
         }
-        
-        // Filtrar tabla
-        function filterTable() {
-            const searchInput = document.getElementById('searchInput');
-            const filter = searchInput.value.toLowerCase();
-
-            const table = document.getElementById('studentsTable');
-            const cards = document.getElementById('studentsCards');
-
-            if (table) {
-                const rows = Array.from(table.querySelectorAll('tbody tr'));
-                
-                filteredRows = rows.filter(row => {
-                    const text = row.textContent.toLowerCase();
-                    return text.includes(filter);
-                });
-
-                // Mostrar u ocultar las filas según el filtro
-                rows.forEach(row => {
-                    const text = row.textContent.toLowerCase();
-                    row.style.display = text.includes(filter) ? "" : "none";
-                });
-
-                // También filtrar tarjetas si están visibles
-                if (cards) {
-                    const cardElements = Array.from(cards.children);
-                    cardElements.forEach(card => {
-                        const text = card.textContent.toLowerCase();
-                        card.style.display = text.includes(filter) ? "" : "none";
-                    });
-                }
-
-                // Reiniciar la paginación
-                currentPage = 1;
-                updatePagination();
-            }
-        }
-        
+         
         // Exportar datos
         function exportData() {
             // Implementar la funcionalidad de exportación
@@ -476,6 +442,34 @@
         //         window.location.href = `/data/${grade}/${section}`;
         //     }
         // }
+
+        function showTab(tabId) {
+            const tableTab = document.getElementById("tableTab");
+            const cardsTab = document.getElementById("cardsTab");
+
+            const tableBtn = document.getElementById("tableTabBtn");
+            const cardsBtn = document.getElementById("cardsTabBtn");
+
+            if (tabId === "tableTab") {
+                tableTab.classList.add("active");
+                cardsTab.classList.remove("active");
+
+                tableBtn.classList.add("bg-blue-600", "text-white");
+                tableBtn.classList.remove("bg-gray-200", "text-gray-700");
+
+                cardsBtn.classList.remove("bg-blue-600", "text-white");
+                cardsBtn.classList.add("bg-gray-200", "text-gray-700");
+            } else {
+                tableTab.classList.remove("active");
+                cardsTab.classList.add("active");
+
+                cardsBtn.classList.add("bg-blue-600", "text-white");
+                cardsBtn.classList.remove("bg-gray-200", "text-gray-700");
+
+                tableBtn.classList.remove("bg-blue-600", "text-white");
+                tableBtn.classList.add("bg-gray-200", "text-gray-700");
+            }
+        }
 
         // Función para cambiar sección conservando grado
         function handleSectionChange(section) {
@@ -528,7 +522,11 @@
                 lucide.createIcons();
             }
         }
-    
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initPagination();
+        });
+
     </script>
 </body>
 </html>

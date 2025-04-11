@@ -386,7 +386,7 @@
       
           data.forEach((row, index) => {
             const numero = row.numero || index + 1;
-            const nombre = row.estudiante || "Desconocido";
+            const nombre = row[1] || "Sin nombre";
       
             tbody.innerHTML += `
               <tr class="border-t hover:bg-gray-50 transition-colors">
