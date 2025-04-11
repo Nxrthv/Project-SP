@@ -170,7 +170,7 @@ app.get("/data/:grade/:section", async (req, res) => {
 });
 
 // Registrar asistencia en la hoja de cálculo
-app.post("/api/asistencia", async (req, res) => {
+app.post("/api/assists", async (req, res) => {
   const { grado, seccion, fecha, asistencia } = req.body;
   try {
     const folderId = gradeFolders[grado];
