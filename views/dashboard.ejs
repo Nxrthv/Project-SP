@@ -432,7 +432,8 @@
             // Actualizar el cache automáticamente al cargar la página
             document.addEventListener("DOMContentLoaded", async () => {
                 try {
-                    const res = await fetch("/api/actualizar-cache?key=32004SP");
+                    // const res = await fetch("/api/actualizar-cache?key=32004SP");
+                    const res = await fetch("/api/actualizar-cache");
                     const data = await res.json();
                     console.log("✅ Cache actualizado:", data.message);
                 } catch (err) {

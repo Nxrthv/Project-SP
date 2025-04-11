@@ -250,10 +250,10 @@ app.get("/api/buscar-alumno", (req, res) => {
 
 // Actualizar cache desde las hojas de cálculo
 app.get("/api/actualizar-cache", async (req, res) => {
-  const clave = req.query.key;
-  if (process.env.NODE_ENV === "production" && clave !== process.env.CACHE_KEY) {
-    return res.status(403).json({ success: false, message: "Acceso denegado" });
-  }
+  // const clave = req.query.key;
+  // if (process.env.NODE_ENV === "production" && clave !== process.env.CACHE_KEY) {
+  //   return res.status(403).json({ success: false, message: "Acceso denegado" });
+  // }
   
   const alumnos = [];
   for (const [grado, folderId] of Object.entries(gradeFolders)) {
