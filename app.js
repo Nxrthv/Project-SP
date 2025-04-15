@@ -9,6 +9,7 @@ const axios = require("axios");
 
 const app = express();
 const PORT = process.env.PORT;
+const response = await axios.get(`${BASE_URL}/api/data/${grade}/${section}`);
 
 // Middleware base
 app.use(cors());
@@ -255,11 +256,13 @@ app.get("/api/actualizar-cache", async (req, res) => {
   //   return res.status(403).json({ success: false, message: "Acceso denegado" });
   // }
   
+  const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
   const alumnos = [];
+
   for (const [grado, folderId] of Object.entries(gradeFolders)) {
     const driveResponse = await drive.files.list({
       q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.spreadsheet'`,
-      fields: "files(id, name)",
+      fields: "files(id, name)" ,
     });
 
     for (const archivo of driveResponse.data.files) {
