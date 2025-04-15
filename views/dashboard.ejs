@@ -435,9 +435,13 @@
                     // const res = await fetch("/api/actualizar-cache?key=32004SP");
                     const res = await fetch("/api/actualizar-cache");
                     const data = await res.json();
-                    console.log("✅ Cache actualizado:", data.message);
+                    if (data.success) {
+                        console.log("✅ Cache actualizado:", data.message);
+                    } else {
+                        console.warn("⚠️ No se pudo actualizar:", data.message);
+                    }
                 } catch (err) {
-                    console.error("❌ No se pudo actualizar el cache automáticamente:", err);
+                    console.error("❌ Error al actualizar el cache automáticamente:", err);
                 }
             });
         </script>        
