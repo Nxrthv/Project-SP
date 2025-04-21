@@ -9,7 +9,7 @@ const axios = require("axios");
 
 const app = express();
 const PORT = process.env.PORT;
-const response = await axios.get(`${BASE_URL}/api/data/${grade}/${section}`);
+// const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 // Middleware base
 app.use(cors());
@@ -256,7 +256,6 @@ app.get("/api/actualizar-cache", async (req, res) => {
   //   return res.status(403).json({ success: false, message: "Acceso denegado" });
   // }
   
-  const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
   const alumnos = [];
 
   for (const [grado, folderId] of Object.entries(gradeFolders)) {
@@ -272,17 +271,17 @@ app.get("/api/actualizar-cache", async (req, res) => {
       try {
         const sheetResponse = await sheets.spreadsheets.values.get({
           spreadsheetId: sheetId,
-          range: "Matriculas!A2:C",
+          range: "Matriculas!A2:E",
         });
 
         const rows = sheetResponse.data.values || [];
         rows.forEach(row => {
-          const nombre = row[1] || "";
-          const dni = row[0] || "";
+          const nombre = (row[1] || "").trim();
+          const dni = (row[0] || "").trim();
           alumnos.push({ nombre, dni, grado, seccion });
         });
       } catch (err) {
-        console.warn(`⚠️ Error en ${grado} ${seccion}:`, err.message);
+        console.warn(`⚠️ Error en hoja "${seccion}" del grado ${grado}:`, err.message);
       }
     }
   }
