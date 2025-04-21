@@ -222,5 +222,23 @@
             }
         });
     </script>
+    <script>
+        // Actualizar el cache automáticamente al cargar la página
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const res = await fetch("/api/actualizar-cache");
+                // const res = await fetch("/api/actualizar-cache?key=32004SP");
+                // const res = await fetch("https://excelapi-454722.rj.r.appspot.com/api/actualizar-cache");
+                const data = await res.json();
+                if (data.success) {
+                    console.log("✅ Cache actualizado:", data.message);
+                } else {
+                    console.warn("⚠️ No se pudo actualizar:", data.message);
+                }
+            } catch (err) {
+                console.error("❌ Error al actualizar el cache automáticamente:", err);
+            }
+        });
+    </script>  
 </body>
 </html>
