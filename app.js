@@ -9,7 +9,7 @@ const axios = require("axios");
 
 const app = express();
 const PORT = process.env.PORT;
-const response = await axios.get(`${BASE_URL}/api/data/${grade}/${section}`);
+// const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 // Middleware base
 app.use(cors());
@@ -26,10 +26,21 @@ const SCOPES = [
   "https://www.googleapis.com/auth/drive",
 ];
 
+const isProd = process.env.NODE_ENV === "production";
+
 const auth = new google.auth.GoogleAuth({
-  keyFile: "excelapi-454722-82e323a4937d.json",
   scopes: SCOPES,
+  ...(isProd
+    ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS) }
+    : { keyFile: "excelapi-454722-82e323a4937d.json" })
 });
+
+if (process.env.NODE_ENV === "production") {
+  const axios = require("axios");
+  axios.get("https://excelapi-454722.rj.r.appspot.com/api/actualizar-cache")
+    .then(res => console.log("✅ Cache inicial actualizado:", res.data.message))
+    .catch(err => console.error("❌ Error actualizando cache en servidor:", err.message));
+}
 
 //
 const sheets = google.sheets({ version: "v4", auth });
@@ -251,12 +262,6 @@ app.get("/api/buscar-alumno", (req, res) => {
 
 // Actualizar cache desde las hojas de cálculo
 app.get("/api/actualizar-cache", async (req, res) => {
-  // const clave = req.query.key;
-  // if (process.env.NODE_ENV === "production" && clave !== process.env.CACHE_KEY) {
-  //   return res.status(403).json({ success: false, message: "Acceso denegado" });
-  // }
-  
-  const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
   const alumnos = [];
 
   for (const [grado, folderId] of Object.entries(gradeFolders)) {
@@ -272,17 +277,17 @@ app.get("/api/actualizar-cache", async (req, res) => {
       try {
         const sheetResponse = await sheets.spreadsheets.values.get({
           spreadsheetId: sheetId,
-          range: "Matriculas!A2:C",
+          range: "Matriculas!A2:E",
         });
 
         const rows = sheetResponse.data.values || [];
         rows.forEach(row => {
-          const nombre = row[1] || "";
-          const dni = row[0] || "";
+          const nombre = (row[1] || "").trim();
+          const dni = (row[0] || "").trim();
           alumnos.push({ nombre, dni, grado, seccion });
         });
       } catch (err) {
-        console.warn(`⚠️ Error en ${grado} ${seccion}:`, err.message);
+        console.warn(`⚠️ Error en hoja "${seccion}" del grado ${grado}:`, err.message);
       }
     }
   }

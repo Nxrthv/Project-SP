@@ -1,7 +1,22 @@
 runtime: nodejs20
+env: standard
 
 env_variables:
   PORT: 8080
+  GOOGLE_CREDENTIALS: |
+    {
+      "type": "service_account",
+      "project_id": "excelapi-454722",
+      "private_key_id": "82e323a4937d4b20b3892d356ad40809eb87ee25",
+      "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCfhxhbFxHak6LB\nPHLWqBkASJQzIhXLJRXoQOaugkaQ31K7KG6VbI1+lQUTVm9reE25StNxxsLAsk3e\nqlc2w/DkFIkRkNGlvzaOk2C4QfrSN3UxI127MXp3Gp53NILdkXLmNaMgwkEbzdo0\nyBCtXwWdDaVhzWIM7YuJgomMhMuq3kvMtUNUrQtCZq3YBoPKDmdfmMUBq6QKuEpU\nRXaVENhlbIKI4D24MyUcohxqiMCtAsVVmKL3f6JjVKcNUcZKynMSEWZK405PlJ2G\n3xLQmDsjG/satt/jAIgWNd5ek0khT+WdLkQ40HByPUvlgQe9apPg6ELjP2K0+2Pz\nWRi/Fg8bAgMBAAECggEAB8NrTAOIuuUJu/L/zl0f2lkDMqSAqwItrr/PJMRHlYVI\ntr2g+WSZqNoCWo6PnYtH57Hcgwzz2AIqsqCs3d1rO65EKAwEJ9dxBZSRKxEK7nAE\neVUJ8AeDDjNywsUAxAear9lXDEu9H2fv1oxl7gn8cUguDt8P29EzmTLhFBWM/nj/\nTAEJaFfluxWqFbtVzXptJpEsGeJJOFNrFcdzQ6g5KbHa0rOyTx8MTZr7622MYs/g\nMsi1Gl7spmCBJmLq2M8FrQqu7ql7OWz2yHYA2yecB2yywE90ZjRQiz+cMMw+2TYy\n8tLX+otVVSwta/P9Rtw8OCisuuFlOzF9ncoFTv6MAQKBgQDKYJ7rFyUX5rJlvl7m\ndu5Uj/tGGMoO8ifYSe/0u1DjIS/oNknOPXFTbLBquIsV4Cu8uJQcUlLQEtjKyo/s\nhkBO5Je5YGK5sXWdcw6jrFaGKDaXxMPU4XnJLrg9yYst0rVH0AulgohLbBndfcWh\nWRfVvrwkcQxrDbvd4m8190Jd8QKBgQDJy/QXRfz5ik7WKzMaehA8rzb3mdA1oq4j\nY5oh7BeLX5tG6Bx0Y/WOvsVDlrBpRdzJCsBBDAW6xZTxHMIuBGO8Ceoovbu4WBzX\n1ElDz6u5xEF3sj2U03LwmSMhZ9UxIT+9nLlMTLR2UjfFgwRKjRW0ynLKQR5o8Z/+\naw50CXGhywKBgCVUp1vkPBJpmrTL5gOLIrF0kbw/bF5Pauwpz1qMhwIuqACkqv6h\nNNtXrD8zZWyWmlrIjYGf6ei54UWfEedmaExlPFuUnQF166UsiSHF83vxxQg/4oPN\nR8LFnHTBTawZNxlVFiDksDGBck/6GE+H+K6T7W6nb8v7j5EBaNRClPpxAoGAZtYv\nICUklC6tmmsNcfK+j45jHq8d8hdjUtmRVLQyE263fN0QkyfVndcORDFo2V0m9LUr\n4Ho1+UZzbqRPOJA4Gz2aPQTjwz/0AvFGHO6Z/uNK0ardwxg2vPHtezqk5JKjHwfd\nTkrQtHOVxGvOJgfcBfQdp4Cj9Ksd89Ou2+dsJx0CgYEAwtSw0Q1Dx49Zf2XAimRO\nTj0Io0ol44hcRxvyeLbmMhadm5VQ1SooLHYA+mmIhh5ZabKozAsKoaqAFdOjFIiU\n2hOQdbRmjYs0w4FQWhdaeOgJQQtW3ELK9ODkoEVPzGPwd6l5x/S4ZMkefRo8j9AG\nk7ePqkvei0BeTVhco7OhhI0=\n-----END PRIVATE KEY-----\n",
+      "client_email": "san-pedro@excelapi-454722.iam.gserviceaccount.com",
+      "client_id": "116172624570671444345",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/san-pedro%40excelapi-454722.iam.gserviceaccount.com",
+      "universe_domain": "googleapis.com"
+    }
   GRADE_1: "1tXJ_ro0Cbn_HWioRYqAEypnID57OemTq"
   GRADE_2: "1cJIMCEu8igF01mNk64sBdbwiPqAv4P1B"
   GRADE_3: "1--pBh9WbrWZUPzGSoHpeQ1bzMi1RRRpw"
@@ -13,7 +28,9 @@ handlers:
   - url: /public
     static_dir: public
 
-  - url: /.*
+  - url: /.*  
     script: auto
+
+instance_class: F2
 
 #gcloud app deploy

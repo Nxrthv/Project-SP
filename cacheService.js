@@ -2,9 +2,10 @@ const fs = require("fs");
 const path = require("path");
 const CACHE_FILE = path.join(__dirname, "alumnos_cache.json");
 
-function guardarCache(datos) {
-  fs.writeFileSync(CACHE_FILE, JSON.stringify(datos, null, 2));
-}
+const guardarCache = (data) => {
+  const fs = require("fs");
+  fs.writeFileSync("cache.json", JSON.stringify(data, null, 2), "utf8"); // sobrescribe el archivo
+};
 
 function leerCache() {
   if (!fs.existsSync(CACHE_FILE)) return [];
