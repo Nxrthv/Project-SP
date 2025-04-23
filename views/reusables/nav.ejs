@@ -123,7 +123,7 @@
                         <i data-lucide="bar-chart-2" class="h-4 w-4"></i>
                         Calificaciones
                     </a>
-                    <a href="/error_404" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                    <a href="/documents" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
                         <%= currentPath === '/documents' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="file-text" class="h-4 w-4"></i>
                         Documentos
@@ -221,24 +221,6 @@
                 });
             }
         });
-    </script>
-    <script>
-        // Actualizar el cache automáticamente al cargar la página
-        document.addEventListener("DOMContentLoaded", async () => {
-            try {
-                const res = await fetch("/api/actualizar-cache");
-                // const res = await fetch("/api/actualizar-cache?key=32004SP");
-                // const res = await fetch("https://excelapi-454722.rj.r.appspot.com/api/actualizar-cache");
-                const data = await res.json();
-                if (data.success) {
-                    console.log("✅ Cache actualizado:", data.message);
-                } else {
-                    console.warn("⚠️ No se pudo actualizar:", data.message);
-                }
-            } catch (err) {
-                console.error("❌ Error al actualizar el cache automáticamente:", err);
-            }
-        });
-    </script>  
+    </script> 
 </body>
 </html>

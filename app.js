@@ -32,7 +32,7 @@ const auth = new google.auth.GoogleAuth({
   scopes: SCOPES,
   ...(isProd
     ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS) }
-    : { keyFile: "excelapi-454722-82e323a4937d.json" })
+    : { keyFile: "excelapi-454722-acc195c84287.json" })
 });
 
 if (process.env.NODE_ENV === "production") {
@@ -87,6 +87,12 @@ app.get("/students", (req, res) => {
 
 app.get("/assists", (req, res) => {
   res.render("assists", {
+    data: null,
+  });
+});
+
+app.get("/documents", (req, res) => {
+  res.render("documents", {
     data: null,
   });
 });
@@ -252,28 +258,38 @@ app.post("/api/assists", async (req, res) => {
 
 // Búsqueda global de estudiantes en el cache
 app.get("/api/buscar-alumno", (req, res) => {
-  const q = (req.query.q || "").toUpperCase().trim();
+  const q = (req.query.q || "").trim().toUpperCase();
   if (!q) return res.status(400).json({ success: false, message: "Búsqueda vacía" });
 
   const cache = leerCache();
-  const resultados = cache.filter(a => a.nombre.toUpperCase().includes(q) || a.dni.includes(q));
+
+  const resultados = [];
+  const encontrados = new Set(); // Evitar duplicados por DNI
+
+  for (const alumno of cache) {
+    const nombre = alumno.nombre.toUpperCase();
+    const dni = alumno.dni;
+
+    if ((nombre.includes(q) || dni.includes(q)) && !encontrados.has(dni)) {
+      resultados.push(alumno);
+      encontrados.add(dni);
+    }
+
+    if (resultados.length >= 50) break; // Limitar resultados
+  }
+
   res.json({ success: true, resultados });
 });
 
 // Actualizar cache desde las hojas de cálculo
 app.get("/api/actualizar-cache", async (req, res) => {
-  // const clave = req.query.key;
-  // if (process.env.NODE_ENV === "production" && clave !== process.env.CACHE_KEY) {
-  //   return res.status(403).json({ success: false, message: "Acceso denegado" });
-  // }
-  
-  const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
   const alumnos = [];
+  const vistos = new Set(); // Evitar duplicados
 
   for (const [grado, folderId] of Object.entries(gradeFolders)) {
     const driveResponse = await drive.files.list({
       q: `'${folderId}' in parents and mimeType='application/vnd.google-apps.spreadsheet'`,
-      fields: "files(id, name)" ,
+      fields: "files(id, name)",
     });
 
     for (const archivo of driveResponse.data.files) {
@@ -283,22 +299,29 @@ app.get("/api/actualizar-cache", async (req, res) => {
       try {
         const sheetResponse = await sheets.spreadsheets.values.get({
           spreadsheetId: sheetId,
-          range: "Matriculas!A2:E",
+          range: "Matriculas!A2:E", // A: DNI, B: Nombre
         });
 
         const rows = sheetResponse.data.values || [];
         rows.forEach(row => {
-          const nombre = (row[1] || "").trim();
           const dni = (row[0] || "").trim();
-          alumnos.push({ nombre, dni, grado, seccion });
+          const nombre = (row[1] || "").trim();
+          const clave = `${dni}-${grado}-${seccion}`;
+
+          // Solo agregar si no existe ya esta clave única
+          if (dni && nombre && !vistos.has(clave)) {
+            vistos.add(clave);
+            alumnos.push({ nombre, dni, grado, seccion });
+          }
         });
       } catch (err) {
         console.warn(`⚠️ Error en hoja "${seccion}" del grado ${grado}:`, err.message);
       }
     }
   }
+
   guardarCache(alumnos);
-  res.json({ success: true, message: `Se guardaron ${alumnos.length} registros en caché.` });
+  res.json({ success: true, message: `✅ Se guardaron ${alumnos.length} registros únicos en caché.` });
 });
 
 // Iniciar servidor

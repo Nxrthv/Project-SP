@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Documentos - Sistema de Gestión Académica</title>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <%- include("reusables/nav") %>
+    <!-- Contenido Principal -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Encabezado -->
+        <div class="mb-6">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Gestión de Documentos</h1>
+            <p class="text-gray-600 mt-1">Genera, gestiona y descarga documentos oficiales</p>
+        </div>
+
+        <!-- Contenido Principal -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Panel Izquierdo - Tipos de Documentos -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Tipos de Documentos</h2>
+
+                    <!-- Lista de Documentos -->
+                    <div class="space-y-2">
+                        <div class="document-card bg-blue-50 border border-blue-100 rounded-lg p-3 cursor-pointer"
+                            onclick="mostrarFormulario('constancia-vacante')">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+                                    <i data-lucide="file-check" class="h-5 w-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">Constancia de Vacante</h3>
+                                    <p class="text-xs text-gray-500">Documento que certifica disponibilidad de vacante
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card bg-white border border-gray-100 rounded-lg p-3 cursor-pointer"
+                            onclick="mostrarFormulario('constancia-estudios')">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                    <i data-lucide="file-text" class="h-5 w-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">Constancia de Estudios</h3>
+                                    <p class="text-xs text-gray-500">Documento que certifica la matrícula actual</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-card bg-white border border-gray-100 rounded-lg p-3 cursor-pointer"
+                            onclick="mostrarFormulario('resolucion-traslado')">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 flex-shrink-0">
+                                    <i data-lucide="file-symlink" class="h-5 w-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">Resolución de Traslado</h3>
+                                    <p class="text-xs text-gray-500">Documento oficial para traslado de estudiantes
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-card bg-white border border-gray-100 rounded-lg p-3 cursor-pointer"
+                            onclick="mostrarFormulario('certificado-notas')">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 flex-shrink-0">
+                                    <i data-lucide="file-bar-chart" class="h-5 w-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">Certificado de Notas</h3>
+                                    <p class="text-xs text-gray-500">Documento oficial con calificaciones del
+                                        estudiante</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-card bg-white border border-gray-100 rounded-lg p-3 cursor-pointer"
+                            onclick="mostrarFormulario('constancia-conducta')">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 flex-shrink-0">
+                                    <i data-lucide="file-heart" class="h-5 w-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">Constancia de Conducta</h3>
+                                    <p class="text-xs text-gray-500">Documento que certifica comportamiento del
+                                        estudiante</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-card bg-white border border-gray-100 rounded-lg p-3 cursor-pointer"
+                            onclick="mostrarFormulario('documento-personalizado')">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-10 w-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 flex-shrink-0">
+                                    <i data-lucide="file-plus" class="h-5 w-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">Documento Personalizado</h3>
+                                    <p class="text-xs text-gray-500">Crea un documento con formato personalizado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentos Recientes -->
+                <!-- <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Documentos Recientes</h2>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-3">
+                        <div class="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
+                            <i data-lucide="file-text" class="h-4 w-4"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-medium text-gray-900">Constancia de Estudios - María López</h3>
+                            <p class="text-xs text-gray-500">Generado hace 2 horas</p>
+                        </div>
+                        <button class="text-gray-400 hover:text-blue-600">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-3">
+                        <div class="h-8 w-8 rounded-lg bg-green-100 flex items-center justify-center text-green-600 flex-shrink-0">
+                            <i data-lucide="file-check" class="h-4 w-4"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-medium text-gray-900">Constancia de Vacante - Carlos Rodríguez</h3>
+                            <p class="text-xs text-gray-500">Generado ayer</p>
+                        </div>
+                        <button class="text-gray-400 hover:text-blue-600">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <div class="h-8 w-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600 flex-shrink-0">
+                            <i data-lucide="file-bar-chart" class="h-4 w-4"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-medium text-gray-900">Certificado de Notas - Pedro Gómez</h3>
+                            <p class="text-xs text-gray-500">Generado hace 3 días</p>
+                        </div>
+                        <button class="text-gray-400 hover:text-blue-600">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+            </div>
+
+            <!-- Panel Derecho - Formulario y Vista Previa -->
+            <div class="lg:col-span-2">
+                <!-- Formularios (solo se muestra uno a la vez) -->
+                <div>
+                    <div id="constancia-vacante"
+                        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-lg font-semibold text-gray-800">Constancia de Vacante</h2>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-500">ID: DOC-2025-32004</span>
+                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Oficial</span>
+                            </div>
+                        </div>
+    
+                        <div class="grid grid-cols-1 md:grid-cols-1">
+                            <!-- Columna Izquierda - Formulario -->
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-700 mb-4">Información del Estudiante</h3>
+                                <!-- Datos del Estudiante -->
+                                <div class="space-y-4">
+                                        <div class="grid grid-cols-3 gap-3">
+                                            <div class="col-span-1">
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Apellido Paterno</label>
+                                                <input id="lastname1" name="lastname1" type="text"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Apellido Materno</label>
+                                                <input id="lastname2" name="lastname2" type="text"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                            </div>
+                                            <div class="col-span-1">
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                                                <input id="name" name="name" type="text"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-3 gap-3">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">DNI</label>
+                                                <input id="dni" name="dni" type="text" placeholder="DNI del Estudiante"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Nivel Educativo</label>
+                                                <select id="nivel" name="nivel"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option selected>-- Seleccionar --</option>
+                                                    <option value="Inicial">Inicial</option>
+                                                    <option value="Primaria">Primaria</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Turno</label>
+                                                <select id="turno" name="turno"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option selected>-- Seleccionar --</option>
+                                                    <option value="Mañana">Mañana</option>
+                                                    <option value="Tarde">Tarde</option>
+                                                </select>
+                                            </div>
+                                        </div>
+    
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Grado</label>
+                                                <select id="grade" name="grade"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option selected>-- Seleccione el Grado de Ingreso --</option>
+                                                    <option value="1º Grado">1° Grado</option>
+                                                    <option value="2º Grado">2° Grado</option>
+                                                    <option value="3º Grado">3° Grado</option>
+                                                    <option value="4º Grado">4° Grado</option>
+                                                    <option value="5º Grado">5° Grado</option>
+                                                    <option value="6º Grado">6° Grado</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Sección</label>
+                                                <select id="section" name="section"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option selected>-- Seleccione la Seccion de Ingreso --</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="E">E</option>
+                                                    <option value="F">F</option>
+                                                    <option value="G">G</option>
+                                                    <option value="H">H</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                </div>
+                                <h3 class="text-sm font-medium text-gray-700 mt-6 mb-4">Información del Documento</h3>
+                                <div class="space-y-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de
+                                                    Emisión</label>
+                                                <input id="date" name="date" type="date"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Firmante</label>
+                                                <select id="signature" name="signature"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                                    <option value="Fabian Leon Dionicio Cirilo" selected>Director - Fabian Leon Dionicio Cirilo</option>
+                                                    <option>Subdirector - María Rodríguez López</option>
+                                                    <option>Secretario - Carlos Martínez Soto</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-3 gap-4">
+                                            <div class="col-span-2">
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Observaciones
+                                                    (opcional)</label>
+                                                <textarea rows="3" placeholder="Ingrese observaciones adicionales..."
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                            </div>
+                                            <div class="content-center">
+                                                <button onclick="datosVacante()" class="bg-blue-600 h-10 text-white py-1 px-2 rounded-lg hover:bg-blue-700">
+                                                    📃 Generar Documento
+                                                </button>  
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Los demás formularios estarían ocultos inicialmente -->
+                    <div id="constancia-estudios"
+                        class="hidden bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-lg font-semibold text-gray-800">Constancia de Estudios</h2>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-500">ID: DOC-2025-32004</span>
+                                <span class="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800">Oficial</span>
+                            </div>
+                        </div>
+    
+                        <div class="grid grid-cols-1 md:grid-cols-1">
+                            <!-- Columna Izquierda - Formulario -->
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-700 mb-4">Información del Estudiante</h3>
+                                <!-- Buscador de Estudiante -->
+                                <div class="w-full mx-auto relative">
+                                    <div class="relative">
+                                      <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" style="width: 18px; height: 18px;"></i>
+                                      <input
+                                        type="text"
+                                        id="globalSearch"
+                                        placeholder="Nombre, apellido o DNI..."
+                                        class="w-full px-4 py-2 pl-10 border rounded-lg shadow bg-white"
+                                        oninput="buscarAlumnoGlobal()"
+                                      />
+                                    </div>
+                                  
+                                    <ul id="resultadosBusqueda" class="mt-4 space-y-2"></ul>
+                                </div>  
+
+                                <!-- Datos del Estudiante -->
+                                <div class="space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-1">Apellidos y Nombres</label>
+                                            <input id="name1" name="name1" type="text"
+                                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                        </div>
+
+                                        <div class="grid grid-cols-3 gap-3">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">DNI</label>
+                                                <input id="dni1" name="dni1" type="text" placeholder="DNI del Estudiante"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Nivel Educativo</label>
+                                                <select id="nivel1" name="nivel1"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option>-- Seleccionar --</option>
+                                                    <option value="Inicial">Inicial</option>
+                                                    <option value="Primaria">Primaria</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Codigo Modular</label>
+                                                <select id="codm" name="codm"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required disabled>
+                                                    <option selected>-- --</option>
+                                                    <option value="1449909">1449909</option>
+                                                    <option value="0288399">0288399</option>
+                                                </select>
+                                            </div>
+                                        </div>
+    
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Grado</label>
+                                                <select id="grade1" name="grade1"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option selected>-- Seleccione el Grado de Ingreso --</option>
+                                                    <option value="1">1° Grado</option>
+                                                    <option value="2">2° Grado</option>
+                                                    <option value="3">3° Grado</option>
+                                                    <option value="4">4° Grado</option>
+                                                    <option value="5">5° Grado</option>
+                                                    <option value="6">6° Grado</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Sección</label>
+                                                <select id="section1" name="section1"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                                    <option selected>-- Seleccione la Seccion de Ingreso --</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="E">E</option>
+                                                    <option value="F">F</option>
+                                                    <option value="G">G</option>
+                                                    <option value="H">H</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                </div>
+                                <h3 class="text-sm font-medium text-gray-700 mt-6 mb-4">Información del Documento</h3>
+                                <div class="space-y-4">
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de
+                                                    Emisión</label>
+                                                <input id="date1" name="date1" type="date"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-1">Firmante</label>
+                                                <select id="signature" name="signature"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                                    <option value="Fabian Leon Dionicio Cirilo" selected>Director - Fabian Leon Dionicio Cirilo</option>
+                                                    <option>Subdirector - María Rodríguez López</option>
+                                                    <option>Secretario - Carlos Martínez Soto</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="content-center">
+                                            <button onclick="datosEstudios()" class="bg-blue-600 h-10 text-white py-1 px-2 rounded-lg hover:bg-blue-700">
+                                                📃 Generar Documento
+                                            </button>  
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="resolucion-traslado"
+                        class="hidden bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                        <!-- Contenido del formulario de resolución de traslado -->
+                    </div>
+
+                    <div id="certificado-notas"
+                        class="hidden bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                        <!-- Contenido del formulario de certificado de notas -->
+                    </div>
+
+                    <div id="constancia-conducta"
+                        class="hidden bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                        <!-- Contenido del formulario de constancia de conducta -->
+                    </div>
+
+                    <div id="documento-personalizado"
+                        class="hidden bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+                        <!-- Contenido del formulario de documento personalizado -->
+                    </div>
+
+                    <!-- Información Adicional -->
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mt-6">
+                        <h2 class="text-lg font-semibold text-gray-800 mb-4">Información Adicional</h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-700 mb-3">Instrucciones</h3>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle"
+                                            class="h-5 w-5 text-green-500 flex-shrink-0"></i>
+                                        <span>Selecciona el tipo de documento que deseas generar</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle"
+                                            class="h-5 w-5 text-green-500 flex-shrink-0"></i>
+                                        <span>Completa todos los campos requeridos en el formulario</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle"
+                                            class="h-5 w-5 text-green-500 flex-shrink-0"></i>
+                                        <span>Verifica la vista previa antes de generar el documento final</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle"
+                                            class="h-5 w-5 text-green-500 flex-shrink-0"></i>
+                                        <span>Puedes descargar, imprimir o enviar por correo el documento
+                                            generado</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-700 mb-3">Consideraciones</h3>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="alert-circle"
+                                            class="h-5 w-5 text-amber-500 flex-shrink-0"></i>
+                                        <span>Los documentos generados tienen validez oficial y llevan un código de
+                                            verificación</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="alert-circle"
+                                            class="h-5 w-5 text-amber-500 flex-shrink-0"></i>
+                                        <span>Cada documento generado queda registrado en el sistema para futuras
+                                            consultas</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="alert-circle"
+                                            class="h-5 w-5 text-amber-500 flex-shrink-0"></i>
+                                        <span>Las plantillas pueden ser personalizadas desde la sección de
+                                            configuración</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Función para mostrar el formulario seleccionado
+            function mostrarFormulario(id) {
+                // Ocultar todos los formularios
+                document.querySelectorAll('[id^="constancia-"], [id^="resolucion-"], [id^="certificado-"], [id^="documento-"]').forEach(form => {
+                    form.classList.add('hidden');
+                });
+                // Mostrar el formulario seleccionado
+                document.getElementById(id).classList.remove('hidden');
+                // Cambiar el estilo de las tarjetas
+                document.querySelectorAll('.document-card').forEach(card => {
+                    card.classList.remove('bg-blue-50', 'border-blue-100');
+                    card.classList.add('bg-white', 'border-gray-100');
+                });
+                // Resaltar la tarjeta seleccionada
+                const selectedCard = document.querySelector(`.document-card[onclick="mostrarFormulario('${id}')"]`);
+                if (selectedCard) {
+                    selectedCard.classList.remove('bg-white', 'border-gray-100');
+                    selectedCard.classList.add('bg-blue-50', 'border-blue-100');
+                }
+            }
+
+            // Funcion para buscar un alumno entre todos los grados y secciones desde api.js usando el cache
+            async function buscarAlumnoGlobal() {
+                const q = document.getElementById("globalSearch").value.trim();
+
+                const lista = document.getElementById("resultadosBusqueda");
+                lista.innerHTML = "";
+
+                if (q.length < 3) {
+                    lista.innerHTML = "<li class='py-3 px-4 text-gray-500 text-sm flex items-center gap-2'><i data-lucide='search' class='h-4 w-4'></i>Escribe al menos 3 caracteres...</li>";
+                    lucide.createIcons();
+                    return;
+                }
+
+                try {
+                    const res = await fetch(`/api/buscar-alumno?q=${encodeURIComponent(q)}`);
+                    const result = await res.json();
+
+                    if (!result.success || result.resultados.length === 0) {
+                        lista.innerHTML = "<li class='py-3 px-4 text-amber-600 text-sm flex items-center gap-2'><i data-lucide='alert-circle' class='h-4 w-4'></i>No se encontraron coincidencias</li>";
+                        lucide.createIcons();
+                        return;
+                    }
+
+                    result.resultados.forEach(item => {
+                        const li = document.createElement("li");
+                        li.className = "border-b last:border-b-0 hover:bg-blue-50 transition-colors cursor-pointer";
+                        li.innerHTML = `
+                            <div class="py-3 px-4">
+                                <div class="font-medium text-gray-900">${item.nombre}</div>
+                                <div class="flex flex-wrap gap-x-4 mt-1 text-xs text-gray-500">
+                                    <span>DNI: ${item.dni}</span>
+                                    <span>Grado ${item.grado} "${item.seccion}"</span>
+                                </div>
+                            </div>
+                        `;
+
+                        // ✅ evento para autocompletar
+                        li.addEventListener("click", () => {
+                            autocompletarFormulario(item);
+                            lista.innerHTML = ""; // limpia la lista al seleccionar
+                            document.getElementById("globalSearch").value = ""; // limpia el input
+                        });
+
+                        lista.appendChild(li);
+                    });
+                } 
+                catch (error) {
+                    console.error("❌ Error en búsqueda global:", error);
+                    lista.innerHTML = "<li class='py-3 px-4 text-red-600 text-sm flex items-center gap-2'><i data-lucide='alert-triangle' class='h-4 w-4'></i>Error al buscar</li>";
+                    lucide.createIcons();
+                }
+            }
+
+            function autocompletarFormulario(item) {
+                document.getElementById("name1").value = item.nombre || "";
+                document.getElementById("dni1").value = item.dni || "";
+                document.getElementById("grade1").value = item.grado || "";
+                document.getElementById("section1").value = item.seccion || "";
+            }
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const nivelSelect = document.getElementById("nivel1");
+              const codmSelect = document.getElementById("codm");
+            
+              const codigosPorNivel = {
+                "Inicial": "1449909",
+                "Primaria": "0288399"
+              };
+            
+              nivelSelect.addEventListener("change", () => {
+                const nivel = nivelSelect.value;
+            
+                // Selecciona automáticamente el código asociado
+                if (codigosPorNivel[nivel]) {
+                  codmSelect.value = codigosPorNivel[nivel];
+                } else {
+                  codmSelect.value = ""; // o "-- --" si usas ese valor
+                }
+              });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const hoy = new Date();
+              const yyyy = hoy.getFullYear();
+              const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+              const dd = String(hoy.getDate()).padStart(2, '0');
+              const fechaActual = `${yyyy}-${mm}-${dd}`;
+            
+              // Aplica la fecha actual a todos los inputs tipo date
+              document.querySelectorAll('input[type="date"]').forEach(input => {
+                if (!input.value) input.value = fechaActual;
+              });
+            });
+        </script>                     
+        <script>
+           function datosVacante() {
+                const dni = document.getElementById("dni").value;
+                const lastname1 = document.getElementById("lastname1").value;
+                const lastname2 = document.getElementById("lastname2").value;
+                const name = document.getElementById("name").value;
+                const grado = document.getElementById("grade").value;
+                const seccion = document.getElementById("section").value;
+                const nivel = document.getElementById("nivel").value;
+                const turno = document.getElementById("turno").value;
+                const director = document.getElementById("signature").value;
+                const fecha = document.getElementById("date").value;
+
+                const datos = {
+                    dni,
+                    lastname1,
+                    lastname2,
+                    name,
+                    grado,
+                    seccion,
+                    nivel,
+                    turno,
+                    director,
+                    fecha
+                };
+
+                generarCV(datos);
+            }
+
+            function datosEstudios() {
+                const dni = document.getElementById("dni1").value;
+                const name = document.getElementById("name1").value;
+                const grado = document.getElementById("grade1").value;
+                const seccion = document.getElementById("section1").value;
+                const nivel = document.getElementById("nivel1").value;
+                const codm = document.getElementById("codm").value;
+                const director = document.getElementById("signature").value;
+                const fecha = document.getElementById("date").value;
+
+                const datos = {
+                    dni,
+                    name,
+                    grado,
+                    seccion,
+                    nivel,
+                    codm,
+                    director,
+                    fecha
+                };
+
+                generarCE(datos);
+            }
+        </script>
+        <script src="/js/CV.js"></script>
+        <script src="/js/CE.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.15/jspdf.plugin.autotable.min.js"></script>
+        
+</body>
+
+</html>
