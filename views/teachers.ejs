@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Docentes - Sistema de Gestión Académica</title>
+</head>
+<body>
+    <%- include ("reusables/nav.ejs") %>
+
+    <!-- Contenido Principal - Panel de Docentes -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">Docentes</h1>
+                <p class="text-gray-600 mt-1">Gestiona la información de los docentes de la institución</p>
+            </div>
+            <button id="newTeacherBtn" class="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center">
+                <i data-lucide="plus" class="mr-2 h-4 w-4"></i> Nuevo Docente
+            </button>
+        </div>
+
+        <!-- Tarjeta de Estadísticas -->
+        <div class="bg-white rounded-lg border shadow-sm mb-6">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold">Estadísticas</h2>
+                <p class= "text-gray-500">Resumen de la plana docente</p>
+            </div>
+            <div class="p-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <p class= "text-blue-600">Total Docentes</p>
+                        <p class="text-2xl font-bold"><%= teachers.length %></p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-100">
+                        <p class= "text-green-600">Turno Mañana</p>
+                        <p class="text-2xl font-bold"><%= teachers.filter(t => t.turno === "Mañana").length %></p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
+                        <p class= "text-amber-600">Turno Tarde</p>
+                        <p class="text-2xl font-bold"><%= teachers.filter(t => t.turno === "Tarde").length %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Tabla de Docentes -->
+        <div class="bg-white rounded-lg border shadow-sm">
+            <div class="p-4 border-b">
+                <div class="flex flex-col md:flex-row justify-between md:items-center gap-4">
+                    <div class="flex-1 max-w-md">
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-2.5 top-3 h-4 w-4 text-gray-500"></i>
+                            <input 
+                                type="search" 
+                                id="searchInput"
+                                placeholder="Buscar por nombre, DNI o especialidad..." 
+                                class="w-full pl-8 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            >
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50">
+                            <i data-lucide="filter" class="h-4 w-4"></i>
+                            Filtrar
+                            <i data-lucide="chevron-down" class="h-3 w-3 opacity-50"></i>
+                        </button>
+                        <button class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                            Exportar
+                        </button>
+                        <button class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50">
+                            <i data-lucide="upload" class="h-4 w-4"></i>
+                            Importar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="rounded-md border shadow-sm overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 text-center">#</th>
+                                <th class="px-4 py-3 text-center">Nombre</th>
+                                <th class="px-4 py-3 text-center">Cargo</th>
+                                <th class="px-4 py-3 text-center whitespace-nowrap">Edad/Grado</th>
+                                <th class="px-4 py-3 text-center whitespace-nowrap">Aula/Sección</th>
+                                <th class="px-4 py-3 text-center">Turno</th>
+                                <th class="px-4 py-3 text-center">Acciones</th>
+                                <!-- <th class="px-4 py-3 text-center">DNI</th>
+                                <th class="px-4 py-3 text-center">Celular</th>
+                                <th class="px-4 py-3 text-center">Correo</th>
+                                <th class="px-4 py-3 text-center">Estado</th>
+                                <th class="px-4 py-3 text-center">Comision</th> -->
+                            </tr>
+                        </thead>
+                        <tbody id="teachersTableBody">
+                            <% teachers.forEach(function(teacher) { %>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-center"><%= teacher.id %></td>
+                                    <td class="px-4 py-3 whitespace-nowrap"><%= teacher.nombre %></td>
+                                    <td class="px-4 py-3 text-center whitespace-nowrap"><%= teacher.cargo %></td>
+                                    <td class="px-4 py-3 text-center"><%= teacher.grado %></td>
+                                    <td class="px-4 py-3 text-center"><%= teacher.seccion %></td>
+                                    <td class="px-4 py-3 text-center">
+                                        <% if (teacher.turno === "Mañana") { %>
+                                            <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-green-100 text-green-800 border-green-200">
+                                                <%= teacher.turno %>
+                                            </span>
+                                        <% } else if (teacher.turno === "Tarde") { %>
+                                            <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 border-amber-200">
+                                                <%= teacher.turno %>
+                                            </span>
+                                        <% } %>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button 
+                                          class="edit-teacher-btn px-2 py-1 ml-2 text-sm text-blue-600 hover:underline"
+                                          data-id="<%= teacher.id %>">
+                                          Editar
+                                        </button>
+                                    </td>                                      
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>   
+                
+                <div id="teacherDetailsModal" class="fixed inset-0 z-50 hidden">
+                    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+                        <div class="fixed left-1/2 top-1/2 transform m-6 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-xl z-50">
+                        
+                        <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Datos del Docente</h2>
+                        <button id="closeModalBtn" class="text-gray-500 hover:text-red-500">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                        </div>
+
+                        <form id="teacherForm" class="space-y-4">
+                        <input type="hidden" id="docenteFila" />
+
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                        
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Nombre: </span>
+                                <input type="text" id="docenteNombre" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Cargo: </span>
+                                <input type="text" id="docenteCargo" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Grado: </span>
+                                <input type="text" id="docenteGrado" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Sección: </span>
+                                <input type="text" id="docenteSeccion" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Turno: </span>
+                                <input type="text" id="docenteTurno" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">DNI: </span>
+                                <input type="text" id="docenteDNI" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Teléfono: </span>
+                                <input type="text" id="docenteTelefono" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Correo: </span>
+                                <input type="email" id="docenteCorreo" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-1 text-sm">
+                                <span class="text-sm text-gray-700">Estado: </span>
+                                <input type="text" id="docenteEstado" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
+                            </div>
+
+                            <div class="col-span-2 text-sm">
+                                <span class="text-sm text-gray-700">Comisión: </span>
+                                <textarea id="docenteComision" class="input w-full mt-1 border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" rows="3"></textarea>
+                            </div>
+                        </div>
+                    
+                        </form>
+
+                        <div class="flex justify-end mt-6 gap-2">
+                        <button id="closeModalBtnFooter" type="button" class="px-4 py-2 border rounded-md text-sm text-gray-600 hover:bg-gray-100">
+                            Cancelar
+                        </button>
+                        <button id="saveTeacherBtn" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
+                            Guardar Cambios
+                        </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end space-x-2 py-4">
+                    <div class="flex-1 text-gray-500">
+                        Mostrando <span class="" id="teachersShown"><%= teachers.length %></span> de 
+                        <span class=""><%= teachers.length %></span> docentes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.teachersData = <%- JSON.stringify(teachers || []) %>;
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const searchInput = document.getElementById("searchInput");
+          const tableRows = document.querySelectorAll("#teachersTableBody tr");
+      
+          searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+      
+            tableRows.forEach(row => {
+              const rowText = row.textContent.toLowerCase();
+              row.style.display = rowText.includes(query) ? "" : "none";
+            });
+          });
+          
+          const modal = document.getElementById("teacherDetailsModal");
+          const closeModalBtns = document.querySelectorAll("#closeModalBtn, #closeModalBtnFooter");
+
+            // Cerrar modal
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    modal.classList.add("hidden");
+                });
+            });
+
+            // Botones de edición
+            document.querySelectorAll(".edit-teacher-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const id = parseInt(btn.dataset.id);
+                    const docente = window.teachersData.find(d => d.id === id); // datos precargados
+
+                    if (docente) {
+                    document.getElementById("docenteFila").value = docente.id;
+                    document.getElementById("docenteNombre").value = docente.nombre;
+                    document.getElementById("docenteCargo").value = docente.cargo;
+                    document.getElementById("docenteGrado").value = docente.grado;
+                    document.getElementById("docenteSeccion").value = docente.seccion;
+                    document.getElementById("docenteTurno").value = docente.turno;
+                    document.getElementById("docenteDNI").value = docente.dni;
+                    document.getElementById("docenteTelefono").value = docente.telefono;
+                    document.getElementById("docenteCorreo").value = docente.correo;
+                    document.getElementById("docenteEstado").value = docente.estado;
+                    document.getElementById("docenteComision").value = docente.comision;
+
+                    modal.classList.remove("hidden");
+                }
+            });
+          });
+        });
+        
+    </script>
+    <script>
+        document.getElementById("saveTeacherBtn").addEventListener("click", async () => {
+            const fila = document.getElementById("docenteFila").value;
+            const data = {
+                fila: parseInt(fila),
+                nombre: document.getElementById("docenteNombre").value.trim(),
+                cargo: document.getElementById("docenteCargo").value.trim(),
+                grado: document.getElementById("docenteGrado").value.trim(),
+                seccion: document.getElementById("docenteSeccion").value.trim(),
+                turno: document.getElementById("docenteTurno").value.trim(),
+                dni: document.getElementById("docenteDNI").value.trim(),
+                telefono: document.getElementById("docenteTelefono").value.trim(),
+                correo: document.getElementById("docenteCorreo").value.trim(),
+                estado: document.getElementById("docenteEstado").value.trim(),
+                comision: document.getElementById("docenteComision").value.trim()
+            };
+        
+            try {
+                const res = await fetch("/api/teachers/edit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+        
+                const result = await res.json();
+                if (result.success) {
+                    alert("✅ Docente actualizado correctamente");
+                    location.reload(); // o actualiza manualmente la fila modificada
+                } else {
+                    alert("⚠️ No se pudo actualizar: " + result.message);
+                }
+            } catch (error) {
+                console.error("❌ Error al guardar docente:", error);
+                alert("Error de conexión con el servidor");
+            }
+        });
+    </script>
+        
+</body>
+</html>

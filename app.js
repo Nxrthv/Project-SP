@@ -1,5 +1,7 @@
-// 
 require("dotenv").config();
+// const { client_email } = require("./excelapi-454722-42c2bee22cff.json");
+// console.log("Cuenta de servicio usada:", client_email);
+
 const express = require("express");
 const path = require("path");
 const { google } = require("googleapis");
@@ -32,7 +34,7 @@ const auth = new google.auth.GoogleAuth({
   scopes: SCOPES,
   ...(isProd
     ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS) }
-    : { keyFile: "excelapi-454722-acc195c84287.json" })
+    : { keyFile: "excelapi-454722-42c2bee22cff.json" })
 });
 
 if (process.env.NODE_ENV === "production") {
@@ -84,6 +86,12 @@ app.get("/students", (req, res) => {
     error: null,
   });
 });
+
+// app.get("/teachers", (req, res) => {
+//   res.render("teachers", {
+//     data: null,
+//   });
+// });
 
 app.get("/assists", (req, res) => {
   res.render("assists", {
@@ -187,6 +195,72 @@ app.get("/data/:grade/:section", async (req, res) => {
   }
 });
 
+// Obtener datos de docentes desde Google Sheets
+app.get("/teachers", async (req, res) => {
+  try {
+    const sheetId = process.env.TEACHERS;
+
+    if (!sheetId) {
+      return res.render("teachers", { teachers: [] });
+    }
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: sheetId,
+      range: "Datos!A2:K",
+    });
+
+    const values = response.data.values || [];
+
+    const teachers = values.map((row, index) => ({
+      id: index + 1,
+      nombre: row[1] || "",
+      cargo: row[2] || "",
+      grado: row[3] || "",
+      seccion: row[4] || "",
+      turno: row[5] || "",
+      dni: row[6] || "",
+      telefono: row[7] || "",
+      correo: row[8] || "",
+      estado: row[9] || "",
+      comision: row[10] || "",
+    }));
+
+    res.render("teachers", { teachers });
+  } catch (error) {
+    console.error("❌ Error al obtener docentes:", error.message);
+    res.render("teachers", { teachers: [] });
+  }
+});
+
+app.post("/api/teachers/edit", async (req, res) => {
+  try {
+    const { fila, nombre, cargo, grado, seccion, turno, dni, telefono, correo, estado, comision } = req.body;
+
+    if (typeof fila !== "number" || isNaN(fila)) {
+      return res.status(400).json({ success: false, message: "Fila no válida" });
+    }    
+
+    const sheetId = process.env.TEACHERS;
+    const range = `Datos!A${fila + 1}:K${fila + 1}`;
+
+    const values = [[
+      fila + 1, nombre, cargo, grado, seccion, turno, dni, telefono, correo, estado, comision
+    ]];
+
+    const result = await sheets.spreadsheets.values.update({
+      spreadsheetId: sheetId,
+      range: range,
+      valueInputOption: "USER_ENTERED",
+      requestBody: { values }
+    });
+
+    res.json({ success: true, message: "Docente actualizado correctamente" });
+  } catch (error) {
+    console.error("❌ Error actualizando docente:", error.message);
+    res.status(500).json({ success: false, message: "Error actualizando docente" });
+  }
+});
+
 // Registrar asistencia en la hoja de cálculo
 app.post("/api/assists", async (req, res) => {
   const { grado, seccion, fecha, asistencia } = req.body;
@@ -236,9 +310,7 @@ app.post("/api/assists", async (req, res) => {
       }
     }
 
-    if (new Date().getHours() >= 10) {
-      return res.status(403).json({ message: "Solo se permite registrar hasta las 10:00 AM" });
-    }
+    // x
 
     const filas = asistencia.map(a => [a.numero, a.estudiante, a.estado, fecha, a.observacion || ""]);
     await sheets.spreadsheets.values.append({
