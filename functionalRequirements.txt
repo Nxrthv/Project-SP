@@ -1,0 +1,5 @@
+- Listado de estudiantes por grado y seccion.
+- Busqueda individual de estudiantes por nombre y apellido.
+- Registro de datos adicionales necesarios (apoderado, telefono, direccion, fecha de nacimiento, edad, etc).
+- Modificacion de estado academico y estatus en el SIAGIE.
+- Filtro por los parametros mencionados anteriormente.

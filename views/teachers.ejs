@@ -3,309 +3,429 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de gestión de docentes - Sistema de Gestión Académica">
     <title>Información Docentes - Sistema de Gestión Académica</title>
+    <style>
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        /* Transiciones suaves */
+        .fade-transition {
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .fade-enter {
+            opacity: 1;
+            transform: translateY(10px);
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Mejoras para dispositivos táctiles */
+        @media (hover: none) {
+            .touch-target {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <%- include ("reusables/nav.ejs") %>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col text-sm">
+    <%- include ("reusables/nav") %>
 
     <!-- Contenido Principal - Panel de Docentes -->
-    <div class="container mx-auto px-4 py-6">
+    <main class="container mx-auto px-4 py-6 flex-grow">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div>
-                <h1 class="text-2xl font-bold text-gray-800">Docentes</h1>
+                <h1 class="text-2xl font-bold text-gray-800">Resumen de la Plana Docente</h1>
                 <p class="text-gray-600 mt-1">Gestiona la información de los docentes de la institución</p>
             </div>
-            <button id="newTeacherBtn" class="mt-4 md:mt-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center">
-                <i data-lucide="plus" class="mr-2 h-4 w-4"></i> Nuevo Docente
-            </button>
         </div>
 
         <!-- Tarjeta de Estadísticas -->
-        <div class="bg-white rounded-lg border shadow-sm mb-6">
-            <div class="p-4 border-b">
-                <h2 class="text-lg font-semibold">Estadísticas</h2>
-                <p class= "text-gray-500">Resumen de la plana docente</p>
-            </div>
+        <section class="bg-white rounded-lg transition-all duration-300">
             <div class="p-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <p class= "text-blue-600">Total Docentes</p>
-                        <p class="text-2xl font-bold"><%= teachers.length %></p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-400 transition-transform duration-300 hover:scale-[1.02]">
+                        <p class="text-blue-600  font-medium">Total Docentes</p>
+                        <p class="text-2xl font-bold"><%= data.length %></p>
                     </div>
-                    <div class="bg-green-50 p-4 rounded-lg border border-green-100">
-                        <p class= "text-green-600">Turno Mañana</p>
-                        <p class="text-2xl font-bold"><%= teachers.filter(t => t.turno === "Mañana").length %></p>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-400 transition-transform duration-300 hover:scale-[1.02]">
+                        <p class="text-green-600  font-medium">Turno Mañana</p>
+                        <p class="text-2xl font-bold"><%= data.filter(row => row[5] === "Mañana").length %></p>
                     </div>
-                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
-                        <p class= "text-amber-600">Turno Tarde</p>
-                        <p class="text-2xl font-bold"><%= teachers.filter(t => t.turno === "Tarde").length %></p>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-400 transition-transform duration-300 hover:scale-[1.02]">
+                        <p class="text-amber-600  font-medium">Turno Tarde</p>
+                        <p class="text-2xl font-bold"><%= data.filter(row => row[5] === "Tarde").length %></p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Tarjeta de Tabla de Docentes -->
-        <div class="bg-white rounded-lg border shadow-sm">
+        <section aria-labelledby="teachers-table-heading" class="bg-white rounded-lg border shadow-sm transition-all duration-300 hover:shadow-md">
             <div class="p-4 border-b">
                 <div class="flex flex-col md:flex-row justify-between md:items-center gap-4">
-                    <div class="flex-1 max-w-md">
+                    <div class="flex-1">
                         <div class="relative">
-                            <i data-lucide="search" class="absolute left-2.5 top-3 h-4 w-4 text-gray-500"></i>
+                            <i data-lucide="search" class="absolute left-2.5 top-3 h-4 w-4 text-gray-500 pointer-events-none"></i>
                             <input 
                                 type="search" 
                                 id="searchInput"
-                                placeholder="Buscar por nombre, DNI o especialidad..." 
-                                class="w-full pl-8 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Buscar por nombre, cargo o grado..." 
+                                class="w-full pl-8 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow duration-200"
+                                aria-label="Buscar docentes"
                             >
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <button class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50">
-                            <i data-lucide="filter" class="h-4 w-4"></i>
-                            Filtrar
-                            <i data-lucide="chevron-down" class="h-3 w-3 opacity-50"></i>
-                        </button>
-                        <button class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50">
-                            <i data-lucide="download" class="h-4 w-4"></i>
-                            Exportar
-                        </button>
-                        <button class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50">
-                            <i data-lucide="upload" class="h-4 w-4"></i>
-                            Importar
-                        </button>
+                        <div class="relative">
+                            <button 
+                                id="filterBtn"
+                                class="px-2.5 py-1.5 border rounded-md flex items-center gap-1 hover:bg-gray-50 transition-colors duration-200 touch-target"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                            >
+                                <i data-lucide="filter" class="h-4 w-4"></i>
+                                <span>Filtrar</span>
+                                <i data-lucide="chevron-down" class="h-3 w-3 opacity-50"></i>
+                            </button>
+                            <div id="filterMenu" class="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg py-1 z-10 border hidden">
+                                <div class="px-3 py-2">
+                                    <label class="flex items-center gap-2 ">
+                                        <input type="checkbox" class="filter-option" value="Mañana"> Turno Mañana
+                                    </label>
+                                </div>
+                                <div class="px-3 py-2">
+                                    <label class="flex items-center gap-2 ">
+                                        <input type="checkbox" class="filter-option" value="Tarde"> Turno Tarde
+                                    </label>
+                                </div>
+                                <div class="border-t mt-1 pt-1">
+                                    <button id="applyFilters" class="w-full text-left px-3 py-2  text-blue-600 hover:bg-gray-50">
+                                        Aplicar filtros
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="p-4">
-                <div class="rounded-md border shadow-sm overflow-x-auto">
-                    <table class="min-w-full text-sm">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-4 py-3 text-center">#</th>
-                                <th class="px-4 py-3 text-center">Nombre</th>
-                                <th class="px-4 py-3 text-center">Cargo</th>
-                                <th class="px-4 py-3 text-center whitespace-nowrap">Edad/Grado</th>
-                                <th class="px-4 py-3 text-center whitespace-nowrap">Aula/Sección</th>
-                                <th class="px-4 py-3 text-center">Turno</th>
-                                <th class="px-4 py-3 text-center">Acciones</th>
-                                <!-- <th class="px-4 py-3 text-center">DNI</th>
-                                <th class="px-4 py-3 text-center">Celular</th>
-                                <th class="px-4 py-3 text-center">Correo</th>
-                                <th class="px-4 py-3 text-center">Estado</th>
-                                <th class="px-4 py-3 text-center">Comision</th> -->
-                            </tr>
-                        </thead>
-                        <tbody id="teachersTableBody">
-                            <% teachers.forEach(function(teacher) { %>
-                                <tr class="border-b hover:bg-gray-50">
-                                    <td class="px-4 py-3 text-center"><%= teacher.id %></td>
-                                    <td class="px-4 py-3 whitespace-nowrap"><%= teacher.nombre %></td>
-                                    <td class="px-4 py-3 text-center whitespace-nowrap"><%= teacher.cargo %></td>
-                                    <td class="px-4 py-3 text-center"><%= teacher.grado %></td>
-                                    <td class="px-4 py-3 text-center"><%= teacher.seccion %></td>
-                                    <td class="px-4 py-3 text-center">
-                                        <% if (teacher.turno === "Mañana") { %>
-                                            <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-green-100 text-green-800 border-green-200">
-                                                <%= teacher.turno %>
-                                            </span>
-                                        <% } else if (teacher.turno === "Tarde") { %>
-                                            <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 border-amber-200">
-                                                <%= teacher.turno %>
-                                            </span>
-                                        <% } %>
-                                    </td>
-                                    <td class="px-4 py-3 text-center">
-                                        <button 
-                                          class="edit-teacher-btn px-2 py-1 ml-2 text-sm text-blue-600 hover:underline"
-                                          data-id="<%= teacher.id %>">
-                                          Editar
-                                        </button>
-                                    </td>                                      
+                <div id="tableContainer" class="rounded-md border shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto" style="scrollbar-width: thin;">
+                        <table class="min-w-full ">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-center font-bold">#</th>
+                                    <th class="px-4 py-3 text-left font-bold">Nombre</th>
+                                    <th class="px-4 py-3 text-center font-bold">Cargo</th>
+                                    <th class="px-4 py-3 text-center font-bold whitespace-nowrap">Edad/Grado</th>
+                                    <th class="px-4 py-3 text-center font-bold whitespace-nowrap">Aula/Sección</th>
+                                    <th class="px-4 py-3 text-center font-bold">Turno</th>
+                                    <th class="px-4 py-3 text-center font-bold">Telefono</th>
+                                    <th class="px-4 py-3 text-center font-bold">Acciones</th>
                                 </tr>
-                            <% }); %>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody id="teachersTableBody">
+                                <% data.forEach(function(row, index) { %>
+                                    <tr class="teacher-row border-b hover:bg-gray-100 transition-colors duration-150" data-index="<%= index %>">
+                                        <td class="px-4 py-3 text-center font-bold w-1"><%= row[0] %></td>
+                                        <td class="px-4 py-3 font-medium whitespace-nowrap w-1"><%= row[1] %></td>
+                                        <td class="px-4 py-3 text-center whitespace-nowrap w-1"><%= row[2] %></td>
+                                        <td class="px-4 py-3 text-center w-1"><%= row[3] %></td>
+                                        <td class="px-4 py-3 text-center w-1"><%= row[4] %></td>
+                                        <td class="px-4 py-3 text-center w-1">
+                                            <% if ((row[5] || "").trim() === "Mañana") { %>
+                                                <span class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold bg-green-100 text-green-800 border-green-400">
+                                                    <%= row[5] %>
+                                                </span>
+                                            <% } else if ((row[5] || "").trim() === "Tarde") { %>
+                                                <span class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 border-amber-400">
+                                                    <%= row[5] %>
+                                                </span>
+                                            <% } else { %>
+                                                <%= row[5] %>
+                                            <% } %>
+                                        </td>
+                                        <td class="px-4 py-3 text-center w-1"><%= row[7] %></td>
+                                        <td class="px-4 py-3 text-center w-1">
+                                            <button onclick="openTeacherModal(<%= index %>)" class="text-blue-600 hover:underline">Editar</button>
+                                        </td>                                      
+                                    </tr>
+                                <% }); %>
+                            </tbody>                            
+                        </table>
+                    </div>
                 </div>   
                 
-                <div id="teacherDetailsModal" class="fixed inset-0 z-50 hidden">
+                <!-- Estado de la tabla - No hay resultados -->
+                <div id="noResults" class="hidden py-8 text-center">
+                    <div class="inline-flex flex-col items-center">
+                        <i data-lucide="search-x" class="h-12 w-12 text-gray-400 mb-3"></i>
+                        <h3 class="text-lg font-medium text-gray-900">No se encontraron resultados</h3>
+                        <p class="text-gray-500 mt-1">Intenta con otros términos de búsqueda</p>
+                    </div>
+                </div>
+                
+                <!-- Estado de carga -->
+                <div id="loadingState" class="hidden py-4">
+                    <div class="space-y-3">
+                        <div class="skeleton h-10 w-full rounded"></div>
+                        <div class="skeleton h-10 w-full rounded"></div>
+                        <div class="skeleton h-10 w-full rounded"></div>
+                    </div>
+                </div>
+
+                <!-- Modal para editar docente -->
+                <div id="teacherDetailsModal" class="fixed inset-0 z-50 hidden fade-transition">
                     <div class="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
-                        <div class="fixed left-1/2 top-1/2 transform m-6 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-xl z-50">
+                    <div class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white p-6 rounded-lg shadow-xl z-50 m-4 fade-transition fade-enter">
                         
                         <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-semibold text-gray-800">Datos del Docente</h2>
-                        <button id="closeModalBtn" class="text-gray-500 hover:text-red-500">
-                            <i data-lucide="x" class="w-5 h-5"></i>
-                        </button>
+                            <h2 class="text-xl font-semibold text-gray-800">Datos del Docente</h2>
+                            <button id="closeModalBtn" class="text-gray-500 hover:text-red-500 transition-colors duration-200 p-1 rounded-full hover:bg-gray-100" aria-label="Cerrar">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
                         </div>
 
                         <form id="teacherForm" class="space-y-4">
-                        <input type="hidden" id="docenteFila" />
+                            <input type="hidden" id="docenteFila" />
 
-                        <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-                        
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Nombre: </span>
-                                <input type="text" id="docenteNombre" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="col-span-2">
+                                    <label for="docenteNombre" class="block  font-medium text-gray-700 mb-1">Nombre</label>
+                                    <input 
+                                        type="text" 
+                                        id="docenteNombre" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                    />
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Cargo: </span>
-                                <input type="text" id="docenteCargo" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteCargo" class="block  font-medium text-gray-700 mb-1">Cargo</label>
+                                    <input 
+                                        type="text" 
+                                        id="docenteCargo" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                    />
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Grado: </span>
-                                <input type="text" id="docenteGrado" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteGrado" class="block  font-medium text-gray-700 mb-1">Grado</label>
+                                    <input 
+                                        type="text" 
+                                        id="docenteGrado" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                    />
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Sección: </span>
-                                <input type="text" id="docenteSeccion" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteSeccion" class="block  font-medium text-gray-700 mb-1">Sección</label>
+                                    <input 
+                                        type="text" 
+                                        id="docenteSeccion" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                    />
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Turno: </span>
-                                <input type="text" id="docenteTurno" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteTurno" class="block  font-medium text-gray-700 mb-1">Turno</label>
+                                    <select 
+                                        id="docenteTurno" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200"
+                                    >
+                                        <option value="Mañana">Mañana</option>
+                                        <option value="Tarde">Tarde</option>
+                                    </select>
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">DNI: </span>
-                                <input type="text" id="docenteDNI" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteDNI" class="block  font-medium text-gray-700 mb-1">DNI</label>
+                                    <input 
+                                        type="text" 
+                                        id="docenteDNI" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                        maxlength="8"
+                                        pattern="[0-9]{8}"
+                                    />
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Teléfono: </span>
-                                <input type="text" id="docenteTelefono" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteTelefono" class="block  font-medium text-gray-700 mb-1">Teléfono</label>
+                                    <input 
+                                        type="tel" 
+                                        id="docenteTelefono" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                        maxlength="9"
+                                        pattern="[0-9]{9}"
+                                    />
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Correo: </span>
-                                <input type="email" id="docenteCorreo" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-1">
+                                    <label for="docenteEstado" class="block  font-medium text-gray-700 mb-1">Estado</label>
+                                    <select 
+                                        id="docenteEstado" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200"
+                                    >
+                                        <option value="Nombrado">Nombrado</option>
+                                        <option value="Contratado">Contratado</option>
+                                    </select>
+                                </div>
 
-                            <div class="col-span-1 text-sm">
-                                <span class="text-sm text-gray-700">Estado: </span>
-                                <input type="text" id="docenteEstado" class="border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" />
-                            </div>
+                                <div class="col-span-2">
+                                    <label for="docenteCorreo" class="block  font-medium text-gray-700 mb-1">Correo</label>
+                                    <input 
+                                        type="email" 
+                                        id="docenteCorreo" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                    />
+                                </div>
 
-                            <div class="col-span-2 text-sm">
-                                <span class="text-sm text-gray-700">Comisión: </span>
-                                <textarea id="docenteComision" class="input w-full mt-1 border rounded-md px-2 py-1 ml-2 focus:outline-none focus:ring focus:ring-blue-500" rows="3"></textarea>
+                                <div class="col-span-3">
+                                    <label for="docenteComision" class="block font-medium text-gray-700 mb-1">Comisión</label>
+                                    <textarea 
+                                        id="docenteComision" 
+                                        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200" 
+                                        rows="1"
+                                    ></textarea>
+                                </div>
                             </div>
-                        </div>
-                    
                         </form>
 
                         <div class="flex justify-end mt-6 gap-2">
-                        <button id="closeModalBtnFooter" type="button" class="px-4 py-2 border rounded-md text-sm text-gray-600 hover:bg-gray-100">
-                            Cancelar
-                        </button>
-                        <button id="saveTeacherBtn" type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
-                            Guardar Cambios
-                        </button>
+                            <button 
+                                id="closeModalBtnFooter" 
+                                type="button" 
+                                class="px-4 py-2 border rounded-md  text-gray-600 hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                            >
+                                Cancelar
+                            </button>
+                            <button 
+                                id="saveTeacherBtn" 
+                                type="submit" 
+                                class="px-4 py-2 bg-blue-600 text-white rounded-md  hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            >
+                                Guardar Cambios
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="flex items-center justify-end space-x-2 py-4">
-                    <div class="flex-1 text-gray-500">
-                        Mostrando <span class="" id="teachersShown"><%= teachers.length %></span> de 
-                        <span class=""><%= teachers.length %></span> docentes
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
     <script>
-        window.teachersData = <%- JSON.stringify(teachers || []) %>;
-    </script>
+        window.teachersData = <%- JSON.stringify(data || []) %>;
+    </script>  
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const searchInput = document.getElementById("searchInput");
-          const tableRows = document.querySelectorAll("#teachersTableBody tr");
-      
-          searchInput.addEventListener("input", () => {
-            const query = searchInput.value.toLowerCase();
-      
-            tableRows.forEach(row => {
-              const rowText = row.textContent.toLowerCase();
-              row.style.display = rowText.includes(query) ? "" : "none";
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#teachersTableBody .teacher-row");
+
+            rows.forEach(row => {
+            const nombre = row.children[1]?.textContent.toLowerCase() || "";
+            const cargo = row.children[2]?.textContent.toLowerCase() || "";
+            const grado = row.children[3]?.textContent.toLowerCase() || "";
+
+            const visible =
+                nombre.includes(query) ||
+                cargo.includes(query) ||
+                grado.includes(query);
+
+            row.style.display = visible ? "" : "none";
             });
-          });
-          
-          const modal = document.getElementById("teacherDetailsModal");
-          const closeModalBtns = document.querySelectorAll("#closeModalBtn, #closeModalBtnFooter");
-
-            // Cerrar modal
-            closeModalBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    modal.classList.add("hidden");
-                });
-            });
-
-            // Botones de edición
-            document.querySelectorAll(".edit-teacher-btn").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const id = parseInt(btn.dataset.id);
-                    const docente = window.teachersData.find(d => d.id === id); // datos precargados
-
-                    if (docente) {
-                    document.getElementById("docenteFila").value = docente.id;
-                    document.getElementById("docenteNombre").value = docente.nombre;
-                    document.getElementById("docenteCargo").value = docente.cargo;
-                    document.getElementById("docenteGrado").value = docente.grado;
-                    document.getElementById("docenteSeccion").value = docente.seccion;
-                    document.getElementById("docenteTurno").value = docente.turno;
-                    document.getElementById("docenteDNI").value = docente.dni;
-                    document.getElementById("docenteTelefono").value = docente.telefono;
-                    document.getElementById("docenteCorreo").value = docente.correo;
-                    document.getElementById("docenteEstado").value = docente.estado;
-                    document.getElementById("docenteComision").value = docente.comision;
-
-                    modal.classList.remove("hidden");
-                }
-            });
-          });
         });
-        
-    </script>
-    <script>
+
+        function openTeacherModal(index) {
+            const teacher = window.teachersData[index];
+            if (!teacher) return;
+
+            const modal = document.getElementById("teacherDetailsModal");
+
+            // Llenar los campos del modal
+            document.getElementById("docenteFila").value = index;
+            document.getElementById("docenteNombre").value = teacher[1] || "";
+            document.getElementById("docenteCargo").value = teacher[2] || "";
+            document.getElementById("docenteGrado").value = teacher[3] || "";
+            document.getElementById("docenteSeccion").value = teacher[4] || "";
+            document.getElementById("docenteTurno").value = teacher[5] || "";
+            document.getElementById("docenteDNI").value = teacher[6] || "";
+            document.getElementById("docenteTelefono").value = teacher[7] || "";
+            document.getElementById("docenteCorreo").value = teacher[8] || "";
+            document.getElementById("docenteEstado").value = teacher[9] || "";
+            document.getElementById("docenteComision").value = teacher[10] || "";
+
+            // Mostrar el modal con animación
+            modal.classList.remove("hidden");
+            modal.classList.add("fade-enter");
+
+            requestAnimationFrame(() => {
+                modal.classList.add("fade-transition", "fade-enter-active");
+                modal.classList.remove("fade-enter");
+            });
+        }
+
         document.getElementById("saveTeacherBtn").addEventListener("click", async () => {
-            const fila = document.getElementById("docenteFila").value;
-            const data = {
-                fila: parseInt(fila),
-                nombre: document.getElementById("docenteNombre").value.trim(),
-                cargo: document.getElementById("docenteCargo").value.trim(),
-                grado: document.getElementById("docenteGrado").value.trim(),
-                seccion: document.getElementById("docenteSeccion").value.trim(),
-                turno: document.getElementById("docenteTurno").value.trim(),
-                dni: document.getElementById("docenteDNI").value.trim(),
-                telefono: document.getElementById("docenteTelefono").value.trim(),
-                correo: document.getElementById("docenteCorreo").value.trim(),
-                estado: document.getElementById("docenteEstado").value.trim(),
-                comision: document.getElementById("docenteComision").value.trim()
+            const index = document.getElementById("docenteFila").value;
+
+            const updatedData = {
+            fila: parseInt(index) + 2, // Porque empieza en A2 en el sheet
+            nombre: document.getElementById("docenteNombre").value.trim(),
+            cargo: document.getElementById("docenteCargo").value.trim(),
+            grado: document.getElementById("docenteGrado").value.trim(),
+            seccion: document.getElementById("docenteSeccion").value.trim(),
+            turno: document.getElementById("docenteTurno").value.trim(),
+            dni: document.getElementById("docenteDNI").value.trim(),
+            telefono: document.getElementById("docenteTelefono").value.trim(),
+            correo: document.getElementById("docenteCorreo").value.trim(),
+            estado: document.getElementById("docenteEstado").value.trim(),
+            comision: document.getElementById("docenteComision").value.trim(),
             };
-        
+
             try {
-                const res = await fetch("/api/teachers/edit", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data)
-                });
-        
-                const result = await res.json();
-                if (result.success) {
-                    alert("✅ Docente actualizado correctamente");
-                    location.reload(); // o actualiza manualmente la fila modificada
-                } else {
-                    alert("⚠️ No se pudo actualizar: " + result.message);
-                }
-            } catch (error) {
-                console.error("❌ Error al guardar docente:", error);
-                alert("Error de conexión con el servidor");
+            const res = await fetch("/api/teachers/edit", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedData)
+            });
+
+            const result = await res.json();
+            if (result.success) {
+                alert("✅ Docente actualizado correctamente");
+                location.reload();
+            } else {
+                alert("⚠️ Error al actualizar: " + result.message);
+            }
+            } catch (err) {
+            console.error("❌ Error actualizando docente:", err);
+            alert("Error al actualizar.");
             }
         });
+
+        // Cerrar modal
+        function closeTeacherModal() {
+            const modal = document.getElementById("teacherDetailsModal");
+            modal.classList.remove("fade-enter-active");
+
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modal.classList.remove("fade-transition");
+            }, 200);
+        }
+
+        document.getElementById("closeModalBtn").addEventListener("click", closeTeacherModal);
+        document.getElementById("closeModalBtnFooter").addEventListener("click", closeTeacherModal);
+
     </script>
-        
 </body>
 </html>

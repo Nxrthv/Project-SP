@@ -34,7 +34,8 @@ const auth = new google.auth.GoogleAuth({
   scopes: SCOPES,
   ...(isProd
     ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS) }
-    : { keyFile: "excelapi-454722-42c2bee22cff.json" })
+    : { keyFile: "excelapi-454722-8b24a8393d66.json" }
+  )
 });
 
 if (process.env.NODE_ENV === "production") {
@@ -70,6 +71,26 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.get("/about", (req, res) => {
+  res.render("public_views/about", { title: "Nosotros"});
+});
+
+app.get("/programs", (req, res) => {
+  res.render("public_views/programs", { title: "Programas"});
+});
+
+app.get("/contact", (req, res) => {
+  res.render("public_views/contact", { title: "Contactanos"});
+});
+
+app.get("/login", (req, res) => {
+  res.render("public_views/login", { title: "Bienvenid@s Docentes"});
+});
+
+app.get("/dashboard", (req, res) => {
   const cache = leerCache();
   const totalEstudiantes = cache.length;
 
@@ -87,11 +108,27 @@ app.get("/students", (req, res) => {
   });
 });
 
-// app.get("/teachers", (req, res) => {
-//   res.render("teachers", {
-//     data: null,
-//   });
-// });
+app.get("/teachers", async (req, res) => {
+  try {
+    const sheetId = process.env.TEACHERS;
+
+    if (!sheetId) {
+      return res.render("teachers", { data: [] });
+    }
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: sheetId,
+      range: "Datos!A2:K",
+    });
+
+    const values = response.data.values || [];
+
+    res.render("teachers", { data: values });
+  } catch (error) {
+    console.error("❌ Error al obtener docentes:", error.message);
+    res.render("teachers", { data: [] });
+  }
+});
 
 app.get("/assists", (req, res) => {
   res.render("assists", {
@@ -157,7 +194,7 @@ app.get("/api/data/:grade/:section", async (req, res) => {
     const sheetId = files[0].id;
     const sheetRes = await sheets.spreadsheets.values.get({
       spreadsheetId: sheetId,
-      range: "Matriculas!A2:E",
+      range: "Matriculas!A2:I",
     });
 
     const data = sheetRes.data.values || [];
@@ -195,69 +232,29 @@ app.get("/data/:grade/:section", async (req, res) => {
   }
 });
 
-// Obtener datos de docentes desde Google Sheets
-app.get("/teachers", async (req, res) => {
-  try {
-    const sheetId = process.env.TEACHERS;
-
-    if (!sheetId) {
-      return res.render("teachers", { teachers: [] });
-    }
-
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: sheetId,
-      range: "Datos!A2:K",
-    });
-
-    const values = response.data.values || [];
-
-    const teachers = values.map((row, index) => ({
-      id: index + 1,
-      nombre: row[1] || "",
-      cargo: row[2] || "",
-      grado: row[3] || "",
-      seccion: row[4] || "",
-      turno: row[5] || "",
-      dni: row[6] || "",
-      telefono: row[7] || "",
-      correo: row[8] || "",
-      estado: row[9] || "",
-      comision: row[10] || "",
-    }));
-
-    res.render("teachers", { teachers });
-  } catch (error) {
-    console.error("❌ Error al obtener docentes:", error.message);
-    res.render("teachers", { teachers: [] });
-  }
-});
-
 app.post("/api/teachers/edit", async (req, res) => {
   try {
-    const { fila, nombre, cargo, grado, seccion, turno, dni, telefono, correo, estado, comision } = req.body;
-
-    if (typeof fila !== "number" || isNaN(fila)) {
-      return res.status(400).json({ success: false, message: "Fila no válida" });
-    }    
-
     const sheetId = process.env.TEACHERS;
-    const range = `Datos!A${fila + 1}:K${fila + 1}`;
+    const {
+      fila,
+      nombre, cargo, grado, seccion,
+      turno, dni, telefono, correo,
+      estado, comision
+    } = req.body;
 
-    const values = [[
-      fila + 1, nombre, cargo, grado, seccion, turno, dni, telefono, correo, estado, comision
-    ]];
-
-    const result = await sheets.spreadsheets.values.update({
+    await sheets.spreadsheets.values.update({
       spreadsheetId: sheetId,
-      range: range,
+      range: `Datos!B${fila}:K${fila}`,
       valueInputOption: "USER_ENTERED",
-      requestBody: { values }
+      requestBody: {
+        values: [[nombre, cargo, grado, seccion, turno, dni, telefono, correo, estado, comision]]
+      },
     });
 
-    res.json({ success: true, message: "Docente actualizado correctamente" });
+    res.json({ success: true });
   } catch (error) {
     console.error("❌ Error actualizando docente:", error.message);
-    res.status(500).json({ success: false, message: "Error actualizando docente" });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
@@ -371,7 +368,7 @@ app.get("/api/actualizar-cache", async (req, res) => {
       try {
         const sheetResponse = await sheets.spreadsheets.values.get({
           spreadsheetId: sheetId,
-          range: "Matriculas!A2:E", // A: DNI, B: Nombre
+          range: "Matriculas!A2:I",
         });
 
         const rows = sheetResponse.data.values || [];

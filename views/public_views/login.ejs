@@ -1,0 +1,38 @@
+<%- include('../reusables/public_nav', {title: 'Iniciar Sesión', currentPage: 'login'}) %>
+
+<section class="section">
+  <div class="container">
+    <div class="login-container">
+      <h1 class="login-title">Iniciar Sesión</h1>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Usuario</label>
+          <input type="text" id="username" class="form-input" placeholder="Ingresa tu nombre de usuario">
+        </div>
+        
+        <div class="form-group">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" id="password" class="form-input" placeholder="Ingresa tu contraseña">
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <input type="checkbox" id="remember" style="margin-right: 0.5rem;">
+            <label for="remember">Recordarme</label>
+          </div>
+          
+          <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.875rem;">¿Olvidaste tu contraseña?</a>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Iniciar Sesión</button>
+      </form>
+      
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <p>¿No tienes una cuenta? <a href="#" style="color: var(--primary); text-decoration: none;">Solicita acceso</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../reusables/public_footer') %>

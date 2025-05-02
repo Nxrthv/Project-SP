@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="/assets/insignia.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: "Sofia Sans", sans-serif;
         }
         .tab-content {
             display: none;
@@ -92,38 +92,38 @@
                 <div class="flex items-center">
                     <a href="/" class="flex items-center gap-2">
                         <img src="/assets/insignia.ico" class="h-8 w-8">
-                        <span class="font-bold text-md hidden md:block">I.E.I 32004 San Pedro</span>
+                        <span class="font-bold hidden md:block text-lg">I.E.I San Pedro</span>
                     </a>
                 </div>
 
                 <!-- Navegación Principal - Escritorio -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="/" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
-                        <%= currentPath === '/' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
+                    <a href="/dashboard" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
+                        <%= currentPath === '/dashboard' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="layout-dashboard" class="h-4 w-4"></i>
                         Dashboard
                     </a>
-                    <a href="/students" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                    <a href="/students" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                         <%= currentPath === '/students' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="users" class="h-4 w-4"></i>
                         Estudiantes
                     </a>
-                    <a href="/teachers" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                    <a href="/teachers" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                         <%= currentPath === '/teachers' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="user" class="h-4 w-4"></i>
                         Profesores
                     </a>
-                    <a href="/assists" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                    <a href="/assists" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                         <%= currentPath === '/assists' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="calendar-days" class="h-4 w-4"></i>
                         Asistencias
                     </a>
-                    <a href="/error_404" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                    <a href="/error_404" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                         <%= currentPath === '/califications' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="bar-chart-2" class="h-4 w-4"></i>
                         Calificaciones
                     </a>
-                    <a href="/documents" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                    <a href="/documents" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                         <%= currentPath === '/documents' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                         <i data-lucide="file-text" class="h-4 w-4"></i>
                         Documentos
@@ -133,7 +133,7 @@
                 <!-- Menú de Usuario y Botón Móvil -->
                 <div class="flex items-center gap-2">
                     <div class="relative">
-                        <button id="userMenuBtn" class="flex items-center gap-2 text-sm focus:outline-none">
+                        <button id="userMenuBtn" class="flex items-center gap-2  focus:outline-none">
                             <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600">
                                 <i data-lucide="user" class="h-5 w-5"></i>
                             </div>
@@ -142,7 +142,7 @@
                         </button>
                         <!-- Menú desplegable de usuario (oculto por defecto) -->
                         <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 border">
-                            <a href="/error_404" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Cerrar Sesión</a>
+                            <a href="/error_404" class="block px-4 py-2  text-red-600 hover:bg-gray-100">Cerrar Sesión</a>
                         </div>
                     </div>
                     
@@ -155,32 +155,32 @@
             
             <!-- Menú móvil (oculto por defecto) -->
             <div id="mobileMenu" class="mobile-menu md:hidden pb-3 border-t mt-2">
-                <a href="/" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                <a href="/" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                     <%= currentPath === '/' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                     <i data-lucide="layout-dashboard" class="h-4 w-4"></i>
                     Dashboard
                 </a>
-                <a href="/students" class="nav-link px-3 py-2 text-sm  font-medium flex items-center gap-1.5
+                <a href="/students" class="nav-link px-3 py-2   font-medium flex items-center gap-1.5
                     <%= currentPath === '/students' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                     <i data-lucide="users" class="h-4 w-4"></i>
                     Estudiantes
                 </a>
-                <a href="/teachers" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                <a href="/teachers" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                     <%= currentPath === '/teachers' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                     <i data-lucide="user" class="h-4 w-4"></i>
                     Profesores
                 </a>
-                <a href="/assists" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                <a href="/assists" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                     <%= currentPath === '/assists' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                     <i data-lucide="calendar-days" class="h-4 w-4"></i>
                     Asistencias
                 </a>
-                <a href="/error_404" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                <a href="/error_404" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                     <%= currentPath === '/califications' ? 'text-blue-600 bg-blue-50 font-semibold border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                     <i data-lucide="bar-chart-2" class="h-4 w-4"></i>
                     Calificaciones
                 </a>
-                <a href="/documents" class="nav-link px-3 py-2 text-sm font-medium flex items-center gap-1.5
+                <a href="/documents" class="nav-link px-3 py-2  font-medium flex items-center gap-1.5
                     <%= currentPath === '/documents' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' %>">
                     <i data-lucide="file-text" class="h-4 w-4"></i>
                     Documentos

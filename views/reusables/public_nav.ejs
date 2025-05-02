@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | Colegio 32004 San Pedro - Huánuco</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/public_styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="/" class="logo nav-link">
+        <img src="assets/insignia.png" alt="Logo Colegio San Pedro">
+        <span class="logo-text">Colegio San Pedro</span>
+      </a>
+      
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="nav-links">
+        <a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Inicio</a>
+        <a href="/about" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">Nosotros</a>
+        <a href="/programs" class="nav-link <%= currentPage === 'programs' ? 'active' : '' %>">Programas</a>
+        <a href="/contact" class="nav-link <%= currentPage === 'contact' ? 'active' : '' %>">Contacto</a>
+        <a href="/dashboard" class="btn btn-primary">Iniciar Sesión</a>
+      </nav>
+    </div>
+  </header>

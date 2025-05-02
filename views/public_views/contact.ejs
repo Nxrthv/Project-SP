@@ -1,0 +1,113 @@
+<%- include('../reusables/public_nav', {title: 'Contacto', currentPage: 'contact'}) %>
+
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">Contáctanos</h1>
+    <p class="section-subtitle">Estamos aquí para responder tus consultas y brindarte la información que necesitas.</p>
+    
+    <div style="display: flex; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Información de Contacto</h2>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Dirección</h3>
+          <p>Av. Principal 123, Huánuco, Perú</p>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;"><i class="fas fa-phone" style="color: var(--primary);"></i> Teléfono</h3>
+          <p>(062) 123-4567</p>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color: var(--primary);"></i> Correo Electrónico</h3>
+          <p>info@colegiosanpedro.edu.pe</p>
+        </div>
+        
+        <div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: var(--primary);"></i> Horario de Atención</h3>
+          <p>Lunes a Viernes: 8:00 am - 4:00 pm</p>
+          <p>Sábados: 9:00 am - 12:00 pm</p>
+        </div>
+      </div>
+      
+      <div style="flex: 1; min-width: 300px;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Envíanos un Mensaje</h2>
+        
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Nombre completo</label>
+            <input type="text" id="name" class="form-input" placeholder="Ingresa tu nombre completo">
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" id="email" class="form-input" placeholder="Ingresa tu correo electrónico">
+          </div>
+          
+          <div class="form-group">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input type="tel" id="phone" class="form-input" placeholder="Ingresa tu número de teléfono">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Asunto</label>
+            <select id="subject" class="form-input">
+              <option value="">Selecciona una opción</option>
+              <option value="informacion">Información general</option>
+              <option value="matricula">Proceso de matrícula</option>
+              <option value="visita">Programar una visita</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea id="message" class="form-input" rows="5" placeholder="Escribe tu mensaje aquí"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+    
+    <div>
+      <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Nuestra Ubicación</h2>
+      <div style="border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <!-- Aquí se puede integrar un mapa de Google Maps -->
+        <img src="/placeholder.svg?height=400&width=1200&query=map of Huanuco Peru" alt="Mapa de ubicación" style="width: 100%; height: 400px; object-fit: cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: var(--light);">
+  <div class="container">
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <p class="section-subtitle">Encuentra respuestas a las consultas más comunes sobre nuestra institución.</p>
+    
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="margin-bottom: 1.5rem; background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary);">¿Cuál es el proceso de matrícula?</h3>
+        <p>El proceso de matrícula inicia con el llenado de la ficha de inscripción, seguido de una evaluación diagnóstica del estudiante. Luego, se realiza el pago de la matrícula y la presentación de los documentos requeridos.</p>
+      </div>
+      
+      <div style="margin-bottom: 1.5rem; background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary);">¿Qué documentos se requieren para la matrícula?</h3>
+        <p>Los documentos requeridos son: partida de nacimiento original, DNI del estudiante y de los padres, ficha única de matrícula, certificado de estudios (para traslados), y 4 fotografías tamaño carnet.</p>
+      </div>
+      
+      <div style="margin-bottom: 1.5rem; background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary);">¿Ofrecen servicio de transporte escolar?</h3>
+        <p>No contamos con servicio de transporte propio, pero podemos recomendarle empresas de transporte escolar confiables que brindan servicio a nuestros estudiantes.</p>
+      </div>
+      
+      <div style="background-color: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary);">¿Tienen programa de becas?</h3>
+        <p>Sí, contamos con un programa de becas por excelencia académica y por situación económica. Para más información, puede comunicarse con nuestra oficina administrativa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../reusables/public_footer') %>
